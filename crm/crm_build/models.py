@@ -24,6 +24,7 @@ class MainDocument(models.Model):
     class Meta:
         managed = False
         db_table = 'main_document'
+        app_label = 'crm_build'
 
 
 class MainFile(models.Model):
@@ -47,6 +48,7 @@ class MainFile(models.Model):
     class Meta:
         managed = False
         db_table = 'main_file'
+        app_label = 'crm_build'
 
 
 class MainImage(models.Model):
@@ -73,6 +75,7 @@ class MainImage(models.Model):
     class Meta:
         managed = False
         db_table = 'main_image'
+        app_label = 'crm_build'
 
 
 class MainNumber(models.Model):
@@ -80,6 +83,7 @@ class MainNumber(models.Model):
     class Meta:
         managed = False
         db_table = 'main_number'
+        app_label = 'crm_build'
 
 
 class MainSpamObj(models.Model):
@@ -92,6 +96,7 @@ class MainSpamObj(models.Model):
     class Meta:
         managed = False
         db_table = 'main_spam_obj'
+        app_label = 'crm_build'
 
 
 class RlCall(models.Model):
@@ -277,6 +282,7 @@ class RlCall(models.Model):
     class Meta:
         managed = False
         db_table = 'rl_call'
+        app_label = 'crm_build'
 
 
 class RlClient(models.Model):
@@ -629,6 +635,7 @@ class RlClient(models.Model):
     class Meta:
         managed = False
         db_table = 'rl_client'
+        app_label = 'crm_build'
 
 
 class RlClientAdv(models.Model):
@@ -645,6 +652,7 @@ class RlClientAdv(models.Model):
     class Meta:
         managed = False
         db_table = 'rl_client_adv'
+        app_label = 'crm_build'
 
 
 class RlClientBank(models.Model):
@@ -665,6 +673,7 @@ class RlClientBank(models.Model):
     class Meta:
         managed = False
         db_table = 'rl_client_bank'
+        app_label = 'crm_build'
 
 
 class RlClientBirthday(models.Model):
@@ -684,6 +693,7 @@ class RlClientBirthday(models.Model):
     class Meta:
         managed = False
         db_table = 'rl_client_birthday'
+        app_label = 'crm_build'
 
 
 class RlClientOwner(models.Model):
@@ -707,6 +717,7 @@ class RlClientOwner(models.Model):
     class Meta:
         managed = False
         db_table = 'rl_client_owner'
+        app_label = 'crm_build'
 
 
 class RlClientOwnerAll(models.Model):
@@ -722,6 +733,7 @@ class RlClientOwnerAll(models.Model):
         managed = False
         db_table = 'rl_client_owner_all'
         unique_together = (('owner_id', 'client_id'),)
+        app_label = 'crm_build'
 
 
 class RlClientRealtyCheck(models.Model):
@@ -740,6 +752,7 @@ class RlClientRealtyCheck(models.Model):
     class Meta:
         managed = False
         db_table = 'rl_client_realty_check'
+        app_label = 'crm_build'
 
 
 class RlClientReportWeekly(models.Model):
@@ -923,6 +936,7 @@ class RlClientReportWeekly(models.Model):
     class Meta:
         managed = False
         db_table = 'rl_client_report_weekly'
+        app_label = 'crm_build'
 
 
 class RlContragent(models.Model):
@@ -989,6 +1003,7 @@ class RlContragent(models.Model):
     class Meta:
         managed = False
         db_table = 'rl_contragent'
+        app_label = 'crm_build'
 
 
 class RlDeal(models.Model):
@@ -1152,6 +1167,7 @@ class RlDeal(models.Model):
     class Meta:
         managed = False
         db_table = 'rl_deal'
+        app_label = 'crm_build'
 
 
 class RlDealOwner(models.Model):
@@ -1172,6 +1188,7 @@ class RlDealOwner(models.Model):
     class Meta:
         managed = False
         db_table = 'rl_deal_owner'
+        app_label = 'crm_build'
 
 
 class RlDealPay(models.Model):
@@ -1192,6 +1209,7 @@ class RlDealPay(models.Model):
     class Meta:
         managed = False
         db_table = 'rl_deal_pay'
+        app_label = 'crm_build'
 
 
 class RlDealRashod(models.Model):
@@ -1211,6 +1229,7 @@ class RlDealRashod(models.Model):
     class Meta:
         managed = False
         db_table = 'rl_deal_rashod'
+        app_label = 'crm_build'
 
 
 class RlJk(models.Model):
@@ -1322,6 +1341,7 @@ class RlJk(models.Model):
     class Meta:
         managed = False
         db_table = 'rl_jk'
+        app_label = 'crm_build'
 
 
 class RlJkSection(models.Model):
@@ -1339,6 +1359,7 @@ class RlJkSection(models.Model):
     class Meta:
         managed = False
         db_table = 'rl_jk_section'
+        app_label = 'crm_build'
 
 
 class RlJkSectionFloor(models.Model):
@@ -1356,6 +1377,7 @@ class RlJkSectionFloor(models.Model):
     class Meta:
         managed = False
         db_table = 'rl_jk_section_floor'
+        app_label = 'crm_build'
 
 
 class RlLoadCall(models.Model):
@@ -1380,6 +1402,7 @@ class RlLoadCall(models.Model):
     class Meta:
         managed = False
         db_table = 'rl_load_call'
+        app_label = 'crm_build'
 
 
 class RlLoadCallClient(models.Model):
@@ -1390,6 +1413,7 @@ class RlLoadCallClient(models.Model):
         managed = False
         db_table = 'rl_load_call_client'
         unique_together = (('load_call_id', 'client_id'),)
+        app_label = 'crm_build'
 
 
 class RlParser(models.Model):
@@ -1435,6 +1459,7 @@ class RlParser(models.Model):
     class Meta:
         managed = False
         db_table = 'rl_parser'
+        app_label = 'crm_build'
 
 
 class RlParser2(models.Model):
@@ -1472,6 +1497,7 @@ class RlParser2(models.Model):
     class Meta:
         managed = False
         db_table = 'rl_parser2'
+        app_label = 'crm_build'
 
 
 class RlParser4(models.Model):
@@ -1540,6 +1566,7 @@ class RlParser4(models.Model):
     class Meta:
         managed = False
         db_table = 'rl_parser4'
+        app_label = 'crm_build'
 
 
 class RlRealtySite(models.Model):
@@ -1555,6 +1582,7 @@ class RlRealtySite(models.Model):
     class Meta:
         managed = False
         db_table = 'rl_realty_site'
+        app_label = 'crm_build'
 
 
 class RlSber(models.Model):
@@ -1592,6 +1620,7 @@ class RlSber(models.Model):
     class Meta:
         managed = False
         db_table = 'rl_sber'
+        app_label = 'crm_build'
 
 
 class RlShow(models.Model):
@@ -1628,6 +1657,7 @@ class RlShow(models.Model):
     class Meta:
         managed = False
         db_table = 'rl_show'
+        app_label = 'crm_build'
 
 
 class SysComment(models.Model):
@@ -1647,6 +1677,7 @@ class SysComment(models.Model):
     class Meta:
         managed = False
         db_table = 'sys_comment'
+        app_label = 'crm_build'
 
 
 class SysDop(models.Model):
@@ -1666,6 +1697,7 @@ class SysDop(models.Model):
     class Meta:
         managed = False
         db_table = 'sys_dop'
+        app_label = 'crm_build'
 
 
 class SysHist(models.Model):
@@ -1684,6 +1716,7 @@ class SysHist(models.Model):
     class Meta:
         managed = False
         db_table = 'sys_hist'
+        app_label = 'crm_build'
 
 
 class SysLock(models.Model):
@@ -1698,6 +1731,7 @@ class SysLock(models.Model):
     class Meta:
         managed = False
         db_table = 'sys_lock'
+        app_label = 'crm_build'
 
 
 class SysNotice(models.Model):
@@ -1736,6 +1770,7 @@ class SysNotice(models.Model):
     class Meta:
         managed = False
         db_table = 'sys_notice'
+        app_label = 'crm_build'
 
 
 class SysNoticeCrsUser(models.Model):
@@ -1755,6 +1790,7 @@ class SysNoticeCrsUser(models.Model):
     class Meta:
         managed = False
         db_table = 'sys_notice_crs_user'
+        app_label = 'crm_build'
 
 
 class SysOffice(models.Model):
@@ -1793,6 +1829,7 @@ class SysOffice(models.Model):
     class Meta:
         managed = False
         db_table = 'sys_office'
+        app_label = 'crm_build'
 
 
 class SysProject(models.Model):
@@ -2024,6 +2061,7 @@ class SysProject(models.Model):
     class Meta:
         managed = False
         db_table = 'sys_project'
+        app_label = 'crm_build'
 
 
 class SysRate(models.Model):
@@ -2037,6 +2075,7 @@ class SysRate(models.Model):
     class Meta:
         managed = False
         db_table = 'sys_rate'
+        app_label = 'crm_build'
 
 
 class SysRole(models.Model):
@@ -2051,6 +2090,7 @@ class SysRole(models.Model):
     class Meta:
         managed = False
         db_table = 'sys_role'
+        app_label = 'crm_build'
 
 
 class SysSequences(models.Model):
@@ -2058,6 +2098,7 @@ class SysSequences(models.Model):
     class Meta:
         managed = False
         db_table = 'sys_sequences'
+        app_label = 'crm_build'
 
 
 class SysSequences1(models.Model):
@@ -2065,6 +2106,7 @@ class SysSequences1(models.Model):
     class Meta:
         managed = False
         db_table = 'sys_sequences1'
+        app_label = 'crm_build'
 
 
 class SysSession(models.Model):
@@ -2080,6 +2122,7 @@ class SysSession(models.Model):
     class Meta:
         managed = False
         db_table = 'sys_session'
+        app_label = 'crm_build'
 
 
 class SysSite(models.Model):
@@ -2111,6 +2154,7 @@ class SysSite(models.Model):
     class Meta:
         managed = False
         db_table = 'sys_site'
+        app_label = 'crm_build'
 
 
 class SysStat(models.Model):
@@ -2127,6 +2171,7 @@ class SysStat(models.Model):
     class Meta:
         managed = False
         db_table = 'sys_stat'
+        app_label = 'crm_build'
 
 
 class SysSticker(models.Model):
@@ -2147,6 +2192,7 @@ class SysSticker(models.Model):
     class Meta:
         managed = False
         db_table = 'sys_sticker'
+        app_label = 'crm_build'
 
 
 class SysSupport(models.Model):
@@ -2182,6 +2228,7 @@ class SysSupport(models.Model):
     class Meta:
         managed = False
         db_table = 'sys_support'
+        app_label = 'crm_build'
 
 
 class SysType(models.Model):
@@ -2200,6 +2247,7 @@ class SysType(models.Model):
     class Meta:
         managed = False
         db_table = 'sys_type'
+        app_label = 'crm_build'
 
 
 class SysUpdate(models.Model):
@@ -2220,6 +2268,7 @@ class SysUpdate(models.Model):
     class Meta:
         managed = False
         db_table = 'sys_update'
+        app_label = 'crm_build'
 
 
 class SysUpdateHist(models.Model):
@@ -2240,6 +2289,7 @@ class SysUpdateHist(models.Model):
     class Meta:
         managed = False
         db_table = 'sys_update_hist'
+        app_label = 'crm_build'
 
 
 class SysUpdatePart(models.Model):
@@ -2262,6 +2312,7 @@ class SysUpdatePart(models.Model):
     class Meta:
         managed = False
         db_table = 'sys_update_part'
+        app_label = 'crm_build'
 
 
 class SysUser(models.Model):
@@ -2313,3 +2364,4 @@ class SysUser(models.Model):
     class Meta:
         managed = False
         db_table = 'sys_user'
+        app_label = 'crm_build'
