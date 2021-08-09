@@ -3,6 +3,6 @@
     color: grey;
 }
 
-td {
-    color: red;
+th {
+    background-image: -webkit-linear-gradient(top, rgb(244, 244, 244), rgb(239, 239, 239) 40%, rgb(220, 220, 220));
 }
