@@ -387,6 +387,7 @@ class RlClient(models.Model):
         managed = False
         db_table = 'rl_client'
         app_label = 'crm_build'
+        ordering = ['-lot']
 
 
 class RlClientAdv(models.Model):
