@@ -20,8 +20,14 @@ class MainPageListView(ListView):
         queryset = RlClient.objects.exclude(
             status_enum='Архив (без сделки)'
         ).annotate(
-            agent=Subquery(SysUser.objects.filter(row_id=OuterRef("user_id")).values("name")),
-            last_agent=Subquery(SysUser.objects.filter(row_id=OuterRef("last_work_user_id")).values("name"))
+            agent=Subquery(
+                SysUser.objects.filter(
+                    row_id=OuterRef("user_id")).values("name")
+            ),
+            last_agent=Subquery(
+                SysUser.objects.filter(
+                    row_id=OuterRef("last_work_user_id")).values("name")
+            )
         )
 
         return queryset
