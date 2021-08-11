@@ -7,18 +7,14 @@
             <th scope="col">
                 <input type="checkbox">
             </th>
-            <th scope="col">Фото</th>
-            <th scope="col">Создал, Изменил</th>
+            <th scope="col">Создан, Изменен</th>
             <th scope="col">ID</th>
+            <th scope="col">Вид</th>
             <th scope="col">Тип недвиж.</th>
             <th scope="col">ФИО</th>
             <th scope="col">Телефон</th>
             <th scope="col">Адрес</th>
             <th scope="col">Комнат</th>
-            <th scope="col">Площадь</th>
-            <th scope="col">Этаж, Мат. стен</th>
-            <th scope="col">Стоимость</th>
-            <th scope="col">Цена за м2</th>
             <th scope="col">Ответственный</th>
             <th scope="col">Договор/Встреча</th>
             <th scope="col">Служеб. Комментарий</th>
@@ -28,73 +24,36 @@
         </tr>
         </thead>
         <tbody>
+        {% for object in objects %}
         <tr>
             <td>1</td>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>@mdo</td>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>@mdo</td>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>@mdo</td>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>@mdo</td>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>@mdo</td>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>@mdo</td>
+            <td scope="col">
+                <input type="checkbox">
+            </td>
+            <td>{{ object.sys_date_create|date:"Y.m.d H:i" }} {{ object.sys_date_update|date:"Y.m.d" }}</td>
+            <td>{{object.lot}}</td>
+            <td>{{object.client_enum}}</td>
+            <td>{{object.realty_enum}}</td>
+            <td>{{object.fio}}</td>
+            <td>{{object.tel1}} {{ object.tel2|default_if_none:""}}</td>
+            <td>{{object.addr}}</td>
+            <td>{{object.rooms|default_if_none:""}} {{ object.rooms_from|default_if_none:"" }}</td>
+            <td>{{ object.agent }}</td>
+            <td>{{ object.doc_enum|default_if_none:"" }}</td>
+            <td>{{ object.comment|default_if_none:"" }}</td>
+            <td>{{ object.last_agent|default_if_none:"" }}
+                {{ object.last_work_date|date:"d.m.Y H:i"}}
+                {{ object.last_comment|default_if_none:"" }}
+            </td>
+            <td>{{ object.status_enum }}</td>
 
         </tr>
-        <tr>
-            <td>2</td>
-            <td>Jacob</td>
-            <td>Thornton</td>
-            <td>@fat</td>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>@mdo</td>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>@mdo</td>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>@mdo</td>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>@mdo</td>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>@mdo</td>
-
-        </tr>
-        <tr>
-            <td>3</td>
-            <td>Larry</td>
-            <td>the Bird</td>
-            <td>@twitter</td>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>@mdo</td>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>@mdo</td>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>@mdo</td>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>@mdo</td>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>@mdo</td>
-        </tr>
+        {% endfor %}
         </tbody>
     </table>
+    <div class="grid-img-right mt-4 text-right bg bg1" >
+            {% include 'pagination.html' %}
+        </div>
 
 
 {% endblock %}
