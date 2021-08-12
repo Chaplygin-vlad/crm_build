@@ -58,3 +58,27 @@ class AllSaleObjectListView(ListView):
         )
 
         return queryset
+
+
+class AllBuyersListView(ListView):
+    """Выводит список покупателей"""
+    model = RlClient
+    context_object_name = 'objects'
+    template_name = 'all_buyers.html'
+    paginate_by = 10
+
+    def get_queryset(self):
+        queryset = RlClient.objects.exclude(
+            status_enum='Архив (без сделки)'
+        ).annotate(
+            agent=Subquery(
+                SysUser.objects.filter(
+                    row_id=OuterRef("user_id")).values("name")
+            ),
+            last_agent=Subquery(
+                SysUser.objects.filter(
+                    row_id=OuterRef("last_work_user_id")).values("name")
+            )
+        )
+
+        return queryset
