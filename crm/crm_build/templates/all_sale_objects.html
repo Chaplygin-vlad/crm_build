@@ -18,6 +18,7 @@
             <th scope="col">Площадь</th>
             <th scope="col">Этаж Мат.Стен</th>
             <th scope="col">Стоимость</th>
+            <th scope="col">Цена за м2</th>
             <th scope="col">Ответственный</th>
             <th scope="col">Договор/Встреча</th>
             <th scope="col">Служеб. Комментарий</th>
@@ -33,14 +34,20 @@
             <td scope="col">
                 <input type="checkbox">
             </td>
+            <td>фото</td>
             <td>{{ object.sys_date_create|date:"Y.m.d H:i" }} {{ object.sys_date_update|date:"Y.m.d" }}</td>
             <td>{{object.lot}}</td>
             <td>{{object.client_enum}}</td>
-            <td>{{object.realty_enum}}</td>
             <td>{{object.fio}}</td>
             <td>{{object.tel1}} {{ object.tel2|default_if_none:""}}</td>
             <td>{{object.addr}}</td>
-            <td>{{object.rooms|default_if_none:""}} {{ object.rooms_from|default_if_none:"" }}</td>
+            <td>{{object.rooms|default_if_none:""}}</td>
+            <td>{{object.area1}}/{{ object.area2|default_if_none:"-" }}/{{ object.area3|default_if_none:"-" }}</td>
+            <td>{{ object.floor|default_if_none:"-" }}/{{ object.floors|default_if_none:"-" }}<br>
+                {{ object.param3|slice:':3'|default_if_none:"-" }}
+            </td>
+            <td>{{ object.cost }}</td>
+            <td>{{ object.square_price }}</td>
             <td>{{ object.agent }}</td>
             <td>{{ object.doc_enum|default_if_none:"" }}</td>
             <td>{{ object.comment|default_if_none:"" }}</td>
