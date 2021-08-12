@@ -1,0 +1,136 @@
+{% extends 'base.html' %}
+{% block content %}
+
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div>Карточка создана</div>
+                <div>Вид</div>
+
+                <div class="input-group input-group-sm">
+                    <div class="input-group-prepend">
+                                    <span class="input-group-text"
+                                          id="date_of_birth">Дата</span>
+                        <input type="text" class="form-control"
+                               aria-describedby="date_of_birth">
+
+                        <input type="text" class="form-control"
+                               aria-describedby="sex">
+                    </div>
+                </div>
+                <div class="input-group input-group-sm">
+                    <div class="input-group-prepend">
+                                    <span class="input-group-text"
+                                          id="phone_1">Напомнить за</span>
+                    </div>
+                    <input type="text" class="form-control"
+                           aria-describedby="phone_2">
+                    <span class="ml-2 mr-2 mt-1">Уведомить также по:</span>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox"
+                               id="inlineCheckbox1" value="option1"
+                               disabled>
+                        <label class="form-check-label"
+                               for="inlineCheckbox1">СМС</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox"
+                               id="inlineCheckbox2" value="option2"
+                               disabled>
+
+                        <label class="form-check-label"
+                               for="inlineCheckbox2">E-mail</label>
+                    </div>
+                </div>
+                <div>Звонок</div>
+                <div class="input-group input-group-sm">
+                    <div class="input-group-prepend">
+                                    <span class="input-group-text"
+                                          id="application">Заявка</span>
+                    </div>
+                    <input type="text" class="form-control"
+                           aria-describedby="application">
+                </div>
+                <div class="input-group input-group-sm">
+                    <div class="input-group-prepend">
+                                    <span class="input-group-text"
+                                          id="obj">Объект</span>
+                    </div>
+                    <input type="text" class="form-control"
+                           aria-describedby="obj">
+                </div>
+                <div class="input-group input-group-sm">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">Описание</span>
+                    </div>
+                    <textarea class="form-control"
+                              aria-label="With textarea"></textarea>
+                </div>
+                <div class="input-group input-group-sm">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">Результат</span>
+                    </div>
+                    <textarea class="form-control"
+                              aria-label="With textarea"></textarea>
+                </div>
+                <div class="input-group input-group-sm">
+                    <div class="input-group-prepend">
+                                    <span class="input-group-text"
+                                          id="demonstration">Показ состоялся?</span>
+                    </div>
+                    <input type="text" class="form-control"
+                           aria-describedby="demonstration">
+                </div>
+
+
+            </div>
+            <div class="col-12">
+                <div>Объект</div>
+                <div class="input-group input-group-sm">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text"
+                              id="req_type">Вид запроса</span>
+                    </div>
+                    <input type="text" class="form-control"
+                           aria-describedby="req_type">
+                </div>
+                <div class="input-group input-group-sm">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text"
+                              id="application">Тип недвиж.</span>
+                    </div>
+                    <input type="text" class="form-control"
+                           aria-describedby="application">
+                </div>
+                <div class="input-group input-group-sm">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text"
+                              id="status">Статус</span>
+                    </div>
+                    <input type="text" class="form-control"
+                           aria-describedby="status">
+                </div>
+                <div class="input-group input-group-sm">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text"
+                              id="arch_reason">Причина архива</span>
+                    </div>
+                    <input type="text" class="form-control"
+                           aria-describedby="arch_reason">
+                </div>
+                <div class="input-group input-group-sm">
+                    <div class="input-group-prepend">
+                                    <span class="input-group-text"
+                                          id="date_of_birth">Комиссия</span>
+                        <input type="text" class="form-control"
+                               aria-describedby="date_of_birth">
+
+                        <input type="text" class="form-control"
+                               aria-describedby="sex">
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+{% endblock %}

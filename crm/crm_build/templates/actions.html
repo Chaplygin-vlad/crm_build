@@ -1,0 +1,89 @@
+{% extends 'base.html' %}
+{% block content %}
+    <ul class="nav nav-tabs nav-fill mt-2">
+        <li class="nav-item">
+            <a class="nav-link disabled" href="#">Информация</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link disabled" href="#">Фото</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link disabled" href="#">Дубликаты</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link active" href="#">Действия</a>
+        </li>
+        <li class="mr-2"><p>История работы</p></li>
+    </ul>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-10">
+                <table class="table">
+        <thead>
+        <tr>
+
+            <th scope="col">№</th>
+            <th scope="col">Дата</th>
+            <th scope="col">Сотрудник</th>
+            <th scope="col">Действие</th>
+            <th scope="col">Карточка</th>
+
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>Otto</td>
+            <td>@mdo</td>
+            <td>Mark</td>
+            <td>Otto</td>
+            <td>@mdo</td>
+        </tr>
+        <tr>
+            <td>Thornton</td>
+            <td>@fat</td>
+            <td>Mark</td>
+            <td>Otto</td>
+            <td>@mdo</td>
+
+        </tr>
+        <tr>
+            <td>the Bird</td>
+            <td>@twitter</td>
+            <td>Mark</td>
+            <td>Otto</td>
+            <td>@mdo</td>
+
+        </tr>
+        </tbody>
+    </table>
+            </div>
+            <div class="col-2">
+                <table class="table table-striped">
+                    <tbody class="text-center">
+                    <tr>
+                        <td>
+                            <b>05.05.1923 15:40</b>
+                            <div><b>Mark</b></div>
+                            <div><u>Комментарий</u> +++</div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <b>05.05.1923 15:40</b>
+                            <div><b>Thornton</b></div>
+                            <div><u>Комментарий</u> +++</div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <b>05.05.1923 15:40</b>
+                            <div><b>the Bird</b></div>
+                            <div><u>Комментарий</u> +++</div>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+{% endblock %}
