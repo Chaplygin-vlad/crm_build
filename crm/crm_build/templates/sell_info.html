@@ -1,0 +1,516 @@
+{% extends 'base.html' %}
+{% block content %}
+    <ul class="nav nav-tabs nav-fill mt-2">
+        <li class="nav-item">
+            <a class="nav-link active" href="#">Информация</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link disabled" href="#">Фото</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link disabled" href="#">Дубликаты</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link disabled" href="#">Действия</a>
+        </li>
+        <li class="mr-2"><p>История работы</p></li>
+    </ul>
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-10">
+                <div class="text-center mb-2"><b>Контактная информация</b>
+                </div>
+                <div class="contaner-fluid">
+                    <div class="row">
+                        <div class="col-6">
+                            <div class="custom-control custom-radio custom-control-inline">
+                                <input type="radio" id="customRadio1"
+                                       name="customRadio"
+                                       class="custom-control-input">
+                                <label class="custom-control-label"
+                                       for="customRadio1">Физ.лицо</label>
+                            </div>
+                            <div class="custom-control custom-radio custom-control-inline">
+                                <input type="radio" id="customRadio2"
+                                       name="customRadio"
+                                       class="custom-control-input">
+                                <label class="custom-control-label"
+                                       for="customRadio2">Юр. лицо</label>
+                            </div>
+                            <div class="input-group input-group-sm">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"
+                                          id="last_name">Фамилия</span>
+                                </div>
+                                <input type="text" class="form-control"
+                                       aria-describedby="last_name" readonly>
+                            </div>
+                            <div class="input-group input-group-sm">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"
+                                          id="first_name">Имя</span>
+                                </div>
+                                <input type="text" class="form-control"
+                                       aria-describedby="first_name">
+                            </div>
+                            <div class="input-group input-group-sm">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"
+                                          id="middle_name">Отчество</span>
+                                </div>
+                                <input type="text" class="form-control"
+                                       aria-describedby="middle_name">
+                            </div>
+                            <div class="input-group input-group-sm">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"
+                                          id="date_of_birth">Дата р.</span>
+                                </div>
+                                <input type="text" class="form-control"
+                                       aria-describedby="date_of_birth">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"
+                                          id="sex">Пол</span>
+                                </div>
+                                <input type="text" class="form-control"
+                                       aria-describedby="sex">
+                            </div>
+                            <div class="input-group input-group-sm">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"
+                                          id="phone_1">Тел. 1</span>
+                                </div>
+                                <input type="text" class="form-control"
+                                       aria-describedby="phone_1">
+                                <input type="text" class="form-control"
+                                       aria-describedby="sex"
+                                       placeholder="комментарий к Тел.1">
+                            </div>
+                            <div class="input-group input-group-sm">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"
+                                          id="email">E-mail</span>
+                                </div>
+                                <input type="text" class="form-control"
+                                       aria-describedby="email">
+                            </div>
+                            <div class="input-group input-group-sm">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"
+                                          id="hidden_comment">Скрытый коммент.</span>
+                                </div>
+                                <textarea class="form-control"
+                                          aria-label="With textarea"></textarea>
+                            </div>
+                            <div class="input-group input-group-sm">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"
+                                          id="contract_type">Договор заключен</span>
+                                </div>
+                                <input type="text" class="form-control"
+                                       aria-describedby="contract_type">
+                            </div>
+                            <div class="input-group input-group-sm">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"
+                                          id="contract_number">Номер договора</span>
+                                </div>
+                                <input type="text" class="form-control"
+                                       aria-describedby="contract_number">
+                            </div>
+                            <div class="input-group input-group-sm">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"
+                                          id="contract_s_date">Дата подписания</span>
+                                </div>
+                                <input type="text" class="form-control"
+                                       aria-describedby="contract_s_date">
+                            </div>
+                            <div class="input-group input-group-sm">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"
+                                          id="contract_f_date">Действителен до</span>
+                                </div>
+                                <input type="text" class="form-control"
+                                       aria-describedby="contract_f_date">
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox"
+                                       value="" id="flexCheckChecked" checked>
+                                <label class="form-check-label"
+                                       for="flexCheckChecked">
+                                    Эксклюзивное предложение
+                                </label>
+                            </div>
+                            <div class="input-group input-group-sm">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"
+                                          id="template">Шаблон</span>
+                                </div>
+                                <input type="text" class="form-control"
+                                       aria-describedby="template">
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox"
+                                       value="" id="flexCheckChecked" checked>
+                                <label class="form-check-label"
+                                       for="flexCheckChecked">
+                                    Клиент является Собственником
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox"
+                                       value="" id="flexCheckChecked" checked>
+                                <label class="form-check-label"
+                                       for="flexCheckChecked">
+                                    Клиент является Риэлтором
+                                </label>
+                            </div>
+                            <div class="text-center"><b>Объект</b></div>
+                            <div class="input-group input-group-sm">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"
+                                          id="req_type">Вид запроса</span>
+                                </div>
+                                <input type="text" class="form-control"
+                                       aria-describedby="req_type">
+                            </div>
+                            <div class="input-group input-group-sm">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"
+                                          id="real_estate_type">Тип недвиж.</span>
+                                </div>
+                                <input type="text" class="form-control"
+                                       aria-describedby="real_estate_type">
+                            </div>
+                            <div class="input-group input-group-sm">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"
+                                          id="status">Статус</span>
+                                </div>
+                                <input type="text" class="form-control"
+                                       aria-describedby="status">
+                            </div>
+                            <div class="input-group input-group-sm">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"
+                                          id="commission">Комиссия</span>
+                                </div>
+                                <input type="text" class="form-control"
+                                       aria-describedby="commission">
+                            </div>
+                            <div class="input-group input-group-sm">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"
+                                          id="currency">Валюта</span>
+                                </div>
+                                <input type="text" class="form-control"
+                                       aria-describedby="currency">
+                            </div>
+                            <div class="input-group input-group-sm">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"
+                                          id="price">Стоимость</span>
+                                </div>
+                                <input type="text" class="form-control"
+                                       aria-describedby="price">
+                            </div>
+                            <div class="input-group input-group-sm">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"
+                                          id="keys">Ключи от объекта</span>
+                                </div>
+                                <input type="text" class="form-control"
+                                       aria-describedby="keys">
+                            </div>
+                            <div class="input-group input-group-sm">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"
+                                          id="time_to_show">Когда возможен показ</span>
+                                </div>
+                                <input type="text" class="form-control"
+                                       aria-describedby="time_to_show">
+                            </div>
+                            <div class="text-center"><b>Объект</b></div>
+                            <div class="input-group input-group-sm">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"
+                                          id="square">Кв.м</span>
+                                </div>
+                                <input type="text" class="form-control"
+                                       aria-describedby="square">
+
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"
+                                          id="sotok">Сот</span>
+                                </div>
+                                <input type="text" class="form-control"
+                                       aria-describedby="sotok">
+
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"
+                                          id="ga">Га</span>
+                                </div>
+                                <input type="text" class="form-control"
+                                       aria-describedby="ga">
+                            </div>
+                            <div class="text-center"><b>Параметры</b></div>
+                            <div class="input-group input-group-sm">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"
+                                          id="category">Категория земель</span>
+                                </div>
+                                <input type="text" class="form-control"
+                                       aria-describedby="category">
+                            </div>
+                            <div class="input-group input-group-sm">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"
+                                          id="usage_type">Вид использования</span>
+                                </div>
+                                <input type="text" class="form-control"
+                                       aria-describedby="usage_type">
+                            </div>
+                            <div class="input-group input-group-sm">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"
+                                          id="fact_usage">Фактическое использование</span>
+                                </div>
+                                <input type="text" class="form-control"
+                                       aria-describedby="fact_usage">
+                            </div>
+                            <div class="input-group input-group-sm">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"
+                                          id="shape">Форма участка</span>
+                                </div>
+                                <input type="text" class="form-control"
+                                       aria-describedby="shape">
+                            </div>
+                            <div class="input-group input-group-sm">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"
+                                          id="closest_water">Ближайший водоем</span>
+                                </div>
+                                <input type="text" class="form-control"
+                                       aria-describedby="closest_water">
+                            </div>
+                            <div class="input-group input-group-sm">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"
+                                          id="entrance">Подъезд</span>
+                                </div>
+                                <input type="text" class="form-control"
+                                       aria-describedby="entrance">
+                            </div>
+                            <div class="input-group input-group-sm">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"
+                                          id="cadastr_number">Кадастровый номер</span>
+                                </div>
+                                <input type="text" class="form-control"
+                                       aria-describedby="cadastr_number">
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div>ID клиента</div>
+                            <div class="input-group input-group-sm">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"
+                                          id="req_date">Дата обращения</span>
+                                </div>
+                                <input type="text" class="form-control"
+                                       aria-describedby="req_date">
+
+                                <input type="text" class="form-control">
+                            </div>
+                            <div class="input-group input-group-sm">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"
+                                          id="created">Создан</span>
+                                </div>
+                                <input type="text" class="form-control"
+                                       aria-describedby="created">
+                            </div>
+                            <div class="input-group input-group-sm">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"
+                                          id="modified">Изменен</span>
+                                </div>
+                                <input type="text" class="form-control"
+                                       aria-describedby="usage_type">
+                            </div>
+                            <div class="input-group input-group-sm">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"
+                                          id="known_from">Откуда узнали</span>
+                                </div>
+                                <input type="text" class="form-control"
+                                       aria-describedby="created">
+                            </div>
+                            <div class="input-group input-group-sm">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"
+                                          id="responsible">Ответственный</span>
+                                </div>
+                                <input type="text" class="form-control"
+                                       aria-describedby="responsible">
+                            </div>
+                            <div class="input-group input-group-sm">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"
+                                          id="responsible2">Ответственный2</span>
+                                </div>
+                                <input type="text" class="form-control"
+                                       aria-describedby="responsible2">
+                            </div>
+                            <div class="input-group input-group-sm">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"
+                                          id="category2">Категория</span>
+                                </div>
+                                <input type="text" class="form-control"
+                                       aria-describedby="category2">
+                            </div>
+                            <div class="input-group input-group-sm">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"
+                                          id="hidden_comment">Служебный комментарий</span>
+                                </div>
+                                <textarea class="form-control"
+                                          aria-label="With textarea"></textarea>
+                            </div>
+                            <div class="input-group input-group-sm">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"
+                                          id="region">Расположение</span>
+                                </div>
+                                <input type="text" class="form-control"
+                                       aria-describedby="region">
+
+                                <input type="text" class="form-control">
+                            </div>
+                            <div class="input-group input-group-sm">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"
+                                          id="obl">Область</span>
+                                </div>
+                                <input type="text" class="form-control"
+                                       aria-describedby="obl">
+                            </div>
+                            <div class="input-group input-group-sm">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"
+                                          id="reg_obl">Район области</span>
+                                </div>
+                                <input type="text" class="form-control"
+                                       aria-describedby="reg_obl">
+                            </div>
+                            <div class="input-group input-group-sm">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"
+                                          id="town">Нас. пункт</span>
+                                </div>
+                                <input type="text" class="form-control"
+                                       aria-describedby="town">
+                            </div>
+                            <div class="input-group input-group-sm">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"
+                                          id="town_reg">Район города</span>
+                                </div>
+                                <input type="text" class="form-control"
+                                       aria-describedby="town_reg">
+                            </div>
+                            <div class="input-group input-group-sm">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"
+                                          id="far_from_town">Удаленность от города</span>
+                                </div>
+                                <input type="text" class="form-control"
+                                       aria-describedby="far_from_town">
+                            </div>
+                            <div class="input-group input-group-sm">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"
+                                          id="street">Улица</span>
+                                </div>
+                                <input type="text" class="form-control"
+                                       aria-describedby="street">
+                            </div>
+                            <div class="input-group input-group-sm">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"
+                                          id="house">Дом №</span>
+                                </div>
+                                <input type="text" class="form-control"
+                                       aria-describedby="house">
+
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"
+                                          id="drob">Дробь</span>
+                                </div>
+                                <input type="text" class="form-control"
+                                       aria-describedby="drob">
+
+                            </div>
+                            <div class="input-group input-group-sm">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"
+                                          id="corp">Корп.</span>
+                                </div>
+                                <input type="text" class="form-control"
+                                       aria-describedby="corp">
+
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"
+                                          id="building">Стр.</span>
+                                </div>
+                                <input type="text" class="form-control"
+                                       aria-describedby="building">
+                            </div>
+                        </div>
+                        <div class="col-12 text-center mb-3"><b>Параметры</b>
+                            <div class="input-group input-group-sm">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"
+                                          id="description">Описание объекта (основное)</span>
+                                </div>
+                                <textarea class="form-control"
+                                          aria-label="With textarea"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-2">
+                <table class="table table-striped">
+                    <tbody class="text-center">
+                    <tr>
+                        <td>
+                            <b>05.05.1923 15:40</b>
+                            <div><b>Mark</b></div>
+                            <div><u>Комментарий</u> +++</div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <b>05.05.1923 15:40</b>
+                            <div><b>Thornton</b></div>
+                            <div><u>Комментарий</u> +++</div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <b>05.05.1923 15:40</b>
+                            <div><b>the Bird</b></div>
+                            <div><u>Комментарий</u> +++</div>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+{% endblock %}
