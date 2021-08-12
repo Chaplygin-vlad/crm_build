@@ -1,6 +1,6 @@
 from django.db.models import Subquery, OuterRef, F, ExpressionWrapper, IntegerField
 from django.shortcuts import render
-from django.views.generic import ListView
+from django.views.generic import ListView, DetailView
 
 from crm_build.models import RlClient, SysUser
 
@@ -37,9 +37,9 @@ class AllSaleObjectListView(ListView):
     """Выводит все объекты недвижимости"""
     model = RlClient
     context_object_name = 'objects'
-    template_name = 'all_sale_objects.html'
+    template_name = 'all_sell_objects.html'
     paginate_by = 10
-    expression = F('cost')/F('area1')
+    expression = F('cost') / F('area1')
     wrapped_expression = ExpressionWrapper(expression, IntegerField())
     queryset = RlClient.objects.all().annotate(square_price=wrapped_expression)
 
@@ -82,3 +82,11 @@ class AllBuyersListView(ListView):
         )
 
         return queryset
+
+
+class BuyerDetail(DetailView):
+    """Карточка покупателя (покупка)"""
+    model = RlClient
+    context_object_name = 'object'
+    template_name = 'buyer.html'
+
