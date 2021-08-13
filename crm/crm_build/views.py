@@ -90,3 +90,29 @@ class BuyerDetail(DetailView):
     context_object_name = 'object'
     template_name = 'buyer.html'
 
+    def get_queryset(self):
+        queryset = RlClient.objects.exclude(
+            status_enum='Архив (без сделки)'
+        ).annotate(
+            create_agent=Subquery(
+                SysUser.objects.filter(
+                    row_id=OuterRef("sys_user_create")).values("name")
+            ),
+            agent=Subquery(
+                SysUser.objects.filter(
+                    row_id=OuterRef("user_id")).values("name")
+            ),
+            name_realty_object=Subquery(
+                RlClient.objects.filter(
+                    row_id=OuterRef("realty_id")).values("name")
+
+            ),
+            lot_realty_object=Subquery(
+                RlClient.objects.filter(
+                    row_id=OuterRef("realty_id")).values("lot")
+
+            )
+        )
+
+        return queryset
+
