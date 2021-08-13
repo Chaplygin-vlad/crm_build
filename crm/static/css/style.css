@@ -1,6 +1,27 @@
 
-.fa-filter {
-    color: grey;
+table {
+    max-width: 100%;
+    font-size: 12px;
+    display: block;
+    height: 600px;
+    overflow-y: auto;
+    overflow-x: hidden !important;
+}
+
+.tableFixHead {
+    overflow-y: auto;
+    height: 800px;
+}
+
+.tableFixHead table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+.tableFixHead th {
+    position: sticky;
+    top: 0;
+    background: #eee;
 }
 
 th {
@@ -108,30 +129,16 @@ th {
     color: #bfc0f1
 }
 
-.grid-img-right {
 
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    -ms-background-size: cover;
-    background-size: cover;
-    position: relative;
-    height: 15em;
-    padding: 5.5em 2em 0 0;
+.fa-filter {
+    color: grey;
 }
 
-.grid-img-right span.money {
-    color: #fff;
-    display: block;
-}
-
-.grid-img-right a {
-    font-size: 0.9em;
-    text-transform: uppercase;
-    font-weight: 600;
-    text-decoration: none;
-    /*color: #fff;*/
-    padding: 0;
+.comment_text {
+    text-overflow: ellipsis;
+    overflow: hidden;
+    box-sizing: border-box;
+    max-height: 70px;
 
 }
 
