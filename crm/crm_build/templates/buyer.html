@@ -257,6 +257,7 @@
                                        aria-describedby="commission">
                             </div>
 
+                            {% if object.name_realty_object is not none %}
                             <a href="{% url 'buyer' object.lot_realty_object %}">
                             <div class="input-group input-group-sm">
                                 <div class="input-group-prepend">
@@ -268,6 +269,7 @@
                                         placeholder="{{ object.name_realty_object|default_if_none:"" }}">
                             </div>
                             </a>
+                            {% endif %}
                             <div>Валюта</div>
                             <div class="input-group input-group-sm">
                                 <div class="input-group-prepend">

@@ -105,9 +105,7 @@ class BuyerDetail(DetailView):
     template_name = 'buyer.html'
 
     def get_queryset(self):
-        queryset = RlClient.objects.exclude(
-            status_enum='Архив (без сделки)'
-        ).annotate(
+        queryset = RlClient.objects.annotate(
             create_agent=Subquery(
                 SysUser.objects.filter(
                     row_id=OuterRef("sys_user_create")).values("name")
