@@ -28,7 +28,17 @@
         {% for object in objects %}
             <tr>
                 <td>{{ forloop.counter }}</td>
-                <td>фото</td>
+                {% load static %}
+
+                <td>
+                    {% if object.photo  == None %}
+                    <span>Нет фото</span>
+                {% else %}
+                    <a href="{% static object.row_id %}/{{ object.photo }}.{{ object.ext }}"
+                       target="_blank"><img  width="64px" class="img-fluid"
+                                            src="{% static object.row_id %}/{{ object.photo }}.{{ object.ext }}"
+                                            alt=""></a></td>
+                {% endif %}
                 <td>{{ object.sys_date_create|date:"Y.m.d H:i" }} {{ object.sys_date_update|date:"Y.m.d" }}</td>
                 <td>{{ object.lot }}</td>
                 <td>{{ object.client_enum }}</td>
