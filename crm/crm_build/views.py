@@ -96,3 +96,18 @@ class AllBuyersListView(ListView):
         )
 
         return queryset
+
+
+class PhotosView(ListView):
+    """Выводит все фотографии объекта"""
+    model = MainImage
+    context_object_name = 'objects'
+    template_name = "photo.html"
+    lookup_field = "uuid"
+
+    def get_queryset(self):
+        queryset = MainImage.objects.filter(
+            obj_id=self.kwargs.get("obj_id")
+        ).values("row_id", "extention", "obj_id")
+
+        return queryset

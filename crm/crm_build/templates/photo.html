@@ -18,54 +18,37 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-10">
-                <table class="table">
-        <thead>
-        <tr>
+                <div class="row" style="height:auto">
 
-            <th scope="col">
-                <input type="checkbox">
-            </th>
-            <th scope="col">Фотография</th>
-            <th scope="col">Признак</th>
-            <th scope="col">Описание</th>
-            <th scope="col">Сортировка</th>
-            <th scope="col">Ссылка</th>
-            <th scope="col">Ссылка (без лого)</th>
+                    {% load static %}
+                    {% for object in objects %}
+                        <div class="col-md-4">
+                            <img width="400" class="img-fluid img-thumbnail"
+                                 data-toggle="modal"
+                                 onclick="changeCurrImg('{% static object.obj_id %}/{{ object.row_id }}.{{ object.extention }}')"
+                                 data-target="#myModal"
+                            src="{% static object.obj_id %}/{{ object.row_id }}.{{ object.extention }}"
+                            alt="">
 
-        </tr>
-        </thead>
-        <tbody>
-        <tr>
-            <td><input type="checkbox"></td>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>@mdo</td>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>@mdo</td>
-        </tr>
-        <tr>
-            <td><input type="checkbox"></td>
-            <td>Jacob</td>
-            <td>Thornton</td>
-            <td>@fat</td>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>@mdo</td>
+                        </div>
+                    {% endfor %}
 
-        </tr>
-        <tr>
-            <td><input type="checkbox"></td>
-            <td>Larry</td>
-            <td>the Bird</td>
-            <td>@twitter</td>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>@mdo</td>
 
-        </tr>
-        </tbody>
-    </table>
+                    <div id="myModal" class="modal fade" tabindex="-1"
+                         role="dialog">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-body">
+                                    <img src="" class="img-responsive"
+                                         id="modalIMG" width="100%"
+                                         height="auto">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
             </div>
             <div class="col-2">
                 <table class="table table-striped">
@@ -96,4 +79,9 @@
             </div>
         </div>
     </div>
+    <script>
+        function changeCurrImg(img) {
+            $('#modalIMG').attr('src', img)
+        }
+    </script>
 {% endblock %}
