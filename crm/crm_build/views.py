@@ -1,8 +1,14 @@
-from django.db.models import Subquery, OuterRef, F, ExpressionWrapper, IntegerField
+from django.db.models import (
+    Subquery,
+    OuterRef,
+    F,
+    ExpressionWrapper,
+    IntegerField
+)
 from django.shortcuts import render
 from django.views.generic import ListView
 
-from crm_build.models import RlClient, SysUser
+from crm_build.models import RlClient, SysUser, MainImage
 
 
 def index(request):
@@ -47,6 +53,14 @@ class AllSaleObjectListView(ListView):
         queryset = super().get_queryset().filter(client_enum='Продажа').exclude(
             status_enum='Архив (без сделки)'
         ).annotate(
+            photo=Subquery(
+                MainImage.objects.filter(
+                    obj_id=OuterRef("row_id")).values("row_id")[:1]
+            ),
+            ext=Subquery(
+                MainImage.objects.filter(
+                    obj_id=OuterRef("row_id")).values("extention")[:1]
+            ),
             agent=Subquery(
                 SysUser.objects.filter(
                     row_id=OuterRef("user_id")).values("name")

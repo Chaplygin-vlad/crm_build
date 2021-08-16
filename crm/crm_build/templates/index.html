@@ -1,12 +1,10 @@
 {% extends 'base.html' %}
 {% block content %}
-    <table class="table">
+    <table class="tableFixHead table table-bordered table-sm"
+           cellspacing="0">
         <thead>
         <tr>
             <th scope="col">№</th>
-            <th scope="col">
-                <input type="checkbox">
-            </th>
             <th scope="col">Создан, Изменен</th>
             <th scope="col">ID</th>
             <th scope="col">Вид</th>
@@ -25,35 +23,37 @@
         </thead>
         <tbody>
         {% for object in objects %}
-        <tr>
-            <td>1</td>
-            <td scope="col">
-                <input type="checkbox">
-            </td>
-            <td>{{ object.sys_date_create|date:"Y.m.d H:i" }} {{ object.sys_date_update|date:"Y.m.d" }}</td>
-            <td>{{object.lot}}</td>
-            <td>{{object.client_enum}}</td>
-            <td>{{object.realty_enum}}</td>
-            <td>{{object.fio}}</td>
-            <td>{{object.tel1}} {{ object.tel2|default_if_none:""}}</td>
-            <td>{{object.addr}}</td>
-            <td>{{object.rooms|default_if_none:""}} {{ object.rooms_from|default_if_none:"" }}</td>
-            <td>{{ object.agent }}</td>
-            <td>{{ object.doc_enum|default_if_none:"" }}</td>
-            <td>{{ object.comment|default_if_none:"" }}</td>
-            <td>{{ object.last_agent|default_if_none:"" }}
-                {{ object.last_work_date|date:"d.m.Y H:i"}}
-                {{ object.last_comment|default_if_none:"" }}
-            </td>
-            <td>{{ object.status_enum }}</td>
+            <tr>
+                <td>1</td>
+                <td>{{ object.sys_date_create|date:"Y.m.d H:i" }} {{ object.sys_date_update|date:"Y.m.d" }}</td>
+                <td>{{ object.lot }}</td>
+                <td>{{ object.client_enum }}</td>
+                <td>{{ object.realty_enum }}</td>
+                <td>{{ object.fio }}</td>
+                <td>{{ object.tel1 }} {{ object.tel2|default_if_none:"" }}</td>
+                <td>{{ object.addr }}</td>
+                <td>{{ object.rooms|default_if_none:"" }} {{ object.rooms_from|default_if_none:"" }}</td>
+                <td>{{ object.agent }}</td>
+                <td>{{ object.doc_enum|default_if_none:"" }}</td>
+                <td>
+                    <div class="comment_text">
+                        {{ object.comment|default_if_none:"" }}
+                    </div>
+                </td>
+                <td>
+                    <div class="comment_text">
+                        {{ object.last_agent|default_if_none:"" }}
+                        {{ object.last_work_date|date:"d.m.Y H:i" }}
+                        {{ object.last_comment|default_if_none:"" }}
+                    </div>
+                </td>
+                <td>{{ object.status_enum }}</td>
 
-        </tr>
+            </tr>
         {% endfor %}
         </tbody>
     </table>
-    <div class="grid-img-right mt-4 text-right bg bg1" >
-            {% include 'pagination.html' %}
-        </div>
-
-
+    <div class="mb-3">
+        {% include 'pagination.html' %}
+    </div>
 {% endblock %}
