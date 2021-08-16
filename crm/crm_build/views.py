@@ -103,7 +103,7 @@ class PhotosView(ListView):
     model = MainImage
     context_object_name = 'objects'
     template_name = "photo.html"
-    lookup_field = "uuid"
+    lookup_field = "obj_id"
 
     def get_queryset(self):
         queryset = MainImage.objects.filter(
