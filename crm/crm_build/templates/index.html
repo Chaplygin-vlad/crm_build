@@ -24,7 +24,7 @@
         <tbody>
         {% for object in objects %}
             <tr>
-                <td>1</td>
+                <td>{{forloop.counter0|add:page_obj.start_index }}</td>
                 <td>{{ object.sys_date_create|date:"Y.m.d H:i" }} {{ object.sys_date_update|date:"Y.m.d" }}</td>
                 <td>{{ object.lot }}</td>
                 <td>{{ object.client_enum }}</td>
