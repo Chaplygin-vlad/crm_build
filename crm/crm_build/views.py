@@ -8,7 +8,7 @@ from django.db.models import (
 from django.shortcuts import render
 from django.views.generic import ListView, DetailView
 
-from crm_build.models import RlClient, SysUser, MainImage
+from crm_build.models import RlClient, SysUser, MainImage, RlShow
 
 
 def index(request):
@@ -103,6 +103,9 @@ class BuyerDetail(DetailView):
     model = RlClient
     context_object_name = 'object'
     template_name = 'buyer.html'
+    expression = F('cost') / F('area1')
+    wrapped_expression = ExpressionWrapper(expression, IntegerField())
+    queryset = RlClient.objects.all().annotate(square_price=wrapped_expression)
 
     def get_queryset(self):
         queryset = RlClient.objects.annotate(
@@ -123,8 +126,35 @@ class BuyerDetail(DetailView):
                 RlClient.objects.filter(
                     row_id=OuterRef("realty_id")).values("lot")
 
+            ),
+            name_alt_object=Subquery(
+                RlClient.objects.filter(
+                    row_id=OuterRef("alt_realty_id")).values("name")
+
+            ),
+            lot_alt_object=Subquery(
+                RlClient.objects.filter(
+                    row_id=OuterRef("alt_realty_id")).values("lot")
+
             )
+
         )
 
         return queryset
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['comments'] = RlShow.objects.filter(realty_id=context['object'].row_id).annotate(
+            create_agent=Subquery(
+                SysUser.objects.filter(
+                    row_id=OuterRef("user_id")).values("name")
+            ),
+            comment_object=Subquery(
+                RlClient.objects.filter(
+                    row_id=OuterRef("client_id")).values("name")
+            )
+
+        )
+
+        return context
 

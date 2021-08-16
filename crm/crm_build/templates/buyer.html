@@ -45,7 +45,7 @@
                                 </div>
                                 <input type="text" class="form-control"
                                        aria-describedby="last_name"
-                                        placeholder="{{ object.fff }}"
+                                        placeholder="{{ object.fff|default_if_none:"" }}"
                                 >
                             </div>
                             <div class="input-group input-group-sm">
@@ -55,7 +55,7 @@
                                 </div>
                                 <input type="text" class="form-control"
                                        aria-describedby="first_name"
-                                        placeholder="{{ object.iii }}">
+                                        placeholder="{{ object.iii|default_if_none:"" }}">
                             </div>
                             <div class="input-group input-group-sm">
                                 <div class="input-group-prepend">
@@ -64,7 +64,7 @@
                                 </div>
                                 <input type="text" class="form-control"
                                        aria-describedby="middle_name"
-                                        placeholder="{{ object.ooo }}">
+                                        placeholder="{{ object.ooo|default_if_none:"" }}">
                             </div>
                             <div class="input-group input-group-sm">
                                 <div class="input-group-prepend">
@@ -87,10 +87,10 @@
                                 </div>
                                 <input type="text" class="form-control"
                                        aria-describedby="phone_1"
-                                        placeholder="{{ object.tel1 }}">
+                                        placeholder="{{ object.tel1|default_if_none:"" }}">
                                 <input type="text" class="form-control"
                                        aria-describedby="sex"
-                                       placeholder="{{ object.tel1_comment }}">
+                                       placeholder="{{ object.tel1_comment|default_if_none:"" }}">
                             </div>
                             <div class="input-group input-group-sm">
                                 <div class="input-group-prepend">
@@ -99,10 +99,10 @@
                                 </div>
                                 <input type="text" class="form-control"
                                        aria-describedby="phone_2"
-                                        placeholder="{{ object.tel2 }}">
+                                        placeholder="{{ object.tel2|default_if_none:"" }}">
                                 <input type="text" class="form-control"
                                        aria-describedby="sex"
-                                       placeholder="{{ object.tel2_comment }}">
+                                       placeholder="{{ object.tel2_comment|default_if_none:"" }}">
                             </div>
                             <div class="input-group input-group-sm">
                                 <div class="input-group-prepend">
@@ -111,7 +111,7 @@
                                 </div>
                                 <input type="text" class="form-control"
                                        aria-describedby="email"
-                                        placeholder="{{ object.email }}">
+                                        placeholder="{{ object.email|default_if_none:"" }}">
                             </div>
                             <div class="input-group input-group-sm">
                                 <div class="input-group-prepend">
@@ -120,7 +120,7 @@
                                 </div>
                                 <textarea class="form-control"
                                           aria-label="With textarea"
-                                            placeholder="{{ object.comment }}"></textarea>
+                                            placeholder="{{ object.comment|default_if_none:"" }}"></textarea>
                             </div>
                             <div class="input-group input-group-sm">
                                 <div class="input-group-prepend">
@@ -129,7 +129,7 @@
                                 </div>
                                 <input type="text" class="form-control"
                                        aria-describedby="contract_type"
-                                        placeholder="{{ object.doc_enum }}">
+                                        placeholder="{{ object.doc_enum|default_if_none:"" }}">
                             </div>
                             <div class="form-check">
                                 <input class="form-check-input" type="checkbox"
@@ -171,6 +171,16 @@
                                     Клиент является Риэлтором
                                 </label>
                             </div>
+
+
+
+
+                            {% if object.client_enum == "Купить" %}
+
+
+
+
+
                             <div class="text-center"><b>Заявка от Клиента</b>
                             </div>
                             <div class="input-group input-group-sm">
@@ -180,7 +190,7 @@
                                 </div>
                                 <input type="text" class="form-control"
                                        aria-describedby="req_type"
-                                        placeholder="{{ object.client_enum }}">
+                                        placeholder="{{ object.client_enum|default_if_none:"" }}">
                             </div>
                             <div class="input-group input-group-sm">
                                 <div class="input-group-prepend">
@@ -189,7 +199,7 @@
                                 </div>
                                 <input type="text" class="form-control"
                                        aria-describedby="real_estate_type"
-                                        placeholder="{{ object.realty_enum }}">
+                                        placeholder="{{ object.realty_enum|default_if_none:"" }}">
                             </div>
                             <div class="input-group input-group-sm">
                                 <div class="input-group-prepend">
@@ -198,7 +208,7 @@
                                 </div>
                                 <input type="text" class="form-control"
                                        aria-describedby="status"
-                                        placeholder="{{ object.status_enum }}">
+                                        placeholder="{{ object.status_enum|default_if_none:"" }}">
                             </div>
                             <div class="form-check form-check-inline">
                                 <input class="form-check-input" type="checkbox"
@@ -244,8 +254,10 @@
                             </div>
 
                             {% if object.alt_realty_id is not none %}
-                            <div class="text"><b>Альтернативный объект: {{ object.alt_realty_id }}</b>
+                                <a href="{% url 'buyer' object.lot_alt_object %}">
+                            <div class="text"><b>Альтернативный объект: {{ object.name_alt_object }}</b>
                             </div>
+                                </a>
                             {% endif %}
 
                             <div class="input-group input-group-sm">
@@ -414,7 +426,129 @@
                                 >
                             </div>
                             {% endif %}
+                        {% elif object.client_enum == "Продажа"%}
+
+                        <div class="text-center"><b>Заявка от Клиента</b>
+                            </div>
+                            <div class="input-group input-group-sm">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"
+                                          id="req_type">Вид клиента</span>
+                                </div>
+                                <input type="text" class="form-control"
+                                       aria-describedby="req_type"
+                                        placeholder="{{ object.client_enum|default_if_none:"" }}">
+                            </div>
+                            <div class="input-group input-group-sm">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"
+                                          id="real_estate_type">Тип недвиж.</span>
+                                </div>
+                                <input type="text" class="form-control"
+                                       aria-describedby="real_estate_type"
+                                        placeholder="{{ object.realty_enum|default_if_none:"" }}">
+                            </div>
+                            <div class="input-group input-group-sm">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"
+                                          id="status">Статус</span>
+                                </div>
+                                <input type="text" class="form-control"
+                                       aria-describedby="status"
+                                        placeholder="{{ object.status_enum|default_if_none:"" }}">
+                            </div>
+                            <div class="input-group input-group-sm">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"
+                                          id="status">Комиссия</span>
+                                </div>
+                                <input type="text" class="form-control"
+                                       aria-describedby="status"
+                                        placeholder="{{ object.commission|default_if_none:"" }} руб">
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox"
+                                       id="inlineCheckbox1" value="option1"
+                                       {% if object.alt_check is not none %}
+                                       checked
+                                       {% endif %}
+                                >
+                                <label class="form-check-label"
+                                       for="inlineCheckbox1">Альтернатива/Обмен</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox"
+                                       id="inlineCheckbox2" value="option2"
+                                       {% if object.ipoteka_check is not none %}
+                                       checked
+                                       {% endif %}
+                                >
+
+                                <label class="form-check-label"
+                                       for="inlineCheckbox2">Возможна ипотека</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox"
+                                       id="inlineCheckbox3" value="option3"
+                                       {% if object.nal_check is not none %}
+                                       checked
+                                       {% endif %}
+                                >
+                                <label class="form-check-label"
+                                       for="inlineCheckbox3">Наличные</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox"
+                                       id="inlineCheckbox3" value="option3"
+                                       {% if object.ipoteka_do_check is not none %}
+                                       checked
+                                       {% endif %}
+                                >
+                                <label class="form-check-label"
+                                       for="inlineCheckbox3">Ипотека
+                                    одобрена</label>
+                            </div>
+
+                            {% if object.alt_realty_id is not none %}
+                                <a href="{% url 'buyer' object.lot_alt_object %}">
+                            <div class="text"><b>Альтернативный объект: {{ object.name_alt_object }}</b>
+                            </div>
+                                </a>
+                            {% endif %}
+
+                            <div class="input-group input-group-sm">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"
+                                          id="status">Стоимость</span>
+                                </div>
+                                <input type="text" class="form-control"
+                                       aria-describedby="status"
+                                        placeholder="{{ object.cost|default_if_none:"" }} руб. цена за кв.м {{ object.square_price }}">
+                            </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                        {% endif %}
+
+
+
+
+
+
+
                         </div>
+
                         <div class="col-6">
                             <div>ID клиента: {{ object.lot }}</div>
                             <div class="input-group input-group-sm">
@@ -462,7 +596,7 @@
                                 </div>
                                 <input type="text" class="form-control"
                                        aria-describedby="responsible"
-                                        placeholder="{{ object.agent }}"
+                                        placeholder="{{ object.agent|default_if_none:"" }}"
                                 >
                             </div>
                             <div class="input-group input-group-sm">
@@ -472,7 +606,7 @@
                                 </div>
                                 <input type="text" class="form-control"
                                        aria-describedby="category2"
-                                        placeholder="{{ object.cat_enum }}"
+                                        placeholder="{{ object.cat_enum|default_if_none:"" }}"
                                 >
                             </div>
                             <div class="input-group input-group-sm">
@@ -482,7 +616,7 @@
                                 </div>
                                 <textarea class="form-control"
                                           aria-label="With textarea"
-                                            placeholder="{{ object.comment }}"></textarea>
+                                            placeholder="{{ object.comment|default_if_none:"" }}"></textarea>
                             </div>
                             <div class="text-center mb-2"><b>Контактная
                                 информация</b>
@@ -493,7 +627,7 @@
                                     </div>
                                     <input type="text" class="form-control"
                                             aria-describedby="region"
-                                            placeholder="{{ object.pos_enum }}"
+                                            placeholder="{{ object.pos_enum|default_if_none:"" }}"
                                     >
 
                                 </div>
@@ -504,7 +638,7 @@
                                     </div>
                                     <input type="text" class="form-control"
                                            aria-describedby="obl"
-                                            placeholder="{{ object.obl_auto }}"
+                                            placeholder="{{ object.obl_auto|default_if_none:"" }}"
                                     >
                                 </div>
                                 <div class="input-group input-group-sm">
@@ -522,7 +656,7 @@
                                     </div>
                                     <input type="text" class="form-control"
                                            aria-describedby="town"
-                                            placeholder="{{ object.np_auto }}"
+                                            placeholder="{{ object.np_auto|default_if_none:"" }}"
                                     >
                                 </div>
                                 <div class="input-group input-group-sm">
@@ -532,7 +666,7 @@
                                     </div>
                                     <input type="text" class="form-control"
                                            aria-describedby="town_reg"
-                                            placeholder="{{ object.np_rayon_auto }}"
+                                            placeholder="{{ object.np_rayon_auto|default_if_none:"" }}"
                                     >
                                 </div>
                                 <div class="input-group input-group-sm">
@@ -550,7 +684,7 @@
                                     </div>
                                     <input type="text" class="form-control"
                                            aria-describedby="street"
-                                            placeholder="{{ object.street }}"
+                                            placeholder="{{ object.street|default_if_none:"" }}"
                                     >
                                 </div>
                                     <div class="input-group input-group-sm">
@@ -569,28 +703,23 @@
                 </div>
                 <div class="col-2">
                     <table class="table table-striped">
-                        <tbody class="text-center">
+                        <tbody class="text-left">
+                        {% for comment in comments %}
                         <tr>
                             <td>
-                                <b>05.05.1923 15:40</b>
-                                <div><b>Mark</b></div>
-                                <div><u>Комментарий</u> +++</div>
+                                <b>{{ comment.date|date:"d.m.Y H:i" }}</b>
+                                <div><b>{{ comment.create_agent|default_if_none:"" }}</b></div>
+                                <div>{{ comment.name }}</div>
+                                {% if comment.show_enum == "Показ" %}
+                                <div>Заявка: {{ comment.comment_object }}</div>
+                                {% endif %}
+                                {% if comment.result is not none %}
+                                <div>Результат: {{ comment.result }}</div>
+                                {% endif %}
                             </td>
                         </tr>
-                        <tr>
-                            <td>
-                                <b>05.05.1923 15:40</b>
-                                <div><b>Thornton</b></div>
-                                <div><u>Комментарий</u> +++</div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <b>05.05.1923 15:40</b>
-                                <div><b>the Bird</b></div>
-                                <div><u>Комментарий</u> +++</div>
-                            </td>
-                        </tr>
+                        {% endfor %}
+
                         </tbody>
                     </table>
                 </div>
