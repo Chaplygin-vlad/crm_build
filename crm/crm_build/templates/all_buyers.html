@@ -55,9 +55,12 @@
         {% endfor %}
         </tbody>
     </table>
+     <div class="text-center">Всего объектов {{ paginator.count }}</div>
     <div class="mb-3">
         {% include 'pagination.html' %}
     </div>
+
+
 
 
 {% endblock %}

@@ -1,6 +1,9 @@
 {% extends 'base.html' %}
 {% block content %}
-    <ul class="nav nav-tabs nav-fill mt-2">
+    <div class="container border-right border-left">
+    <div class="row">
+        <div class="col-12">
+             <ul class="nav nav-tabs nav-fill mt-2">
         <li class="nav-item">
             <a class="nav-link disabled" href="#">Информация</a>
         </li>
@@ -13,12 +16,16 @@
         <li class="nav-item">
             <a class="nav-link disabled" href="#">Действия</a>
         </li>
-        <li class="mr-2"><p>История работы</p></li>
+        <li class="m-2 mr-2"><p>История работы</p></li>
     </ul>
-    <div class="container-fluid">
+        </div>
+    </div>
+    </div>
+
+    <div class="container border-right border-left">
         <div class="row">
             <div class="col-10">
-                <div class="row" style="height:auto">
+                <div class="row  m-3" style="height:auto">
 
                     {% load static %}
                     {% for object in objects %}
