@@ -102,13 +102,18 @@ class BuyerDetail(DetailView):
     """Карточка покупателя (покупка)"""
     model = RlClient
     context_object_name = 'object'
-    template_name = 'buyer.html'
-    expression = F('cost') / F('area1')
-    wrapped_expression = ExpressionWrapper(expression, IntegerField())
-    queryset = RlClient.objects.all().annotate(square_price=wrapped_expression)
+    template_name = 'object.html'
 
     def get_queryset(self):
         queryset = RlClient.objects.annotate(
+            square_price=ExpressionWrapper(
+                F('cost') / F('area1'),
+                output_field=IntegerField()
+            ),
+            hundred_square_price=ExpressionWrapper(
+                F('cost') / F('area2'),
+                output_field=IntegerField()
+            ),
             create_agent=Subquery(
                 SysUser.objects.filter(
                     row_id=OuterRef("sys_user_create")).values("name")
@@ -157,4 +162,3 @@ class BuyerDetail(DetailView):
         )
 
         return context
-
