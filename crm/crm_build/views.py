@@ -6,7 +6,7 @@ from django.db.models import (
     IntegerField
 )
 from django.shortcuts import render
-from django.views.generic import ListView, DetailView
+from django.views.generic import ListView
 
 from crm_build.models import RlClient, SysUser, MainImage
 
