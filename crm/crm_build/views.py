@@ -8,11 +8,8 @@ from django.db.models import (
 from django.shortcuts import render
 from django.views.generic import ListView
 
-from crm_build.models import RlClient, SysUser, MainImage, RlShow
-
-
-def index(request):
-    return render(request, 'index.html')
+from crm_build.models import RlClient, SysUser, MainImage, SysStat, RlShow
+from crm_build.utils import change_stat_enum
 
 
 class MainPageListView(ListView):
@@ -50,7 +47,8 @@ class AllSaleObjectListView(ListView):
     queryset = RlClient.objects.all().annotate(square_price=wrapped_expression)
 
     def get_queryset(self):
-        queryset = super().get_queryset().filter(client_enum='Продажа').exclude(
+        queryset = super().get_queryset().filter(
+            client_enum='Продажа').exclude(
             status_enum='Архив (без сделки)'
         ).annotate(
             photo=Subquery(
@@ -176,4 +174,27 @@ class PhotosView(ListView):
             obj_id=self.kwargs.get("obj_id")
         ).values("row_id", "extention", "obj_id")
 
+        return queryset
+
+
+class ActionsView(ListView):
+    """Выводит все действия, производимые над объектом"""
+    model = SysStat
+    context_object_name = 'objects'
+    template_name = "actions.html"
+    lookup_field = "obj_id"
+
+    def get_queryset(self):
+        queryset = SysStat.objects.filter(
+            obj_id=self.kwargs.get("obj_id")
+        ).values(
+            "datetime1",
+            "stat_enum"
+        ).annotate(
+            agent=Subquery(
+                SysUser.objects.filter(
+                    row_id=OuterRef("user_id")).values("name")
+            ),
+        )
+        queryset = [change_stat_enum(item) for item in queryset]
         return queryset
