@@ -24,7 +24,7 @@
         <tbody>
         {% for object in objects %}
             <tr>
-                <td>1</td>
+                <td>{{forloop.counter0|add:page_obj.start_index }}</td>
                 <td>{{ object.sys_date_create|date:"Y.m.d H:i" }} {{ object.sys_date_update|date:"Y.m.d" }}</td>
                 <td>{{ object.lot }}</td>
                 <td>{{ object.realty_enum }}</td>
@@ -55,9 +55,12 @@
         {% endfor %}
         </tbody>
     </table>
-    <div class="grid-img-right mt-4 text-right bg bg1">
+     <div class="text-center">Всего объектов {{ paginator.count }}</div>
+    <div class="mb-3">
         {% include 'pagination.html' %}
     </div>
+
+
 
 
 {% endblock %}
