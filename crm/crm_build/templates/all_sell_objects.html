@@ -27,7 +27,7 @@
         <tbody>
         {% for object in objects %}
             <tr>
-                <td>{{ forloop.counter }}</td>
+                <td>{{forloop.counter0|add:page_obj.start_index }}</td>
                 {% load static %}
 
                 <td>
@@ -72,7 +72,8 @@
         {% endfor %}
         </tbody>
     </table>
-    <div>
+    <div class="text-center">Всего объектов {{ paginator.count }}</div>
+    <div class="mb-3">
         {% include 'pagination.html' %}
     </div>
 

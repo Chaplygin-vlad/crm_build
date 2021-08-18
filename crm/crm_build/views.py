@@ -1,4 +1,3 @@
-from django.contrib.auth.models import User
 from django.db.models import (
     Subquery,
     OuterRef,
@@ -6,8 +5,8 @@ from django.db.models import (
     ExpressionWrapper,
     IntegerField
 )
-from django.shortcuts import render, get_object_or_404
-from django.views.generic import ListView, DetailView
+from django.shortcuts import render
+from django.views.generic import ListView
 
 from crm_build.models import RlClient, SysUser, MainImage, RlShow
 
@@ -163,3 +162,18 @@ class BuyerDetail(ListView):
         )
 
         return context
+
+
+class PhotosView(ListView):
+    """Выводит все фотографии объекта"""
+    model = MainImage
+    context_object_name = 'objects'
+    template_name = "photo.html"
+    lookup_field = "obj_id"
+
+    def get_queryset(self):
+        queryset = MainImage.objects.filter(
+            obj_id=self.kwargs.get("obj_id")
+        ).values("row_id", "extention", "obj_id")
+
+        return queryset
