@@ -23,7 +23,8 @@
         </thead>
         <tbody>
         {% for object in objects %}
-            <tr>
+
+            <tr class="link_row" onclick="document.location.href='{% url 'object' row_id=object.row_id %}'">
                 <td>{{forloop.counter0|add:page_obj.start_index }}</td>
                 <td>{{ object.sys_date_create|date:"Y.m.d H:i" }} {{ object.sys_date_update|date:"Y.m.d" }}</td>
                 <td>{{ object.lot }}</td>
@@ -50,6 +51,7 @@
                 <td>{{ object.status_enum }}</td>
 
             </tr>
+
         {% endfor %}
         </tbody>
     </table>
