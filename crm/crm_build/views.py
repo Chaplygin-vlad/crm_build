@@ -1,3 +1,4 @@
+from django.contrib.auth.models import User
 from django.db.models import (
     Subquery,
     OuterRef,
@@ -5,7 +6,7 @@ from django.db.models import (
     ExpressionWrapper,
     IntegerField
 )
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.views.generic import ListView, DetailView
 
 from crm_build.models import RlClient, SysUser, MainImage, RlShow
@@ -98,14 +99,14 @@ class AllBuyersListView(ListView):
         return queryset
 
 
-class BuyerDetail(DetailView):
+class BuyerDetail(ListView):
     """Карточка покупателя (покупка)"""
     model = RlClient
     context_object_name = 'object'
     template_name = 'object.html'
 
     def get_queryset(self):
-        queryset = RlClient.objects.annotate(
+        queryset = RlClient.objects.filter(row_id=self.kwargs.get('row_id')).annotate(
             square_price=ExpressionWrapper(
                 F('cost') / F('area1'),
                 output_field=IntegerField()
@@ -145,7 +146,7 @@ class BuyerDetail(DetailView):
 
         )
 
-        return queryset
+        return queryset[0]
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)

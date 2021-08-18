@@ -19,9 +19,10 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-10">
-                <div class="text-center mb-2"><b>Контактная информация</b>
+                <div class="text mb-2">
+                    <b>Контактная информация</b>
                 </div>
-                <div class="contaner-fluid">
+                <div class="container-fluid">
                     <div class="row">
                         <div class="col-6">
                             <div class="custom-control custom-radio custom-control-inline">
@@ -45,7 +46,7 @@
                                 </div>
                                 <input type="text" class="form-control"
                                        aria-describedby="last_name"
-                                        placeholder="{{ object.fff|default_if_none:"" }}"
+                                       placeholder="{{ object.fff|default_if_none:"" }}"
                                 >
                             </div>
                             <div class="input-group input-group-sm">
@@ -55,7 +56,7 @@
                                 </div>
                                 <input type="text" class="form-control"
                                        aria-describedby="first_name"
-                                        placeholder="{{ object.iii|default_if_none:"" }}">
+                                       placeholder="{{ object.iii|default_if_none:"" }}">
                             </div>
                             <div class="input-group input-group-sm">
                                 <div class="input-group-prepend">
@@ -64,7 +65,7 @@
                                 </div>
                                 <input type="text" class="form-control"
                                        aria-describedby="middle_name"
-                                        placeholder="{{ object.ooo|default_if_none:"" }}">
+                                       placeholder="{{ object.ooo|default_if_none:"" }}">
                             </div>
                             <div class="input-group input-group-sm">
                                 <div class="input-group-prepend">
@@ -87,7 +88,7 @@
                                 </div>
                                 <input type="text" class="form-control"
                                        aria-describedby="phone_1"
-                                        placeholder="{{ object.tel1|default_if_none:"" }}">
+                                       placeholder="{{ object.tel1|default_if_none:"" }}">
                                 <input type="text" class="form-control"
                                        aria-describedby="sex"
                                        placeholder="{{ object.tel1_comment|default_if_none:"" }}">
@@ -99,7 +100,7 @@
                                 </div>
                                 <input type="text" class="form-control"
                                        aria-describedby="phone_2"
-                                        placeholder="{{ object.tel2|default_if_none:"" }}">
+                                       placeholder="{{ object.tel2|default_if_none:"" }}">
                                 <input type="text" class="form-control"
                                        aria-describedby="sex"
                                        placeholder="{{ object.tel2_comment|default_if_none:"" }}">
@@ -111,7 +112,7 @@
                                 </div>
                                 <input type="text" class="form-control"
                                        aria-describedby="email"
-                                        placeholder="{{ object.email|default_if_none:"" }}">
+                                       placeholder="{{ object.email|default_if_none:"" }}">
                             </div>
                             <div class="input-group input-group-sm">
                                 <div class="input-group-prepend">
@@ -120,7 +121,7 @@
                                 </div>
                                 <textarea class="form-control"
                                           aria-label="With textarea"
-                                            placeholder="{{ object.comment|default_if_none:"" }}"></textarea>
+                                          placeholder="{{ object.comment|default_if_none:"" }}"></textarea>
                             </div>
                             <div class="input-group input-group-sm">
                                 <div class="input-group-prepend">
@@ -129,15 +130,15 @@
                                 </div>
                                 <input type="text" class="form-control"
                                        aria-describedby="contract_type"
-                                        placeholder="{{ object.doc_enum|default_if_none:"" }}">
+                                       placeholder="{{ object.doc_enum|default_if_none:"" }}">
                             </div>
                             <div class="form-check">
                                 <input class="form-check-input" type="checkbox"
                                        value="" id="flexCheckChecked"
                                         {% if object.sobstv_check is not none %}
                                        checked
-                                       {% endif %}
-                                        >
+                                        {% endif %}
+                                >
                                 <label class="form-check-label"
                                        for="flexCheckChecked">
                                     Эксклюзивное предложение
@@ -154,9 +155,9 @@
                             <div class="form-check">
                                 <input class="form-check-input" type="checkbox"
                                        value="" id="flexCheckChecked"
-                                         {% if object.sobstv_check is not none %}
+                                        {% if object.sobstv_check is not none %}
                                        checked
-                                       {% endif %}
+                                        {% endif %}
                                 >
                                 <label class="form-check-label"
                                        for="flexCheckChecked">
@@ -171,843 +172,7 @@
                                     Клиент является Риэлтором
                                 </label>
                             </div>
-
-
-
-
-                            {% if object.client_enum == "Купить" %}
-
-
-
-
-
-                            <div class="text-center"><b>Заявка от Клиента</b>
-                            </div>
-                            <div class="input-group input-group-sm">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text"
-                                          id="req_type">Вид клиента</span>
-                                </div>
-                                <input type="text" class="form-control"
-                                       aria-describedby="req_type"
-                                        placeholder="{{ object.client_enum|default_if_none:"" }}">
-                            </div>
-                            <div class="input-group input-group-sm">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text"
-                                          id="real_estate_type">Тип недвиж.</span>
-                                </div>
-                                <input type="text" class="form-control"
-                                       aria-describedby="real_estate_type"
-                                        placeholder="{{ object.realty_enum|default_if_none:"" }}">
-                            </div>
-                            <div class="input-group input-group-sm">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text"
-                                          id="status">Статус</span>
-                                </div>
-                                <input type="text" class="form-control"
-                                       aria-describedby="status"
-                                        placeholder="{{ object.status_enum|default_if_none:"" }}">
-                            </div>
-                            <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="checkbox"
-                                       id="inlineCheckbox1" value="option1"
-                                       {% if object.alt_check is not none %}
-                                       checked
-                                       {% endif %}
-                                >
-                                <label class="form-check-label"
-                                       for="inlineCheckbox1">Альтернатива/Обмен</label>
-                            </div>
-                            <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="checkbox"
-                                       id="inlineCheckbox2" value="option2"
-                                       {% if object.ipoteka_check is not none %}
-                                       checked
-                                       {% endif %}
-                                >
-
-                                <label class="form-check-label"
-                                       for="inlineCheckbox2">Ипотека</label>
-                            </div>
-                            <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="checkbox"
-                                       id="inlineCheckbox3" value="option3"
-                                       {% if object.nal_check is not none %}
-                                       checked
-                                       {% endif %}
-                                >
-                                <label class="form-check-label"
-                                       for="inlineCheckbox3">Наличные</label>
-                            </div>
-                            <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="checkbox"
-                                       id="inlineCheckbox3" value="option3"
-                                       {% if object.ipoteka_do_check is not none %}
-                                       checked
-                                       {% endif %}
-                                >
-                                <label class="form-check-label"
-                                       for="inlineCheckbox3">Ипотека
-                                    одобрена</label>
-                            </div>
-
-                            {% if object.alt_realty_id is not none %}
-                                <a href="{% url 'object' object.lot_alt_object %}">
-                            <div class="text"><b>Альтернативный объект: {{ object.name_alt_object }}</b>
-                            </div>
-                                </a>
-                            {% endif %}
-
-                            <div class="input-group input-group-sm">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text"
-                                          id="commission">Интерес. ЖК</span>
-                                </div>
-                                <input type="text" class="form-control"
-                                       aria-describedby="commission">
-                            </div>
-
-                            {% if object.name_realty_object is not none %}
-                            <a href="{% url 'object' object.lot_realty_object %}">
-                            <div class="input-group input-group-sm">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text"
-                                          id="currency">Интерес. Объект</span>
-                                </div>
-                                <input type="text" class="form-control"
-                                       aria-describedby="currency"
-                                        placeholder="{{ object.name_realty_object|default_if_none:"" }}">
-                            </div>
-                            </a>
-                            {% endif %}
-                            <div>Валюта</div>
-                            <div class="input-group input-group-sm">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text"
-                                          id="from">Цены от</span>
-                                </div>
-                                <input type="text" class="form-control"
-                                       aria-describedby="from"
-                                        placeholder="{{ object.cost_from|default_if_none:"0" }}">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text"
-                                          id="to">до</span>
-                                </div>
-                                <input type="text" class="form-control"
-                                       aria-describedby="to"
-                                        placeholder="{{ object.cost|default_if_none:"" }}">
-                            </div>
-                            <div class="input-group input-group-sm">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text"
-                                          id="sqr">Площадь(м<sup>2</sup>), от</span>
-                                </div>
-                                <input type="text" class="form-control"
-                                       aria-describedby="sqr"
-                                        placeholder="{{ object.area1_from|default_if_none:"" }}">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text"
-                                          id="sqr_to">до</span>
-                                </div>
-                                <input type="text" class="form-control"
-                                       aria-describedby="sqr_to"
-                                        placeholder="{{ object.area1|default_if_none:"" }}">
-                            </div>
-
-                            {% if object.realty_enum == 'Квартира' %}
-
-
-                            <div class="input-group input-group-sm">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text"
-                                          id="price">Кол-во комнат</span>
-                                </div>
-                                <input type="text" class="form-control"
-                                       aria-describedby="price"
-                                        placeholder="{{ object.rooms_from|default_if_none:"" }}">
-                            </div>
-                            <div class="input-group input-group-sm">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text"
-                                          id="kitchen_from">Кухня, от</span>
-                                </div>
-                                <input type="text" class="form-control"
-                                       aria-describedby="kitchen_from"
-                                        placeholder="{{ object.area2_from|default_if_none:"" }}">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text"
-                                          id="kitchen_to">до</span>
-                                </div>
-                                <input type="text" class="form-control"
-                                       aria-describedby="kitchen_to"
-                                        placeholder="{{ object.area2|default_if_none:"" }}">
-                            </div>
-                            <div class="input-group input-group-sm">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text"
-                                          id="floor_from">Этаж, от</span>
-                                </div>
-                                <input type="text" class="form-control"
-                                       aria-describedby="floor_from"
-                                        placeholder="{{ object.floor|default_if_none:"" }}">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text"
-                                          id="floor_to">до</span>
-                                </div>
-                                <input type="text" class="form-control"
-                                       aria-describedby="floor_to">
-                            </div>
-                            <div class="input-group input-group-sm">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text"
-                                          id="keys">Вид комнат</span>
-                                </div>
-                                <input type="text" class="form-control"
-                                       aria-describedby="keys"
-                                        placeholder="{{ object.param21|default_if_none:"" }}">
-                            </div>
-                            <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="checkbox"
-                                       id="inlineCheckbox1" value="option1"
-                                       {% if object.floor_not_first_check is not none %}
-                                       checked
-                                       {% endif %}
-                                        >
-                                <label class="form-check-label"
-                                       for="inlineCheckbox1">Этаж не первый</label>
-                            </div>
-                            <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="checkbox"
-                                       id="inlineCheckbox2" value="option2"
-                                       {% if object.floor_not_last_check is not none %}
-                                       checked
-                                       {% endif %}
-                                       >
-
-                                <label class="form-check-label"
-                                       for="inlineCheckbox2">Этаж не последний</label>
-                            </div>
-                            <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="checkbox"
-                                       id="inlineCheckbox3" value="option3"
-                                       {% if object.ugl_check is not none %}
-                                       checked
-                                       {% endif %}
-                                       >
-
-                                <label class="form-check-label"
-                                       for="inlineCheckbox3">Не угловая</label>
-                            </div>
-                            <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="checkbox"
-                                       id="inlineCheckbox3" value="option3"
-                                       {% if object.check24 is not none %}
-                                       checked
-                                       {% endif %}
-                                       >
-                                <label class="form-check-label"
-                                       for="inlineCheckbox3">Автономное отопление</label>
-                            </div>
-
-
-                            {% endif %}
-
-                            {% if object.realty_enum != 'Земельный участок' %}
-                            <div class="input-group input-group-sm">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text"
-                                          id="time_to_show">Материал стен</span>
-                                </div>
-                                <input type="text" class="form-control"
-                                       aria-describedby="time_to_show"
-                                        placeholder="{{ object.param3|slice:"1:-1" }}"
-                                >
-                            </div>
-                            {% endif %}
-                        {% elif object.client_enum == "Продажа"%}
-
-                        <div class="text-center"><b>Объект</b>
-                            </div>
-                            <div class="input-group input-group-sm">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text"
-                                          id="req_type">Вид клиента</span>
-                                </div>
-                                <input type="text" class="form-control"
-                                       aria-describedby="req_type"
-                                        placeholder="{{ object.client_enum|default_if_none:"" }}">
-                            </div>
-                            <div class="input-group input-group-sm">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text"
-                                          id="real_estate_type">Тип недвиж.</span>
-                                </div>
-                                <input type="text" class="form-control"
-                                       aria-describedby="real_estate_type"
-                                        placeholder="{{ object.realty_enum|default_if_none:"" }}">
-                            </div>
-                            <div class="input-group input-group-sm">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text"
-                                          id="status">Статус</span>
-                                </div>
-                                <input type="text" class="form-control"
-                                       aria-describedby="status"
-                                        placeholder="{{ object.status_enum|default_if_none:"" }}">
-                            </div>
-                            <div class="input-group input-group-sm">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text"
-                                          id="status">Комиссия</span>
-                                </div>
-                                <input type="text" class="form-control"
-                                       aria-describedby="status"
-                                        placeholder="{{ object.commission|default_if_none:"" }} руб">
-                            </div>
-
-
-                            {% if object.realty_enum != "Земельный участок" %}
-
-                            <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="checkbox"
-                                       id="inlineCheckbox1" value="option1"
-                                       {% if object.alt_check is not none %}
-                                       checked
-                                       {% endif %}
-                                >
-                                <label class="form-check-label"
-                                       for="inlineCheckbox1">Альтернатива/Обмен</label>
-                            </div>
-                            <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="checkbox"
-                                       id="inlineCheckbox2" value="option2"
-                                       {% if object.ipoteka_check is not none %}
-                                       checked
-                                       {% endif %}
-                                >
-
-                                <label class="form-check-label"
-                                       for="inlineCheckbox2">Возможна ипотека</label>
-                            </div>
-                            <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="checkbox"
-                                       id="inlineCheckbox3" value="option3"
-                                       {% if object.nal_check is not none %}
-                                       checked
-                                       {% endif %}
-                                >
-                                <label class="form-check-label"
-                                       for="inlineCheckbox3">Наличные</label>
-                            </div>
-                            <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="checkbox"
-                                       id="inlineCheckbox3" value="option3"
-                                       {% if object.ipoteka_do_check is not none %}
-                                       checked
-                                       {% endif %}
-                                >
-                                <label class="form-check-label"
-                                       for="inlineCheckbox3">Ипотека
-                                    одобрена</label>
-                            </div>
-
-                            {% if object.alt_realty_id is not none %}
-                                <a href="{% url 'object' object.lot_alt_object %}">
-                            <div class="text"><b>Альтернативный объект: {{ object.name_alt_object }}</b>
-                            </div>
-                                </a>
-                            {% endif %}
-                            <div class="input-group input-group-sm">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text"
-                                          id="status">Кол-во комнат</span>
-                                </div>
-                                <input type="text" class="form-control"
-                                       aria-describedby="status"
-                                        placeholder="{{ object.rooms|default_if_none:"" }} ">
-                            </div>
-                            <div class="input-group input-group-sm">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text"
-                                          id="status">Стоимость</span>
-                                </div>
-                                <input type="text" class="form-control"
-                                       aria-describedby="status"
-                                        placeholder="{{ object.cost|default_if_none:"" }} руб.    за кв.м {{ object.square_price }} руб.">
-                            </div>
-
-
-
-                             <br>
-                            <div><b>Площадь</b></div>
-
-                            {% if object.realty_enum == "Квартира" %}
-                            <div class="input-group input-group-sm">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text"
-                                          id="sqr">Общая</span>
-                                </div>
-                                <input type="text" class="form-control"
-                                       aria-describedby="sqr"
-                                        placeholder="{{ object.area1|default_if_none:"" }}">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text"
-                                          id="sqr_to">Жилая</span>
-                                </div>
-                                <input type="text" class="form-control"
-                                       aria-describedby="sqr_to"
-                                        placeholder="{{ object.area2|default_if_none:"" }}">
-                            </div>
-                            <div class="input-group input-group-sm">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text"
-                                          id="sqr">Кухня</span>
-                                </div>
-                                <input type="text" class="form-control"
-                                       aria-describedby="sqr"
-                                        placeholder="{{ object.area3|default_if_none:"" }}">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text"
-                                          id="sqr_to">По комнатам</span>
-                                </div>
-                                <input type="text" class="form-control"
-                                       aria-describedby="sqr_to"
-                                        placeholder="{{ object.area4|default_if_none:"" }}">
-                            </div>
-
-                            {% elif object.realty_enum == "Дом" %}
-
-
-                            <div class="input-group input-group-sm">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text"
-                                          id="sqr">Общая</span>
-                                </div>
-                                <input type="text" class="form-control"
-                                       aria-describedby="sqr"
-                                        placeholder="{{ object.area1|default_if_none:"" }}">
-
-                            </div>
-                            <div class="input-group input-group-sm">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text"
-                                          id="sqr">Площадь участка</span>
-                                </div>
-                                <input type="text" class="form-control"
-                                       aria-describedby="sqr"
-                                        placeholder="{{ object.area2|default_if_none:"" }} сот">
-
-                            </div>
-
-                            {% endif %}
-
-
-                            {% elif object.realty_enum == "Земельный участок" %}
-
-
-
-                            <div class="input-group input-group-sm">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text"
-                                          id="status">Стоимость</span>
-                                </div>
-                                <input type="text" class="form-control"
-                                       aria-describedby="status"
-                                        placeholder=
-                                               "{{ object.cost|default_if_none:"" }} руб.    за сот. {{ object.hundred_square_price }} руб.">
-                            </div>
-
-
-                            <br>
-                            <div><b>Площадь</b></div>
-
-
-                            <div class="input-group input-group-sm">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text"
-                                          id="sqr">Кв.м</span>
-                                </div>
-                                <input type="text" class="form-control"
-                                       aria-describedby="sqr"
-                                        placeholder="{{ object.area1|default_if_none:"" }}">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text"
-                                          id="sqr_to">Сот</span>
-                                </div>
-                                <input type="text" class="form-control"
-                                       aria-describedby="sqr_to"
-                                        placeholder="{{ object.area2|default_if_none:"" }}">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text"
-                                          id="sqr">Га</span>
-                                </div>
-                                <input type="text" class="form-control"
-                                       aria-describedby="sqr"
-                                        placeholder="{{ object.area3|default_if_none:"" }}">
-                            </div>
-
-
-                            {% endif %}
-
-
-
-
-
-
-
-
-
-
-
-
-                        <br>
-                            <div><b>Параметры</b></div>
-
-                        {% if object.realty_enum == "Дом" %}
-
-                        <div class="input-group input-group-sm">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text"
-                                      id="sqr">Уровней</span>
-                            </div>
-                            <input type="text" class="form-control"
-                                   aria-describedby="sqr"
-                                    placeholder="{{ object.floor|default_if_none:"" }} сот">
-
                         </div>
-                        <div class="input-group input-group-sm">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text"
-                                      id="sqr">Материал стен</span>
-                            </div>
-                            <input type="text" class="form-control"
-                                   aria-describedby="sqr"
-                                    placeholder="{{ object.param3|default_if_none:"" }} ">
-
-                        </div>
-                        <div class="input-group input-group-sm">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text"
-                                      id="sqr">Количество спален</span>
-                            </div>
-                            <input type="text" class="form-control"
-                                   aria-describedby="sqr"
-                                    placeholder="{{ object.param7|default_if_none:"" }} ">
-
-                        </div>
-                        <div class="input-group input-group-sm">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text"
-                                      id="sqr">Расположение санузла</span>
-                            </div>
-                            <input type="text" class="form-control"
-                                   aria-describedby="sqr"
-                                    placeholder="">
-
-                        </div>
-                        <div class="input-group input-group-sm">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text"
-                                      id="sqr">Отопление</span>
-                            </div>
-                            <input type="text" class="form-control"
-                                   aria-describedby="sqr"
-                                    placeholder="{{ object.param13|default_if_none:"" }} ">
-
-                        </div>
-                        <div class="input-group input-group-sm">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text"
-                                      id="sqr">Статус земли</span>
-                            </div>
-                            <input type="text" class="form-control"
-                                   aria-describedby="sqr"
-                                    placeholder="{{ object.param9|default_if_none:"" }} ">
-
-                        </div>
-                        <div class="input-group input-group-sm">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text"
-                                      id="sqr">Кадастровый номер</span>
-                            </div>
-                            <input type="text" class="form-control"
-                                   aria-describedby="sqr"
-                                    placeholder="{{ object.kadastr|default_if_none:"" }} ">
-
-                        </div>
-
-                        {% elif object.realty_enum == "Квартира" %}
-
-                        <div class="input-group input-group-sm">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text"
-                                      id="sqr">Тип квартиры</span>
-                            </div>
-                            <input type="text" class="form-control"
-                                   aria-describedby="sqr"
-                                    placeholder="{{ object.param11|default_if_none:"" }} ">
-
-                        </div>
-                        <div class="input-group input-group-sm">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text"
-                                      id="sqr">Материал стен</span>
-                            </div>
-                            <input type="text" class="form-control"
-                                   aria-describedby="sqr"
-                                    placeholder="{{ object.param3|default_if_none:"" }} ">
-
-                        </div>
-                        <div class="input-group input-group-sm">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text"
-                                      id="sqr">Серия дома</span>
-                            </div>
-                            <input type="text" class="form-control"
-                                   aria-describedby="sqr"
-                                    placeholder="">
-
-                        </div>
-                        <div class="input-group input-group-sm">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text"
-                                      id="sqr">Высота потолков</span>
-                            </div>
-                            <input type="text" class="form-control"
-                                   aria-describedby="sqr"
-                                    placeholder="{{ object.param12|default_if_none:"" }} ">
-
-                        </div>
-                        <div class="input-group input-group-sm">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text"
-                                      id="sqr">Год постойки</span>
-                            </div>
-                            <input type="text" class="form-control"
-                                   aria-describedby="sqr"
-                                    placeholder="{{ object.param15|default_if_none:"" }} ">
-
-                        </div>
-                        <div class="input-group input-group-sm">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text"
-                                      id="sqr">Парковка</span>
-                            </div>
-                            <input type="text" class="form-control"
-                                   aria-describedby="sqr"
-                                    placeholder="{{ object.param30|default_if_none:"" }} ">
-
-                        </div>
-
-                        <div class="input-group input-group-sm">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text"
-                                      id="sqr">Ремонт</span>
-                            </div>
-                            <input type="text" class="form-control"
-                                   aria-describedby="sqr"
-                                    placeholder="{{ object.param6|default_if_none:"" }} ">
-
-                        </div>
-                        <div class="input-group input-group-sm">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text"
-                                      id="sqr">Окна</span>
-                            </div>
-                            <input type="text" class="form-control"
-                                   aria-describedby="sqr"
-                                    placeholder="{{ object.param9|default_if_none:"" }} ">
-
-                        </div>
-                        <div class="input-group input-group-sm">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text"
-                                      id="sqr">Вид из окна</span>
-                            </div>
-                            <input type="text" class="form-control"
-                                   aria-describedby="sqr"
-                                    placeholder="{{ object.param5|default_if_none:""}}">
-
-                        </div>
-                        <div class="input-group input-group-sm">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text"
-                                      id="sqr">С/У</span>
-                            </div>
-                            <input type="text" class="form-control"
-                                   aria-describedby="sqr"
-                                    placeholder="{{ object.param8|default_if_none:"" }} ">
-
-                        </div>
-                        <div class="input-group input-group-sm">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text"
-                                      id="sqr">Л/Б</span>
-                            </div>
-                            <input type="text" class="form-control"
-                                   aria-describedby="sqr"
-                                    placeholder="{{ object.param9|default_if_none:"" }} ">
-
-                        </div>
-                        <div class="input-group input-group-sm">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text"
-                                      id="sqr">Пол</span>
-                            </div>
-                            <input type="text" class="form-control"
-                                   aria-describedby="sqr"
-                                    placeholder="{{ object.param13|default_if_none:"" }} ">
-
-                        </div>
-
-                        <div class="input-group input-group-sm">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text"
-                                      id="sqr">Двери</span>
-                            </div>
-                            <input type="text" class="form-control"
-                                   aria-describedby="sqr"
-                                    placeholder="{{ object.param17|default_if_none:"" }} ">
-
-                        </div>
-                        <div class="input-group input-group-sm">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text"
-                                      id="sqr">Батарея</span>
-                            </div>
-                            <input type="text" class="form-control"
-                                   aria-describedby="sqr"
-                                    placeholder="{{ object.param18|default_if_none:"" }} ">
-
-                        </div>
-                        <div class="input-group input-group-sm">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text"
-                                      id="sqr">Вид комнат</span>
-                            </div>
-                            <input type="text" class="form-control"
-                                   aria-describedby="sqr"
-                                    placeholder="{{ object.param21|default_if_none:"" }}">
-
-                        </div>
-                        <div class="input-group input-group-sm">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text"
-                                      id="sqr">Планировка</span>
-                            </div>
-                            <input type="text" class="form-control"
-                                   aria-describedby="sqr"
-                                    placeholder="{{ object.param20|default_if_none:"" }} ">
-
-                        </div>
-                        <div class="input-group input-group-sm">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text"
-                                      id="sqr">Перепланировка</span>
-                            </div>
-                            <input type="text" class="form-control"
-                                   aria-describedby="sqr"
-                                    placeholder="{{ object.param19|default_if_none:"" }} ">
-
-                        </div>
-                        <div class="input-group input-group-sm">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text"
-                                      id="sqr">Кадастровый номер</span>
-                            </div>
-                            <input type="text" class="form-control"
-                                   aria-describedby="sqr"
-                                    placeholder="{{ object.kadastr|default_if_none:"" }} ">
-
-                        </div>
-
-                        {% elif object.realty_enum == 'Земельный участок' %}
-
-                        <div class="input-group input-group-sm">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text"
-                                      id="sqr">Категория земель</span>
-                            </div>
-                            <input type="text" class="form-control"
-                                   aria-describedby="sqr"
-                                    placeholder="{{ object.param13|default_if_none:"" }} ">
-
-                        </div>
-
-                        <div class="input-group input-group-sm">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text"
-                                      id="sqr">Вид использования</span>
-                            </div>
-                            <input type="text" class="form-control"
-                                   aria-describedby="sqr"
-                                    placeholder="{{ object.param17|default_if_none:"" }} ">
-
-                        </div>
-                        <div class="input-group input-group-sm">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text"
-                                      id="sqr">Фактическое использование</span>
-                            </div>
-                            <input type="text" class="form-control"
-                                   aria-describedby="sqr"
-                                    placeholder="{{ object.param18|default_if_none:"" }} ">
-
-                        </div>
-                        <div class="input-group input-group-sm">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text"
-                                      id="sqr">Форма участка</span>
-                            </div>
-                            <input type="text" class="form-control"
-                                   aria-describedby="sqr"
-                                    placeholder="{{ object.param21|default_if_none:"" }}">
-
-                        </div>
-                        <div class="input-group input-group-sm">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text"
-                                      id="sqr">Ближайший водоем</span>
-                            </div>
-                            <input type="text" class="form-control"
-                                   aria-describedby="sqr"
-                                    placeholder="{{ object.param20|default_if_none:"" }} ">
-
-                        </div>
-                        <div class="input-group input-group-sm">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text"
-                                      id="sqr">Подъезд</span>
-                            </div>
-                            <input type="text" class="form-control"
-                                   aria-describedby="sqr"
-                                    placeholder="{{ object.param19|default_if_none:"" }} ">
-
-                        </div>
-                        <div class="input-group input-group-sm">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text"
-                                      id="sqr">Кадастровый номер</span>
-                            </div>
-                            <input type="text" class="form-control"
-                                   aria-describedby="sqr"
-                                    placeholder="{{ object.kadastr|default_if_none:"" }} ">
-
-                        </div>
-
-
-
-
-                        {% endif %}
-
-                        {% endif %}
-
-
-
-                        </div>
-
                         <div class="col-6">
                             <div>ID клиента: {{ object.lot }}</div>
                             <div class="input-group input-group-sm">
@@ -1017,7 +182,7 @@
                                 </div>
                                 <input type="text" class="form-control"
                                        aria-describedby="req_date"
-                                        placeholder="{{ object.sys_date_create|date:"d.m.Y H:i" }}">
+                                       placeholder="{{ object.sys_date_create|date:"d.m.Y H:i" }}">
 
 
                             </div>
@@ -1028,7 +193,7 @@
                                 </div>
                                 <input type="text" class="form-control"
                                        aria-describedby="created"
-                                placeholder="{{ object.sys_date_create|date:"d.m.Y H:i" }} {{ object.create_agent }}">
+                                       placeholder="{{ object.sys_date_create|date:"d.m.Y H:i" }} {{ object.create_agent }}">
                             </div>
                             <div class="input-group input-group-sm">
                                 <div class="input-group-prepend">
@@ -1037,7 +202,7 @@
                                 </div>
                                 <input type="text" class="form-control"
                                        aria-describedby="usage_type"
-                                        placeholder="{{ object.sys_date_update|date:"d.m.Y H:i" }} {{ object.create_agent }}"
+                                       placeholder="{{ object.sys_date_update|date:"d.m.Y H:i" }} {{ object.create_agent }}"
                                 >
                             </div>
                             <div class="input-group input-group-sm">
@@ -1055,7 +220,7 @@
                                 </div>
                                 <input type="text" class="form-control"
                                        aria-describedby="responsible"
-                                        placeholder="{{ object.agent|default_if_none:"" }}"
+                                       placeholder="{{ object.agent|default_if_none:"" }}"
                                 >
                             </div>
                             <div class="input-group input-group-sm">
@@ -1065,7 +230,7 @@
                                 </div>
                                 <input type="text" class="form-control"
                                        aria-describedby="category2"
-                                        placeholder="{{ object.cat_enum|default_if_none:"" }}"
+                                       placeholder="{{ object.cat_enum|default_if_none:"" }}"
                                 >
                             </div>
                             <div class="input-group input-group-sm">
@@ -1075,21 +240,500 @@
                                 </div>
                                 <textarea class="form-control"
                                           aria-label="With textarea"
-                                            placeholder="{{ object.comment|default_if_none:"" }}"></textarea>
+                                          placeholder="{{ object.comment|default_if_none:"" }}"></textarea>
                             </div>
-                            <div class="text-center mb-2"><b>Контактная
-                                информация</b>
+
+
+                        </div>
+                    </div>
+                </div>
+                <div class="container-fluid">
+                    <div class="row">
+
+                        <div class="col-6">
+                            {% if object.client_enum == "Купить" %}
+
+
+
+
+
+                                <div class="text-center"><b>Заявка от Клиента</b>
+                                </div>
                                 <div class="input-group input-group-sm">
                                     <div class="input-group-prepend">
                                     <span class="input-group-text"
-                                          id="region">Расположение</span>
+                                          id="req_type">Вид клиента</span>
                                     </div>
                                     <input type="text" class="form-control"
-                                            aria-describedby="region"
-                                            placeholder="{{ object.pos_enum|default_if_none:"" }}"
+                                           aria-describedby="req_type"
+                                           placeholder="{{ object.client_enum|default_if_none:"" }}">
+                                </div>
+                                <div class="input-group input-group-sm">
+                                    <div class="input-group-prepend">
+                                    <span class="input-group-text"
+                                          id="real_estate_type">Тип недвиж.</span>
+                                    </div>
+                                    <input type="text" class="form-control"
+                                           aria-describedby="real_estate_type"
+                                           placeholder="{{ object.realty_enum|default_if_none:"" }}">
+                                </div>
+                                <div class="input-group input-group-sm">
+                                    <div class="input-group-prepend">
+                                    <span class="input-group-text"
+                                          id="status">Статус</span>
+                                    </div>
+                                    <input type="text" class="form-control"
+                                           aria-describedby="status"
+                                           placeholder="{{ object.status_enum|default_if_none:"" }}">
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="checkbox"
+                                           id="inlineCheckbox1" value="option1"
+                                            {% if object.alt_check is not none %}
+                                           checked
+                                            {% endif %}
+                                    >
+                                    <label class="form-check-label"
+                                           for="inlineCheckbox1">Альтернатива/Обмен</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="checkbox"
+                                           id="inlineCheckbox2" value="option2"
+                                            {% if object.ipoteka_check is not none %}
+                                           checked
+                                            {% endif %}
                                     >
 
+                                    <label class="form-check-label"
+                                           for="inlineCheckbox2">Ипотека</label>
                                 </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="checkbox"
+                                           id="inlineCheckbox3" value="option3"
+                                            {% if object.nal_check is not none %}
+                                           checked
+                                            {% endif %}
+                                    >
+                                    <label class="form-check-label"
+                                           for="inlineCheckbox3">Наличные</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="checkbox"
+                                           id="inlineCheckbox3" value="option3"
+                                            {% if object.ipoteka_do_check is not none %}
+                                           checked
+                                            {% endif %}
+                                    >
+                                    <label class="form-check-label"
+                                           for="inlineCheckbox3">Ипотека
+                                        одобрена</label>
+                                </div>
+
+                                {% if object.alt_realty_id is not none %}
+                                    <a href="{% url 'object' object.lot_alt_object %}">
+                                        <div class="text"><b>Альтернативный объект: {{ object.name_alt_object }}</b>
+                                        </div>
+                                    </a>
+                                {% endif %}
+
+                                <div class="input-group input-group-sm">
+                                    <div class="input-group-prepend">
+                                    <span class="input-group-text"
+                                          id="commission">Интерес. ЖК</span>
+                                    </div>
+                                    <input type="text" class="form-control"
+                                           aria-describedby="commission">
+                                </div>
+
+                                {% if object.name_realty_object is not none %}
+                                    <a href="{% url 'object' object.lot_realty_object %}">
+                                        <div class="input-group input-group-sm">
+                                            <div class="input-group-prepend">
+                                    <span class="input-group-text"
+                                          id="currency">Интерес. Объект</span>
+                                            </div>
+                                            <input type="text" class="form-control"
+                                                   aria-describedby="currency"
+                                                   placeholder="{{ object.name_realty_object|default_if_none:"" }}">
+                                        </div>
+                                    </a>
+                                {% endif %}
+                                <div>Валюта</div>
+                                <div class="input-group input-group-sm">
+                                    <div class="input-group-prepend">
+                                    <span class="input-group-text"
+                                          id="from">Цены от</span>
+                                    </div>
+                                    <input type="text" class="form-control"
+                                           aria-describedby="from"
+                                           placeholder="{{ object.cost_from|default_if_none:"0" }}">
+                                    <div class="input-group-prepend">
+                                    <span class="input-group-text"
+                                          id="to">до</span>
+                                    </div>
+                                    <input type="text" class="form-control"
+                                           aria-describedby="to"
+                                           placeholder="{{ object.cost|default_if_none:"" }}">
+                                </div>
+                                <div class="input-group input-group-sm">
+                                    <div class="input-group-prepend">
+                                    <span class="input-group-text"
+                                          id="sqr">Площадь(м<sup>2</sup>), от</span>
+                                    </div>
+                                    <input type="text" class="form-control"
+                                           aria-describedby="sqr"
+                                           placeholder="{{ object.area1_from|default_if_none:"" }}">
+                                    <div class="input-group-prepend">
+                                    <span class="input-group-text"
+                                          id="sqr_to">до</span>
+                                    </div>
+                                    <input type="text" class="form-control"
+                                           aria-describedby="sqr_to"
+                                           placeholder="{{ object.area1|default_if_none:"" }}">
+                                </div>
+
+                                {% if object.realty_enum == 'Квартира' %}
+
+
+                                    <div class="input-group input-group-sm">
+                                        <div class="input-group-prepend">
+                                    <span class="input-group-text"
+                                          id="price">Кол-во комнат</span>
+                                        </div>
+                                        <input type="text" class="form-control"
+                                               aria-describedby="price"
+                                               placeholder="{{ object.rooms_from|default_if_none:"" }}">
+                                    </div>
+                                    <div class="input-group input-group-sm">
+                                        <div class="input-group-prepend">
+                                    <span class="input-group-text"
+                                          id="kitchen_from">Кухня, от</span>
+                                        </div>
+                                        <input type="text" class="form-control"
+                                               aria-describedby="kitchen_from"
+                                               placeholder="{{ object.area2_from|default_if_none:"" }}">
+                                        <div class="input-group-prepend">
+                                    <span class="input-group-text"
+                                          id="kitchen_to">до</span>
+                                        </div>
+                                        <input type="text" class="form-control"
+                                               aria-describedby="kitchen_to"
+                                               placeholder="{{ object.area2|default_if_none:"" }}">
+                                    </div>
+                                    <div class="input-group input-group-sm">
+                                        <div class="input-group-prepend">
+                                    <span class="input-group-text"
+                                          id="floor_from">Этаж, от</span>
+                                        </div>
+                                        <input type="text" class="form-control"
+                                               aria-describedby="floor_from"
+                                               placeholder="{{ object.floor|default_if_none:"" }}">
+                                        <div class="input-group-prepend">
+                                    <span class="input-group-text"
+                                          id="floor_to">до</span>
+                                        </div>
+                                        <input type="text" class="form-control"
+                                               aria-describedby="floor_to">
+                                    </div>
+                                    <div class="input-group input-group-sm">
+                                        <div class="input-group-prepend">
+                                    <span class="input-group-text"
+                                          id="keys">Вид комнат</span>
+                                        </div>
+                                        <input type="text" class="form-control"
+                                               aria-describedby="keys"
+                                               placeholder="{{ object.param21|default_if_none:"" }}">
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="checkbox"
+                                               id="inlineCheckbox1" value="option1"
+                                                {% if object.floor_not_first_check is not none %}
+                                               checked
+                                                {% endif %}
+                                        >
+                                        <label class="form-check-label"
+                                               for="inlineCheckbox1">Этаж не первый</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="checkbox"
+                                               id="inlineCheckbox2" value="option2"
+                                                {% if object.floor_not_last_check is not none %}
+                                               checked
+                                                {% endif %}
+                                        >
+
+                                        <label class="form-check-label"
+                                               for="inlineCheckbox2">Этаж не последний</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="checkbox"
+                                               id="inlineCheckbox3" value="option3"
+                                                {% if object.ugl_check is not none %}
+                                               checked
+                                                {% endif %}
+                                        >
+
+                                        <label class="form-check-label"
+                                               for="inlineCheckbox3">Не угловая</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="checkbox"
+                                               id="inlineCheckbox3" value="option3"
+                                                {% if object.check24 is not none %}
+                                               checked
+                                                {% endif %}
+                                        >
+                                        <label class="form-check-label"
+                                               for="inlineCheckbox3">Автономное отопление</label>
+                                    </div>
+
+
+                                {% endif %}
+
+                                {% if object.realty_enum != 'Земельный участок' %}
+                                    <div class="input-group input-group-sm">
+                                        <div class="input-group-prepend">
+                                    <span class="input-group-text"
+                                          id="time_to_show">Материал стен</span>
+                                        </div>
+                                        <input type="text" class="form-control"
+                                               aria-describedby="time_to_show"
+                                               placeholder="{{ object.param3|slice:"1:-1" }}"
+                                        >
+                                    </div>
+                                {% endif %}
+                            {% elif object.client_enum == "Продажа" %}
+
+                                <div class="text-center"><b>Объект</b>
+                                </div>
+                                <div class="input-group input-group-sm">
+                                    <div class="input-group-prepend">
+                                    <span class="input-group-text"
+                                          id="req_type">Вид клиента</span>
+                                    </div>
+                                    <input type="text" class="form-control"
+                                           aria-describedby="req_type"
+                                           placeholder="{{ object.client_enum|default_if_none:"" }}">
+                                </div>
+                                <div class="input-group input-group-sm">
+                                    <div class="input-group-prepend">
+                                    <span class="input-group-text"
+                                          id="real_estate_type">Тип недвиж.</span>
+                                    </div>
+                                    <input type="text" class="form-control"
+                                           aria-describedby="real_estate_type"
+                                           placeholder="{{ object.realty_enum|default_if_none:"" }}">
+                                </div>
+                                <div class="input-group input-group-sm">
+                                    <div class="input-group-prepend">
+                                    <span class="input-group-text"
+                                          id="status">Статус</span>
+                                    </div>
+                                    <input type="text" class="form-control"
+                                           aria-describedby="status"
+                                           placeholder="{{ object.status_enum|default_if_none:"" }}">
+                                </div>
+                                <div class="input-group input-group-sm">
+                                    <div class="input-group-prepend">
+                                    <span class="input-group-text"
+                                          id="status">Комиссия</span>
+                                    </div>
+                                    <input type="text" class="form-control"
+                                           aria-describedby="status"
+                                           placeholder="{{ object.commission|default_if_none:"" }} руб">
+                                </div>
+
+
+                                {% if object.realty_enum != "Земельный участок" %}
+
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="checkbox"
+                                               id="inlineCheckbox1" value="option1"
+                                                {% if object.alt_check is not none %}
+                                               checked
+                                                {% endif %}
+                                        >
+                                        <label class="form-check-label"
+                                               for="inlineCheckbox1">Альтернатива/Обмен</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="checkbox"
+                                               id="inlineCheckbox2" value="option2"
+                                                {% if object.ipoteka_check is not none %}
+                                               checked
+                                                {% endif %}
+                                        >
+
+                                        <label class="form-check-label"
+                                               for="inlineCheckbox2">Возможна ипотека</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="checkbox"
+                                               id="inlineCheckbox3" value="option3"
+                                                {% if object.nal_check is not none %}
+                                               checked
+                                                {% endif %}
+                                        >
+                                        <label class="form-check-label"
+                                               for="inlineCheckbox3">Наличные</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="checkbox"
+                                               id="inlineCheckbox3" value="option3"
+                                                {% if object.ipoteka_do_check is not none %}
+                                               checked
+                                                {% endif %}
+                                        >
+                                        <label class="form-check-label"
+                                               for="inlineCheckbox3">Ипотека
+                                            одобрена</label>
+                                    </div>
+
+                                    {% if object.alt_realty_id is not none %}
+                                        <a href="{% url 'object' object.lot_alt_object %}">
+                                            <div class="text"><b>Альтернативный объект: {{ object.name_alt_object }}</b>
+                                            </div>
+                                        </a>
+                                    {% endif %}
+                                    <div class="input-group input-group-sm">
+                                        <div class="input-group-prepend">
+                                    <span class="input-group-text"
+                                          id="status">Кол-во комнат</span>
+                                        </div>
+                                        <input type="text" class="form-control"
+                                               aria-describedby="status"
+                                               placeholder="{{ object.rooms|default_if_none:"" }} ">
+                                    </div>
+                                    <div class="input-group input-group-sm">
+                                        <div class="input-group-prepend">
+                                    <span class="input-group-text"
+                                          id="status">Стоимость</span>
+                                        </div>
+                                        <input type="text" class="form-control"
+                                               aria-describedby="status"
+                                               placeholder="{{ object.cost|default_if_none:"" }} руб.    за кв.м {{ object.square_price }} руб.">
+                                    </div>
+
+
+
+                                    <br>
+                                    <div><b>Площадь</b></div>
+
+                                    {% if object.realty_enum == "Квартира" %}
+                                        <div class="input-group input-group-sm">
+                                            <div class="input-group-prepend">
+                                    <span class="input-group-text"
+                                          id="sqr">Общая</span>
+                                            </div>
+                                            <input type="text" class="form-control"
+                                                   aria-describedby="sqr"
+                                                   placeholder="{{ object.area1|default_if_none:"" }}">
+                                            <div class="input-group-prepend">
+                                    <span class="input-group-text"
+                                          id="sqr_to">Жилая</span>
+                                            </div>
+                                            <input type="text" class="form-control"
+                                                   aria-describedby="sqr_to"
+                                                   placeholder="{{ object.area2|default_if_none:"" }}">
+                                        </div>
+                                        <div class="input-group input-group-sm">
+                                            <div class="input-group-prepend">
+                                    <span class="input-group-text"
+                                          id="sqr">Кухня</span>
+                                            </div>
+                                            <input type="text" class="form-control"
+                                                   aria-describedby="sqr"
+                                                   placeholder="{{ object.area3|default_if_none:"" }}">
+                                            <div class="input-group-prepend">
+                                    <span class="input-group-text"
+                                          id="sqr_to">По комнатам</span>
+                                            </div>
+                                            <input type="text" class="form-control"
+                                                   aria-describedby="sqr_to"
+                                                   placeholder="{{ object.area4|default_if_none:"" }}">
+                                        </div>
+
+                                    {% elif object.realty_enum == "Дом" %}
+
+
+                                        <div class="input-group input-group-sm">
+                                            <div class="input-group-prepend">
+                                    <span class="input-group-text"
+                                          id="sqr">Общая</span>
+                                            </div>
+                                            <input type="text" class="form-control"
+                                                   aria-describedby="sqr"
+                                                   placeholder="{{ object.area1|default_if_none:"" }}">
+
+                                        </div>
+                                        <div class="input-group input-group-sm">
+                                            <div class="input-group-prepend">
+                                    <span class="input-group-text"
+                                          id="sqr">Площадь участка</span>
+                                            </div>
+                                            <input type="text" class="form-control"
+                                                   aria-describedby="sqr"
+                                                   placeholder="{{ object.area2|default_if_none:"" }} сот">
+
+                                        </div>
+
+                                    {% endif %}
+
+
+                                {% elif object.realty_enum == "Земельный участок" %}
+
+
+
+                                    <div class="input-group input-group-sm">
+                                        <div class="input-group-prepend">
+                                    <span class="input-group-text"
+                                          id="status">Стоимость</span>
+                                        </div>
+                                        <input type="text" class="form-control"
+                                               aria-describedby="status"
+                                               placeholder=
+                                                       "{{ object.cost|default_if_none:"" }} руб.    за сот. {{ object.hundred_square_price }} руб.">
+                                    </div>
+
+
+                                    <br>
+                                    <div><b>Площадь</b></div>
+
+
+                                    <div class="input-group input-group-sm">
+                                        <div class="input-group-prepend">
+                                    <span class="input-group-text"
+                                          id="sqr">Кв.м</span>
+                                        </div>
+                                        <input type="text" class="form-control"
+                                               aria-describedby="sqr"
+                                               placeholder="{{ object.area1|default_if_none:"" }}">
+                                        <div class="input-group-prepend">
+                                    <span class="input-group-text"
+                                          id="sqr_to">Сот</span>
+                                        </div>
+                                        <input type="text" class="form-control"
+                                               aria-describedby="sqr_to"
+                                               placeholder="{{ object.area2|default_if_none:"" }}">
+                                        <div class="input-group-prepend">
+                                    <span class="input-group-text"
+                                          id="sqr">Га</span>
+                                        </div>
+                                        <input type="text" class="form-control"
+                                               aria-describedby="sqr"
+                                               placeholder="{{ object.area3|default_if_none:"" }}">
+                                    </div>
+
+
+                                {% endif %}
+                                <br>
+                            {% endif %}
+
+
+                        </div>
+                        {% if object.client_enum == 'Купить' %}
+                            <div class="col-6">
+                                <div class="text"><b>Расположение</b></div>
                                 <div class="input-group input-group-sm">
                                     <div class="input-group-prepend">
                                     <span class="input-group-text"
@@ -1097,7 +741,7 @@
                                     </div>
                                     <input type="text" class="form-control"
                                            aria-describedby="obl"
-                                            placeholder="{{ object.obl_auto|default_if_none:"" }}"
+                                           placeholder="{{ object.obl_auto|default_if_none:"" }}"
                                     >
                                 </div>
                                 <div class="input-group input-group-sm">
@@ -1115,7 +759,7 @@
                                     </div>
                                     <input type="text" class="form-control"
                                            aria-describedby="town"
-                                            placeholder="{{ object.np_auto|default_if_none:"" }}"
+                                           placeholder="{{ object.np_auto|default_if_none:"" }}"
                                     >
                                 </div>
                                 <div class="input-group input-group-sm">
@@ -1125,7 +769,7 @@
                                     </div>
                                     <input type="text" class="form-control"
                                            aria-describedby="town_reg"
-                                            placeholder="{{ object.np_rayon_auto|default_if_none:"" }}"
+                                           placeholder="{{ object.np_rayon_auto|default_if_none:"" }}"
                                     >
                                 </div>
                                 <div class="input-group input-group-sm">
@@ -1143,45 +787,1137 @@
                                     </div>
                                     <input type="text" class="form-control"
                                            aria-describedby="street"
-                                            placeholder="{{ object.street|default_if_none:"" }}"
+                                           placeholder="{{ object.street|default_if_none:"" }}"
                                     >
                                 </div>
-                                    <div class="input-group input-group-sm">
-                                        <div class="input-group-prepend">
+                                <div class="input-group input-group-sm">
+                                    <div class="input-group-prepend">
                                     <span class="input-group-text"
                                           id="description">Описание</span>
-                                        </div>
-                                        <textarea class="form-control"
-                                                  aria-label="With textarea"></textarea>
                                     </div>
+                                    <textarea class="form-control"
+                                              aria-label="With textarea"></textarea>
                                 </div>
+                            </div>
+                        {% else %}
+                            <div class="col-6">
+                                <div class="input-group input-group-sm">
+                                    <div class="input-group-prepend">
+                                    <span class="input-group-text"
+                                          id="obl">ЖК</span>
+                                    </div>
+                                    <input type="text" class="form-control"
+                                           aria-describedby="obl"
+                                           placeholder="{{ object.jk_id|default_if_none:"" }}"
+                                    >
+                                </div>
+                                <div class="input-group input-group-sm">
+                                    <div class="input-group-prepend">
+                                    <span class="input-group-text"
+                                          id="obl">Название ЖК</span>
+                                    </div>
+                                    <input type="text" class="form-control"
+                                           aria-describedby="obl"
+                                           placeholder="{{ object.jk_name|default_if_none:"" }}"
+                                    >
+                                </div>
+                                <div class="input-group input-group-sm">
+                                    <div class="input-group-prepend">
+                                    <span class="input-group-text"
+                                          id="obl">Коорд</span>
+                                    </div>
+                                    <input type="text" class="form-control"
+                                           aria-describedby="obl"
+                                           placeholder="{{ object.geocode|default_if_none:"" }}"
+                                    >
+                                </div>
+                                <div class="input-group input-group-sm">
+                                    <div class="input-group-prepend">
+                                    <span class="input-group-text"
+                                          id="obl">Расположение</span>
+                                    </div>
+                                    <input type="text" class="form-control"
+                                           aria-describedby="obl"
+                                           placeholder="{{ object.pos_enum|default_if_none:"" }}"
+                                    >
+                                </div>
+                                <div class="input-group input-group-sm">
+                                    <div class="input-group-prepend">
+                                    <span class="input-group-text"
+                                          id="obl">Область</span>
+                                    </div>
+                                    <input type="text" class="form-control"
+                                           aria-describedby="obl"
+                                           placeholder="{{ object.obl_auto|default_if_none:"" }}"
+                                    >
+                                </div>
+                                <div class="input-group input-group-sm">
+                                    <div class="input-group-prepend">
+                                    <span class="input-group-text"
+                                          id="obl">Район области</span>
+                                    </div>
+                                    <input type="text" class="form-control"
+                                           aria-describedby="obl"
+                                           placeholder="{{ object.obl_rayon_auto|default_if_none:"" }}"
+                                    >
+                                </div>
+                                <div class="input-group input-group-sm">
+                                    <div class="input-group-prepend">
+                                    <span class="input-group-text"
+                                          id="obl">Нас. пункт</span>
+                                    </div>
+                                    <input type="text" class="form-control"
+                                           aria-describedby="obl"
+                                           placeholder="{{ object.np_auto|default_if_none:"" }}"
+                                    >
+                                </div>
+                                <div class="input-group input-group-sm">
+                                    <div class="input-group-prepend">
+                                    <span class="input-group-text"
+                                          id="obl">Район города</span>
+                                    </div>
+                                    <input type="text" class="form-control"
+                                           aria-describedby="obl"
+                                           placeholder="{{ object.np_rayon_auto|default_if_none:"" }}"
+                                    >
+                                </div>
+                                <div class="input-group input-group-sm">
+                                    <div class="input-group-prepend">
+                                    <span class="input-group-text"
+                                          id="obl">Удалённость от города (км)</span>
+                                    </div>
+                                    <input type="text" class="form-control"
+                                           aria-describedby="obl"
+                                           placeholder="{{ object.from_mkad|default_if_none:"" }}"
+                                    >
+                                </div>
+
+                                <div class="input-group input-group-sm">
+                                    <div class="input-group-prepend">
+                                    <span class="input-group-text"
+                                          id="obl">Улица</span>
+                                    </div>
+                                    <input type="text" class="form-control"
+                                           aria-describedby="obl"
+                                           placeholder="{{ object.street|default_if_none:"" }}"
+                                    >
+                                </div>
+                                <div class="input-group input-group-sm">
+                                    <div class="input-group-prepend">
+                                    <span class="input-group-text"
+                                          id="obl">Дом №</span>
+                                    </div>
+                                    <input type="text" class="form-control"
+                                           aria-describedby="obl"
+                                           placeholder="{{ object.dom|default_if_none:"" }}"
+                                    >
+                                </div>
+                                <div class="input-group input-group-sm">
+                                    <div class="input-group-prepend">
+                                    <span class="input-group-text"
+                                          id="obl">Корп.</span>
+                                    </div>
+                                    <input type="text" class="form-control"
+                                           aria-describedby="obl"
+                                           placeholder="{{ object.korp|default_if_none:"" }}"
+                                    >
+                                </div>
+                                <div class="input-group input-group-sm">
+                                    <div class="input-group-prepend">
+                                    <span class="input-group-text"
+                                          id="obl">Кв.</span>
+                                    </div>
+                                    <input type="text" class="form-control"
+                                           aria-describedby="obl"
+                                           placeholder="{{ object.kv|default_if_none:"" }}"
+                                    >
+                                </div>
+                                <div class="input-group input-group-sm">
+                                    <div class="input-group-prepend">
+                                    <span class="input-group-text"
+                                          id="obl">Этаж</span>
+                                    </div>
+                                    <input type="text" class="form-control"
+                                           aria-describedby="obl"
+                                           placeholder="{{ object.floor|default_if_none:"" }}"
+                                    >
+                                </div>
+                                <div class="input-group input-group-sm">
+                                    <div class="input-group-prepend">
+                                    <span class="input-group-text"
+                                          id="obl">Этажность</span>
+                                    </div>
+                                    <input type="text" class="form-control"
+                                           aria-describedby="obl"
+                                           placeholder="{{ object.floors|default_if_none:"" }}"
+                                    >
+                                </div>
+
+                            </div>
+                        {% endif %}
+                    </div>
+                </div>
+                {% if object.client_enum != "Купить" %}
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-6">
+
+                                <br>
+                                <div><b>Параметры</b></div>
+
+                                {% if object.realty_enum == "Дом" %}
+
+                                    <div class="input-group input-group-sm">
+                                        <div class="input-group-prepend">
+                                <span class="input-group-text"
+                                      id="sqr">Уровней</span>
+                                        </div>
+                                        <input type="text" class="form-control"
+                                               aria-describedby="sqr"
+                                               placeholder="{{ object.floor|default_if_none:"" }} сот">
+
+                                    </div>
+                                    <div class="input-group input-group-sm">
+                                        <div class="input-group-prepend">
+                                <span class="input-group-text"
+                                      id="sqr">Материал стен</span>
+                                        </div>
+                                        <input type="text" class="form-control"
+                                               aria-describedby="sqr"
+                                               placeholder="{{ object.param3|default_if_none:"" }} ">
+
+                                    </div>
+                                    <div class="input-group input-group-sm">
+                                        <div class="input-group-prepend">
+                                <span class="input-group-text"
+                                      id="sqr">Количество спален</span>
+                                        </div>
+                                        <input type="text" class="form-control"
+                                               aria-describedby="sqr"
+                                               placeholder="{{ object.param7|default_if_none:"" }} ">
+
+                                    </div>
+                                    <div class="input-group input-group-sm">
+                                        <div class="input-group-prepend">
+                                <span class="input-group-text"
+                                      id="sqr">Расположение санузла</span>
+                                        </div>
+                                        <input type="text" class="form-control"
+                                               aria-describedby="sqr"
+                                               placeholder="">
+
+                                    </div>
+                                    <div class="input-group input-group-sm">
+                                        <div class="input-group-prepend">
+                                <span class="input-group-text"
+                                      id="sqr">Отопление</span>
+                                        </div>
+                                        <input type="text" class="form-control"
+                                               aria-describedby="sqr"
+                                               placeholder="{{ object.param13|default_if_none:"" }} ">
+
+                                    </div>
+                                    <div class="input-group input-group-sm">
+                                        <div class="input-group-prepend">
+                                <span class="input-group-text"
+                                      id="sqr">Статус земли</span>
+                                        </div>
+                                        <input type="text" class="form-control"
+                                               aria-describedby="sqr"
+                                               placeholder="{{ object.param9|default_if_none:"" }} ">
+
+                                    </div>
+                                    <div class="input-group input-group-sm">
+                                        <div class="input-group-prepend">
+                                <span class="input-group-text"
+                                      id="sqr">Кадастровый номер</span>
+                                        </div>
+                                        <input type="text" class="form-control"
+                                               aria-describedby="sqr"
+                                               placeholder="{{ object.kadastr|default_if_none:"" }} ">
+
+                                    </div>
+
+                                {% elif object.realty_enum == "Квартира" %}
+
+                                    <div class="input-group input-group-sm">
+                                        <div class="input-group-prepend">
+                                <span class="input-group-text"
+                                      id="sqr">Тип квартиры</span>
+                                        </div>
+                                        <input type="text" class="form-control"
+                                               aria-describedby="sqr"
+                                               placeholder="{{ object.param11|default_if_none:"" }} ">
+
+                                    </div>
+                                    <div class="input-group input-group-sm">
+                                        <div class="input-group-prepend">
+                                <span class="input-group-text"
+                                      id="sqr">Материал стен</span>
+                                        </div>
+                                        <input type="text" class="form-control"
+                                               aria-describedby="sqr"
+                                               placeholder="{{ object.param3|default_if_none:"" }} ">
+
+                                    </div>
+                                    <div class="input-group input-group-sm">
+                                        <div class="input-group-prepend">
+                                <span class="input-group-text"
+                                      id="sqr">Серия дома</span>
+                                        </div>
+                                        <input type="text" class="form-control"
+                                               aria-describedby="sqr"
+                                               placeholder="">
+
+                                    </div>
+                                    <div class="input-group input-group-sm">
+                                        <div class="input-group-prepend">
+                                <span class="input-group-text"
+                                      id="sqr">Высота потолков</span>
+                                        </div>
+                                        <input type="text" class="form-control"
+                                               aria-describedby="sqr"
+                                               placeholder="{{ object.param12|default_if_none:"" }} ">
+
+                                    </div>
+                                    <div class="input-group input-group-sm">
+                                        <div class="input-group-prepend">
+                                <span class="input-group-text"
+                                      id="sqr">Год постойки</span>
+                                        </div>
+                                        <input type="text" class="form-control"
+                                               aria-describedby="sqr"
+                                               placeholder="{{ object.param15|default_if_none:"" }} ">
+
+                                    </div>
+                                    <div class="input-group input-group-sm">
+                                        <div class="input-group-prepend">
+                                <span class="input-group-text"
+                                      id="sqr">Парковка</span>
+                                        </div>
+                                        <input type="text" class="form-control"
+                                               aria-describedby="sqr"
+                                               placeholder="{{ object.param30|default_if_none:"" }} ">
+
+                                    </div>
+
+                                    <div class="input-group input-group-sm">
+                                        <div class="input-group-prepend">
+                                <span class="input-group-text"
+                                      id="sqr">Ремонт</span>
+                                        </div>
+                                        <input type="text" class="form-control"
+                                               aria-describedby="sqr"
+                                               placeholder="{{ object.param6|default_if_none:"" }} ">
+
+                                    </div>
+                                    <div class="input-group input-group-sm">
+                                        <div class="input-group-prepend">
+                                <span class="input-group-text"
+                                      id="sqr">Окна</span>
+                                        </div>
+                                        <input type="text" class="form-control"
+                                               aria-describedby="sqr"
+                                               placeholder="{{ object.param9|default_if_none:"" }} ">
+
+                                    </div>
+                                    <div class="input-group input-group-sm">
+                                        <div class="input-group-prepend">
+                                <span class="input-group-text"
+                                      id="sqr">Вид из окна</span>
+                                        </div>
+                                        <input type="text" class="form-control"
+                                               aria-describedby="sqr"
+                                               placeholder="{{ object.param5|default_if_none:"" }}">
+
+                                    </div>
+                                    <div class="input-group input-group-sm">
+                                        <div class="input-group-prepend">
+                                <span class="input-group-text"
+                                      id="sqr">С/У</span>
+                                        </div>
+                                        <input type="text" class="form-control"
+                                               aria-describedby="sqr"
+                                               placeholder="{{ object.param8|default_if_none:"" }} ">
+
+                                    </div>
+                                    <div class="input-group input-group-sm">
+                                        <div class="input-group-prepend">
+                                <span class="input-group-text"
+                                      id="sqr">Л/Б</span>
+                                        </div>
+                                        <input type="text" class="form-control"
+                                               aria-describedby="sqr"
+                                               placeholder="{{ object.param9|default_if_none:"" }} ">
+
+                                    </div>
+                                    <div class="input-group input-group-sm">
+                                        <div class="input-group-prepend">
+                                <span class="input-group-text"
+                                      id="sqr">Пол</span>
+                                        </div>
+                                        <input type="text" class="form-control"
+                                               aria-describedby="sqr"
+                                               placeholder="{{ object.param13|default_if_none:"" }} ">
+
+                                    </div>
+
+                                    <div class="input-group input-group-sm">
+                                        <div class="input-group-prepend">
+                                <span class="input-group-text"
+                                      id="sqr">Двери</span>
+                                        </div>
+                                        <input type="text" class="form-control"
+                                               aria-describedby="sqr"
+                                               placeholder="{{ object.param17|default_if_none:"" }} ">
+
+                                    </div>
+                                    <div class="input-group input-group-sm">
+                                        <div class="input-group-prepend">
+                                <span class="input-group-text"
+                                      id="sqr">Батарея</span>
+                                        </div>
+                                        <input type="text" class="form-control"
+                                               aria-describedby="sqr"
+                                               placeholder="{{ object.param18|default_if_none:"" }} ">
+
+                                    </div>
+                                    <div class="input-group input-group-sm">
+                                        <div class="input-group-prepend">
+                                <span class="input-group-text"
+                                      id="sqr">Вид комнат</span>
+                                        </div>
+                                        <input type="text" class="form-control"
+                                               aria-describedby="sqr"
+                                               placeholder="{{ object.param21|default_if_none:"" }}">
+
+                                    </div>
+                                    <div class="input-group input-group-sm">
+                                        <div class="input-group-prepend">
+                                <span class="input-group-text"
+                                      id="sqr">Планировка</span>
+                                        </div>
+                                        <input type="text" class="form-control"
+                                               aria-describedby="sqr"
+                                               placeholder="{{ object.param20|default_if_none:"" }} ">
+
+                                    </div>
+                                    <div class="input-group input-group-sm">
+                                        <div class="input-group-prepend">
+                                <span class="input-group-text"
+                                      id="sqr">Перепланировка</span>
+                                        </div>
+                                        <input type="text" class="form-control"
+                                               aria-describedby="sqr"
+                                               placeholder="{{ object.param19|default_if_none:"" }} ">
+
+                                    </div>
+                                    <div class="input-group input-group-sm">
+                                        <div class="input-group-prepend">
+                                <span class="input-group-text"
+                                      id="sqr">Кадастровый номер</span>
+                                        </div>
+                                        <input type="text" class="form-control"
+                                               aria-describedby="sqr"
+                                               placeholder="{{ object.kadastr|default_if_none:"" }} ">
+
+                                    </div>
+
+                                {% elif object.realty_enum == 'Земельный участок' %}
+
+                                    <div class="input-group input-group-sm">
+                                        <div class="input-group-prepend">
+                                <span class="input-group-text"
+                                      id="sqr">Категория земель</span>
+                                        </div>
+                                        <input type="text" class="form-control"
+                                               aria-describedby="sqr"
+                                               placeholder="{{ object.param13|default_if_none:"" }} ">
+
+                                    </div>
+
+                                    <div class="input-group input-group-sm">
+                                        <div class="input-group-prepend">
+                                <span class="input-group-text"
+                                      id="sqr">Вид использования</span>
+                                        </div>
+                                        <input type="text" class="form-control"
+                                               aria-describedby="sqr"
+                                               placeholder="{{ object.param17|default_if_none:"" }} ">
+
+                                    </div>
+                                    <div class="input-group input-group-sm">
+                                        <div class="input-group-prepend">
+                                <span class="input-group-text"
+                                      id="sqr">Фактическое использование</span>
+                                        </div>
+                                        <input type="text" class="form-control"
+                                               aria-describedby="sqr"
+                                               placeholder="{{ object.param18|default_if_none:"" }} ">
+
+                                    </div>
+                                    <div class="input-group input-group-sm">
+                                        <div class="input-group-prepend">
+                                <span class="input-group-text"
+                                      id="sqr">Форма участка</span>
+                                        </div>
+                                        <input type="text" class="form-control"
+                                               aria-describedby="sqr"
+                                               placeholder="{{ object.param21|default_if_none:"" }}">
+
+                                    </div>
+                                    <div class="input-group input-group-sm">
+                                        <div class="input-group-prepend">
+                                <span class="input-group-text"
+                                      id="sqr">Ближайший водоем</span>
+                                        </div>
+                                        <input type="text" class="form-control"
+                                               aria-describedby="sqr"
+                                               placeholder="{{ object.param20|default_if_none:"" }} ">
+
+                                    </div>
+                                    <div class="input-group input-group-sm">
+                                        <div class="input-group-prepend">
+                                <span class="input-group-text"
+                                      id="sqr">Подъезд</span>
+                                        </div>
+                                        <input type="text" class="form-control"
+                                               aria-describedby="sqr"
+                                               placeholder="{{ object.param19|default_if_none:"" }} ">
+
+                                    </div>
+                                    <div class="input-group input-group-sm">
+                                        <div class="input-group-prepend">
+                                <span class="input-group-text"
+                                      id="sqr">Кадастровый номер</span>
+                                        </div>
+                                        <input type="text" class="form-control"
+                                               aria-describedby="sqr"
+                                               placeholder="{{ object.kadastr|default_if_none:"" }} ">
+
+                                    </div>
+
+
+
+
+                                {% endif %}
+
+                            </div>
+                            <div class="col-6">
+                                {% if object.realty_enum == 'Квартира' %}
+                                    <br>
+                                    <div><b>Дополнительно</b></div>
+
+                                    <div class="row">
+                                        <div class="col-6">
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox"
+                                                       value="" id="flexCheckChecked"
+                                                        {% if object.ugl_check is not none %}
+                                                       checked
+                                                        {% endif %}
+                                                >
+                                                <label class="form-check-label"
+                                                       for="flexCheckChecked">
+                                                    Угловая квартира
+                                                </label>
+                                            </div>
+
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox"
+                                                       value="" id="flexCheckChecked"
+                                                        {% if object.check5 is not none %}
+                                                       checked
+                                                        {% endif %}
+                                                >
+                                                <label class="form-check-label"
+                                                       for="flexCheckChecked">
+                                                    Спутниковое/Кабельное ТВ
+                                                </label>
+                                            </div>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox"
+                                                       value="" id="flexCheckChecked"
+                                                        {% if object.check10 is not none %}
+                                                       checked
+                                                        {% endif %}
+                                                >
+                                                <label class="form-check-label"
+                                                       for="flexCheckChecked">
+                                                    Охраняемая территория
+                                                </label>
+                                            </div>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox"
+                                                       value="" id="flexCheckChecked"
+                                                        {% if object.check13 is not none %}
+                                                       checked
+                                                        {% endif %}
+                                                >
+                                                <label class="form-check-label"
+                                                       for="flexCheckChecked">
+                                                    Огороженная территория
+                                                </label>
+                                            </div>
+
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox"
+                                                       value="" id="flexCheckChecked"
+                                                        {% if object.check11 is not none %}
+                                                       checked
+                                                        {% endif %}
+                                                >
+                                                <label class="form-check-label"
+                                                       for="flexCheckChecked">
+                                                    Мусоропровод
+                                                </label>
+                                            </div>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox"
+                                                       value="" id="flexCheckChecked"
+                                                        {% if object.check12 is not none %}
+                                                       checked
+                                                        {% endif %}
+                                                >
+                                                <label class="form-check-label"
+                                                       for="flexCheckChecked">
+                                                    Газовая плита
+                                                </label>
+                                            </div>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox"
+                                                       value="" id="flexCheckChecked"
+                                                        {% if object.check25 is not none %}
+                                                       checked
+                                                        {% endif %}
+                                                >
+                                                <label class="form-check-label"
+                                                       for="flexCheckChecked">
+                                                    Газовая колонка
+                                                </label>
+                                            </div>
+
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox"
+                                                       value="" id="flexCheckChecked"
+                                                        {% if object.check24 is not none %}
+                                                       checked
+                                                        {% endif %}
+                                                >
+                                                <label class="form-check-label"
+                                                       for="flexCheckChecked">
+                                                    Автономное отопление
+                                                </label>
+                                            </div>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox"
+                                                       value="" id="flexCheckChecked"
+                                                        {% if object.check36 is not none %}
+                                                       checked
+                                                        {% endif %}
+                                                >
+                                                <label class="form-check-label"
+                                                       for="flexCheckChecked">
+                                                    Теплый пол
+                                                </label>
+                                            </div>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox"
+                                                       value="" id="flexCheckChecked"
+                                                        {% if object.check37 is not none %}
+                                                       checked
+                                                        {% endif %}
+                                                >
+                                                <label class="form-check-label"
+                                                       for="flexCheckChecked">
+                                                    Гардеробная
+                                                </label>
+                                            </div>
+
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox"
+                                                       value="" id="flexCheckChecked"
+                                                        {% if object.check38 is not none %}
+                                                       checked
+                                                        {% endif %}
+                                                >
+                                                <label class="form-check-label"
+                                                       for="flexCheckChecked">
+                                                    Детская площадка
+                                                </label>
+                                            </div>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox"
+                                                       value="" id="flexCheckChecked"
+                                                        {% if object.check6 is not none %}
+                                                       checked
+                                                        {% endif %}
+                                                >
+                                                <label class="form-check-label"
+                                                       for="flexCheckChecked">
+                                                    Доступно людям с физ. недостатками
+                                                </label>
+                                            </div>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox"
+                                                       value="" id="flexCheckChecked"
+                                                        {% if object.check39 is not none %}
+                                                       checked
+                                                        {% endif %}
+                                                >
+                                                <label class="form-check-label"
+                                                       for="flexCheckChecked">
+                                                    Материнский капитал
+                                                </label>
+                                            </div>
+
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox"
+                                                       value="" id="flexCheckChecked"
+                                                        {% if object.check40 is not none %}
+                                                       checked
+                                                        {% endif %}
+                                                >
+                                                <label class="form-check-label"
+                                                       for="flexCheckChecked">
+                                                    Военная ипотека
+                                                </label>
+                                            </div>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox"
+                                                       value="" id="flexCheckChecked"
+                                                        {% if object.check41 is not none %}
+                                                       checked
+                                                        {% endif %}
+                                                >
+                                                <label class="form-check-label"
+                                                       for="flexCheckChecked">
+                                                    ФЗ 214
+                                                </label>
+                                            </div>
+
+
+                                        </div>
+                                        <div class="col-6">
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox"
+                                                       value="" id="flexCheckChecked"
+                                                        {% if object.check3 is not none %}
+                                                       checked
+                                                        {% endif %}
+                                                >
+                                                <label class="form-check-label"
+                                                       for="flexCheckChecked">
+                                                    Интернет
+                                                </label>
+                                            </div>
+
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox"
+                                                       value="" id="flexCheckChecked"
+                                                        {% if object.check4 is not none %}
+                                                       checked
+                                                        {% endif %}
+                                                >
+                                                <label class="form-check-label"
+                                                       for="flexCheckChecked">
+                                                    Телефон
+                                                </label>
+                                            </div>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox"
+                                                       value="" id="flexCheckChecked"
+                                                        {% if object.check7 is not none %}
+                                                       checked
+                                                        {% endif %}
+                                                >
+                                                <label class="form-check-label"
+                                                       for="flexCheckChecked">
+                                                    Лифт пассажирский
+                                                </label>
+                                            </div>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox"
+                                                       value="" id="flexCheckChecked"
+                                                        {% if object.check8 is not none %}
+                                                       checked
+                                                        {% endif %}
+                                                >
+                                                <label class="form-check-label"
+                                                       for="flexCheckChecked">
+                                                    Лифт грузовой
+                                                </label>
+                                            </div>
+
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox"
+                                                       value="" id="flexCheckChecked"
+                                                        {% if object.check9 is not none %}
+                                                       checked
+                                                        {% endif %}
+                                                >
+                                                <label class="form-check-label"
+                                                       for="flexCheckChecked">
+                                                    Вахтер
+                                                </label>
+                                            </div>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox"
+                                                       value="" id="flexCheckChecked"
+                                                        {% if object.check14 is not none %}
+                                                       checked
+                                                        {% endif %}
+                                                >
+                                                <label class="form-check-label"
+                                                       for="flexCheckChecked">
+                                                    Стиральная машина
+                                                </label>
+                                            </div>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox"
+                                                       value="" id="flexCheckChecked"
+                                                        {% if object.check15 is not none %}
+                                                       checked
+                                                        {% endif %}
+                                                >
+                                                <label class="form-check-label"
+                                                       for="flexCheckChecked">
+                                                    Мебель
+                                                </label>
+                                            </div>
+
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox"
+                                                       value="" id="flexCheckChecked"
+                                                        {% if object.check26 is not none %}
+                                                       checked
+                                                        {% endif %}
+                                                >
+                                                <label class="form-check-label"
+                                                       for="flexCheckChecked">
+                                                    Мебель на кухне
+                                                </label>
+                                            </div>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox"
+                                                       value="" id="flexCheckChecked"
+                                                        {% if object.check27 is not none %}
+                                                       checked
+                                                        {% endif %}
+                                                >
+                                                <label class="form-check-label"
+                                                       for="flexCheckChecked">
+                                                    Телевизор
+                                                </label>
+                                            </div>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox"
+                                                       value="" id="flexCheckChecked"
+                                                        {% if object.check28 is not none %}
+                                                       checked
+                                                        {% endif %}
+                                                >
+                                                <label class="form-check-label"
+                                                       for="flexCheckChecked">
+                                                    Посудомоечная машина
+                                                </label>
+                                            </div>
+
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox"
+                                                       value="" id="flexCheckChecked"
+                                                        {% if object.check16 is not none %}
+                                                       checked
+                                                        {% endif %}
+                                                >
+                                                <label class="form-check-label"
+                                                       for="flexCheckChecked">
+                                                    Холодильник
+                                                </label>
+                                            </div>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox"
+                                                       value="" id="flexCheckChecked"
+                                                        {% if object.check35 is not none %}
+                                                       checked
+                                                        {% endif %}
+                                                >
+                                                <label class="form-check-label"
+                                                       for="flexCheckChecked">
+                                                    Пандус
+                                                </label>
+                                            </div>
+
+
+                                        </div>
+                                    </div>
+                                {% elif object.realty_enum != "Квартира" %}
+                                    <br>
+                                    <div><b>Коммуникации</b></div>
+
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="checkbox"
+                                               id="inlineCheckbox2" value="option2"
+                                                {% if object.check1 is not none %}
+                                               checked
+                                                {% endif %}
+                                        >
+
+                                        <label class="form-check-label"
+                                               for="inlineCheckbox2">Электричество</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="checkbox"
+                                               id="inlineCheckbox2" value="option2"
+                                                {% if object.check2 is not none %}
+                                               checked
+                                                {% endif %}
+                                        >
+
+                                        <label class="form-check-label"
+                                               for="inlineCheckbox2">Газ</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="checkbox"
+                                               id="inlineCheckbox2" value="option2"
+                                                {% if object.check3 is not none %}
+                                               checked
+                                                {% endif %}
+                                        >
+
+                                        <label class="form-check-label"
+                                               for="inlineCheckbox2">Водопровод</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="checkbox"
+                                               id="inlineCheckbox2" value="option2"
+                                                {% if object.check4 is not none %}
+                                               checked
+                                                {% endif %}
+                                        >
+
+                                        <label class="form-check-label"
+                                               for="inlineCheckbox2">Канализация</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="checkbox"
+                                               id="inlineCheckbox2" value="option2"
+                                                {% if object.check5 is not none %}
+                                               checked
+                                                {% endif %}
+                                        >
+
+                                        <label class="form-check-label"
+                                               for="inlineCheckbox2">Автономная скважина</label>
+                                    </div>
+                                    <br>
+
+                                    {% if object.realty_enum == "Дом" %}
+
+                                        <div><b>Дополнительно</b></div>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="checkbox"
+                                                   id="inlineCheckbox2" value="option2"
+                                                    {% if object.check7 is not none %}
+                                                   checked
+                                                    {% endif %}
+                                            >
+
+                                            <label class="form-check-label"
+                                                   for="inlineCheckbox2">Баня</label>
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="checkbox"
+                                                   id="inlineCheckbox2" value="option2"
+                                                    {% if object.check8 is not none %}
+                                                   checked
+                                                    {% endif %}
+                                            >
+
+                                            <label class="form-check-label"
+                                                   for="inlineCheckbox2">Гараж</label>
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="checkbox"
+                                                   id="inlineCheckbox2" value="option2"
+                                                    {% if object.check9 is not none %}
+                                                   checked
+                                                    {% endif %}
+                                            >
+
+                                            <label class="form-check-label"
+                                                   for="inlineCheckbox2">Бассейн</label>
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="checkbox"
+                                                   id="inlineCheckbox2" value="option2"
+                                                    {% if object.check_10 is not none %}
+                                                   checked
+                                                    {% endif %}
+                                            >
+
+                                            <label class="form-check-label"
+                                                   for="inlineCheckbox2">Охраняемая территория</label>
+                                        </div>
+
+
+                                    {% endif %}
+                                {% endif %}
+
+
                             </div>
 
                         </div>
+                        <div class="container-fluid">
+                            <div class="row">
+                                <div class="col-12">
+                                    <br>
+                                    <div><b>Собственники</b></div>
+
+                                    <div class="row">
+                                        <div class="col-6">
+                                            <div class="input-group input-group-sm">
+                                                <div class="input-group-prepend">
+                                    <span class="input-group-text"
+                                          id="last_name">Кол-во собственников</span>
+                                                </div>
+                                                <input type="text" class="form-control"
+                                                       aria-describedby="last_name"
+                                                       placeholder="{{ object.param22|default_if_none:"" }}"
+                                                >
+                                            </div>
+                                            <div class="input-group input-group-sm">
+                                                <div class="input-group-prepend">
+                                    <span class="input-group-text"
+                                          id="last_name">из них н.л.</span>
+                                                </div>
+                                                <input type="text" class="form-control"
+                                                       aria-describedby="last_name"
+                                                       placeholder="{{ object.param23|default_if_none:"" }}"
+                                                >
+                                            </div>
+                                            <div class="input-group input-group-sm">
+                                                <div class="input-group-prepend">
+                                    <span class="input-group-text"
+                                          id="last_name">Опека пройдена</span>
+                                                </div>
+                                                <input type="text" class="form-control"
+                                                       aria-describedby="last_name"
+                                                       placeholder="{{ object.param24|default_if_none:"" }}"
+                                                >
+                                            </div>
+                                            <div class="input-group input-group-sm">
+                                                <div class="input-group-prepend">
+                                    <span class="input-group-text"
+                                          id="last_name">Правоуст. документ</span>
+                                                </div>
+                                                <input type="text" class="form-control"
+                                                       aria-describedby="last_name"
+                                                       placeholder="{{ object.param29|default_if_none:"" }}"
+                                                >
+                                            </div>
+                                        </div>
+                                        <div class="col-6">
+                                            <div class="input-group input-group-sm">
+                                                <div class="input-group-prepend">
+                                    <span class="input-group-text"
+                                          id="last_name">из них н.л.</span>
+                                                </div>
+                                                <input type="text" class="form-control"
+                                                       aria-describedby="last_name"
+                                                       placeholder="{{ object.param25|default_if_none:"" }}"
+                                                >
+                                            </div>
+                                            <div class="input-group input-group-sm">
+                                                <div class="input-group-prepend">
+                                    <span class="input-group-text"
+                                          id="last_name">Фамилия</span>
+                                                </div>
+                                                <input type="text" class="form-control"
+                                                       aria-describedby="last_name"
+                                                       placeholder="{{ object.param26|default_if_none:"" }}"
+                                                >
+                                            </div>
+                                            <div class="input-group input-group-sm">
+                                                <div class="input-group-prepend">
+                                    <span class="input-group-text"
+                                          id="last_name">Выписка возможна</span>
+                                                </div>
+                                                <input type="text" class="form-control"
+                                                       aria-describedby="last_name"
+                                                       placeholder="{{ object.param27|default_if_none:"" }}"
+                                                >
+                                            </div>
+                                            <div class="input-group input-group-sm">
+                                                <div class="input-group-prepend">
+                                    <span class="input-group-text"
+                                          id="last_name">В квартире остаётся</span>
+                                                </div>
+                                                <input type="text" class="form-control"
+                                                       aria-describedby="last_name"
+                                                       placeholder="{{ object.param28|default_if_none:"" }}"
+                                                >
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                </div>
+
+                            </div>
+
+
+                        </div>
+                        <div class="container-fluid">
+                            <div class="row">
+                                <div class="col-12">
+                                    <br>
+                                    <div><b>Описание</b></div>
+                                    <div class="input-group input-group-sm">
+
+                                <textarea class="form-control"
+                                          aria-label="With textarea"
+                                          placeholder="{{ object.description|default_if_none:"" }}"></textarea>
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+
+                        </div>
                     </div>
-                </div>
-                <div class="col-2">
-                    <table class="table table-striped">
-                        <tbody class="text-left">
-                        {% for comment in comments %}
+                {% endif %}
+            </div>
+            <div class="col-2">
+                <table class="table table-striped">
+                    <tbody class="text-left">
+                    {% for comment in comments %}
                         <tr>
                             <td>
                                 <b>{{ comment.date|date:"d.m.Y H:i" }}</b>
                                 <div><b>{{ comment.create_agent|default_if_none:"" }}</b></div>
                                 <div>{{ comment.name }}</div>
                                 {% if comment.show_enum == "Показ" %}
-                                <div>Заявка: {{ comment.comment_object }}</div>
+                                    <div>Заявка: {{ comment.comment_object }}</div>
                                 {% endif %}
                                 {% if comment.result is not none %}
-                                <div>Результат: {{ comment.result }}</div>
+                                    <div>Результат: {{ comment.result }}</div>
                                 {% endif %}
                             </td>
                         </tr>
-                        {% endfor %}
+                    {% empty %}
+                        <br>
+                        <br>
+                        <div>История работы отсутствует</div>
+                    {% endfor %}
 
-                        </tbody>
-                    </table>
-                </div>
+                    </tbody>
+                </table>
             </div>
+
         </div>
+    </div>
+
+
 {% endblock %}
