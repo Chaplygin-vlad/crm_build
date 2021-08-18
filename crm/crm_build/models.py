@@ -554,6 +554,7 @@ class RlShow(models.Model):
         managed = False
         db_table = 'rl_show'
         app_label = 'crm_build'
+        ordering = ['-date']
 
 
 class SysComment(models.Model):

@@ -5,9 +5,10 @@ from django.db.models import (
     ExpressionWrapper,
     IntegerField
 )
+from django.shortcuts import render
 from django.views.generic import ListView
 
-from crm_build.models import RlClient, SysUser, MainImage, SysStat
+from crm_build.models import RlClient, SysUser, MainImage, SysStat, RlShow
 from crm_build.utils import change_stat_enum
 
 
@@ -39,7 +40,7 @@ class AllSaleObjectListView(ListView):
     """Выводит все объекты недвижимости"""
     model = RlClient
     context_object_name = 'objects'
-    template_name = 'all_sale_objects.html'
+    template_name = 'all_sell_objects.html'
     paginate_by = 10
     expression = F('cost') / F('area1')
     wrapped_expression = ExpressionWrapper(expression, IntegerField())
@@ -93,6 +94,72 @@ class AllBuyersListView(ListView):
         )
 
         return queryset
+
+
+class BuyerDetail(ListView):
+    """Карточка покупателя (покупка)"""
+    model = RlClient
+    context_object_name = 'object'
+    template_name = 'object.html'
+
+    def get_queryset(self):
+        queryset = RlClient.objects.filter(row_id=self.kwargs.get('row_id')).annotate(
+            square_price=ExpressionWrapper(
+                F('cost') / F('area1'),
+                output_field=IntegerField()
+            ),
+            hundred_square_price=ExpressionWrapper(
+                F('cost') / F('area2'),
+                output_field=IntegerField()
+            ),
+            create_agent=Subquery(
+                SysUser.objects.filter(
+                    row_id=OuterRef("sys_user_create")).values("name")
+            ),
+            agent=Subquery(
+                SysUser.objects.filter(
+                    row_id=OuterRef("user_id")).values("name")
+            ),
+            name_realty_object=Subquery(
+                RlClient.objects.filter(
+                    row_id=OuterRef("realty_id")).values("name")
+
+            ),
+            lot_realty_object=Subquery(
+                RlClient.objects.filter(
+                    row_id=OuterRef("realty_id")).values("lot")
+
+            ),
+            name_alt_object=Subquery(
+                RlClient.objects.filter(
+                    row_id=OuterRef("alt_realty_id")).values("name")
+
+            ),
+            lot_alt_object=Subquery(
+                RlClient.objects.filter(
+                    row_id=OuterRef("alt_realty_id")).values("lot")
+
+            )
+
+        )
+
+        return queryset[0]
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['comments'] = RlShow.objects.filter(realty_id=context['object'].row_id).annotate(
+            create_agent=Subquery(
+                SysUser.objects.filter(
+                    row_id=OuterRef("user_id")).values("name")
+            ),
+            comment_object=Subquery(
+                RlClient.objects.filter(
+                    row_id=OuterRef("client_id")).values("name")
+            )
+
+        )
+
+        return context
 
 
 class PhotosView(ListView):
