@@ -1,97 +1,99 @@
 {% extends 'base.html' %}
 {% block content %}
-    <div class="text-center mb-2"><b>Название карточки</b>
-        <div class="container border-right border-left">
-            <div class="row">
-                <div class="col-12">
-                    <ul class="nav nav-tabs nav-fill mt-2">
-                        <li class="nav-item">
-                            <a class="nav-link disabled"
-                               href="#">Информация</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link active" href="#">Фото</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link disabled" href="#">Дубликаты</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link disabled" href="#">Действия</a>
-                        </li>
-                        <li class="m-2 mr-2"><p>История работы</p></li>
-                    </ul>
-                </div>
+    <div class="text-center mb-2"><b>{{ name }}</b></div>
+    <div class="container border-right border-left">
+        <div class="row">
+            <div class="col-12">
+
+                <ul class="nav nav-tabs nav-fill mt-2">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'object' obj_id %}">Информация</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#">Фото</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link"
+                           href="{% url 'duplicates' obj_id %}">Дубликаты</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'actions' obj_id %}">Действия</a>
+                    </li>
+                    <li class="mr-2"><p>История работы</p></li>
+                </ul>
+                </ul>
             </div>
         </div>
+    </div>
 
-        <div class="container border-right border-left">
-            <div class="row">
-                <div class="col-10">
-                    <div class="row  m-3" style="height:auto">
+    <div class="container border-right border-left">
+        <div class="row">
+            <div class="col-10">
+                <div class="row  m-3" style="height:auto">
 
-                        {% load static %}
-                        {% for object in objects %}
-                            <div class="col-md-4">
-                                <img width="400"
-                                     class="img-fluid img-thumbnail"
-                                     data-toggle="modal"
-                                     onclick="changeCurrImg('{% static object.obj_id %}/{{ object.row_id }}.{{ object.extention }}')"
-                                     data-target="#myModal"
-                                     src="{% static object.obj_id %}/{{ object.row_id }}.{{ object.extention }}"
-                                     alt="">
+                    {% load static %}
+                    {% for object in objects %}
+                        <div class="col-md-4">
+                            <img width="400"
+                                 class="img-fluid img-thumbnail"
+                                 data-toggle="modal"
+                                 onclick="changeCurrImg('{% static object.obj_id %}/{{ object.row_id }}.{{ object.extention }}')"
+                                 data-target="#myModal"
+                                 src="{% static object.obj_id %}/{{ object.row_id }}.{{ object.extention }}"
+                                 alt="">
 
-                            </div>
-                        {% endfor %}
+                        </div>
+                    {% endfor %}
 
 
-                        <div id="myModal" class="modal fade" tabindex="-1"
-                             role="dialog">
-                            <div class="modal-dialog">
-                                <div class="modal-content">
-                                    <div class="modal-body">
-                                        <img src="" class="img-responsive"
-                                             id="modalIMG" width="100%"
-                                             height="auto">
-                                    </div>
+                    <div id="myModal" class="modal fade" tabindex="-1"
+                         role="dialog">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-body">
+                                    <img src="" class="img-responsive"
+                                         id="modalIMG" width="100%"
+                                         height="auto">
                                 </div>
                             </div>
                         </div>
-
-
                     </div>
-                </div>
-                <div class="col-2">
-                    <table class="table table-striped">
-                        <tbody class="text-center">
-                        <tr>
-                            <td>
-                                <b>05.05.1923 15:40</b>
-                                <div><b>Mark</b></div>
-                                <div><u>Комментарий</u> +++</div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <b>05.05.1923 15:40</b>
-                                <div><b>Thornton</b></div>
-                                <div><u>Комментарий</u> +++</div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <b>05.05.1923 15:40</b>
-                                <div><b>the Bird</b></div>
-                                <div><u>Комментарий</u> +++</div>
-                            </td>
-                        </tr>
-                        </tbody>
-                    </table>
+
+
                 </div>
             </div>
+            <div class="col-2">
+                <table class="table table-striped">
+                    <tbody class="text-center">
+                    <tr>
+                        <td>
+                            <b>05.05.1923 15:40</b>
+                            <div><b>Mark</b></div>
+                            <div><u>Комментарий</u> +++</div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <b>05.05.1923 15:40</b>
+                            <div><b>Thornton</b></div>
+                            <div><u>Комментарий</u> +++</div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <b>05.05.1923 15:40</b>
+                            <div><b>the Bird</b></div>
+                            <div><u>Комментарий</u> +++</div>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
-        <script>
-            function changeCurrImg(img) {
-                $('#modalIMG').attr('src', img)
-            }
-        </script>
+    </div>
+    <script>
+        function changeCurrImg(img) {
+            $('#modalIMG').attr('src', img)
+        }
+    </script>
 {% endblock %}

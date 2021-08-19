@@ -22,6 +22,8 @@
 </head>
 
 <body>
+
+</div>
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
@@ -37,18 +39,60 @@
 
                 <button class="btn btn-outline-secondary my-2 my-sm-0 mr-2"
                         type="submit">
-                    <a class="nav-link" href={% url 'all_sale' %}>Все объекты</a>
+                    <a class="nav-link" href={% url 'all_sale' %}>Все
+                        объекты</a>
 
                 </button>
             </li>
             <li class="nav-item">
                 <button class="btn btn-outline-secondary my-2 my-sm-0  mr-2"
                         type="submit">
-                     <a class="nav-link" href="{% url 'all_buyers' %}"> Хотят купить</a>
+                    <a class="nav-link" href="{% url 'all_buyers' %}"> Хотят
+                        купить</a>
                 </button>
 
             </li>
+            <li class="nav-item dropdown">
+                    <button class="btn btn-outline-success btn-lg mt-1 mr-2 dropdown-toggle"
+                            type="button" id="dropdownMenuButton"
+                            data-toggle="dropdown" aria-haspopup="true"
+                            aria-expanded="false">
+                        Статус сделки
+                    </button>
+                    <div class="dropdown-menu"
+                         aria-labelledby="dropdownMenuButton">
+                        <a class="nav-link dropdown-item" href="#">Новые, В работе, Аванс</a>
+                        <a class="nav-link dropdown-item" href="#">Все статусы...</a>
+                        <a class="nav-link dropdown-item" href="#">Новые</a>
+                        <a class="nav-link dropdown-item" href="#">В работе</a>
+                        <a class="nav-link dropdown-item" href="#">Аванс</a>
+                        <a class="nav-link dropdown-item" href="#">Отложенные</a>
+                        <a class="nav-link dropdown-item" href="#">Сделка (завершена)</a>
+                        <a class="nav-link dropdown-item" href="#">Архив (без сделки)</a>
+                        <a class="nav-link dropdown-item" href="#">Рекламные</a>
+                    </div>
+
+            </li>
+            <li class="nav-item dropdown">
+
+                    <button class="btn btn-outline-success btn-lg mt-1 mr-2 dropdown-toggle"
+                            type="button" id="dropdownMenuButton"
+                            data-toggle="dropdown" aria-haspopup="true"
+                            aria-expanded="false">
+                        Вид недвижимости
+                    </button>
+                    <div class="dropdown-menu"
+                         aria-labelledby="dropdownMenuButton">
+                        <a class="nav-link dropdown-item" href="#">Все типы недвижимости</a>
+                        <a class="nav-link dropdown-item" href="#">Квартиры</a>
+                        <a class="nav-link dropdown-item" href="#">Дома</a>
+                        <a class="nav-link dropdown-item" href="#">Земельные участки</a>
+                    </div>
+
+
+            </li>
         </ul>
+
         <form class="form-inline my-2 my-lg-0">
             <input class="form-control mr-sm-2" type="search"
                    placeholder="Поиск" aria-label="Поиск">
