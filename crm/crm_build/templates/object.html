@@ -1,17 +1,19 @@
 {% extends 'base.html' %}
 {% block content %}
+    <div class="text-center mb-2"><b>{{ object.name }}</b>
+    </div>
     <ul class="nav nav-tabs nav-fill mt-2">
         <li class="nav-item">
             <a class="nav-link active" href="#">Информация</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link disabled" href="#">Фото</a>
+            <a class="nav-link" href="{% url 'photos' object.row_id %}">Фото</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link disabled" href="#">Дубликаты</a>
+            <a class="nav-link" href="#">Дубликаты</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link disabled" href="#">Действия</a>
+            <a class="nav-link" href="{% url 'actions' object.row_id %}">Действия</a>
         </li>
         <li class="mr-2"><p>История работы</p></li>
     </ul>
@@ -19,10 +21,11 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-10">
+
+                <div class="container-fluid">
                 <div class="text mb-2">
                     <b>Контактная информация</b>
                 </div>
-                <div class="container-fluid">
                     <div class="row">
                         <div class="col-6">
                             <div class="custom-control custom-radio custom-control-inline">
@@ -330,7 +333,7 @@
                                 </div>
 
                                 {% if object.alt_realty_id is not none %}
-                                    <a href="{% url 'object' object.lot_alt_object %}">
+                                    <a href="{% url 'object' object.row_alt_object %}">
                                         <div class="text"><b>Альтернативный объект: {{ object.name_alt_object }}</b>
                                         </div>
                                     </a>
@@ -346,7 +349,7 @@
                                 </div>
 
                                 {% if object.name_realty_object is not none %}
-                                    <a href="{% url 'object' object.lot_realty_object %}">
+                                    <a href="{% url 'object' object.row_realty_object %}">
                                         <div class="input-group input-group-sm">
                                             <div class="input-group-prepend">
                                     <span class="input-group-text"

@@ -26,7 +26,7 @@
         </thead>
         <tbody>
         {% for object in objects %}
-            <tr>
+            <tr class="link_row" onclick="document.location.href='{% url 'object' row_id=object.row_id %}'">
                 <td>{{forloop.counter0|add:page_obj.start_index }}</td>
                 {% load static %}
 
@@ -40,8 +40,13 @@
                                             alt=""></a></td>
                 {% endif %}
                 <td>{{ object.sys_date_create|date:"Y.m.d H:i" }} {{ object.sys_date_update|date:"Y.m.d" }}</td>
-                <td>{{ object.lot }}</td>
-                <td>{{ object.client_enum }}</td>
+                <td>{{ object.lot }}
+                    <br>
+                    <div class="text-center">
+                        {% if object.alt_check %}А{% endif %}{% if object.sobstv_check %}C{% endif %}{% if object.kontr_check %}Р{% endif %}{% if object.nal_check %}Н{% endif %}{% if object.ipoteka_check %}И{% endif %}
+                    </div>
+                </td>
+                <td>{{ object.realty_enum }}</td>
                 <td>{{ object.fio }}</td>
                 <td>{{ object.tel1 }} {{ object.tel2|default_if_none:"" }}</td>
                 <td>{{ object.addr }}</td>

@@ -125,9 +125,9 @@ class BuyerDetail(ListView):
                     row_id=OuterRef("realty_id")).values("name")
 
             ),
-            lot_realty_object=Subquery(
+            row_realty_object=Subquery(
                 RlClient.objects.filter(
-                    row_id=OuterRef("realty_id")).values("lot")
+                    row_id=OuterRef("realty_id")).values("row_id")
 
             ),
             name_alt_object=Subquery(
@@ -135,9 +135,9 @@ class BuyerDetail(ListView):
                     row_id=OuterRef("alt_realty_id")).values("name")
 
             ),
-            lot_alt_object=Subquery(
+            row_alt_object=Subquery(
                 RlClient.objects.filter(
-                    row_id=OuterRef("alt_realty_id")).values("lot")
+                    row_id=OuterRef("alt_realty_id")).values("row_id")
 
             )
 
@@ -176,6 +176,11 @@ class PhotosView(ListView):
 
         return queryset
 
+    def get_context_data(self, *, object_list=None, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['obj_id'] = self.kwargs.get("obj_id")
+        return context
+
 
 class ActionsView(ListView):
     """Выводит все действия, производимые над объектом"""
@@ -198,3 +203,8 @@ class ActionsView(ListView):
         )
         queryset = [change_stat_enum(item) for item in queryset]
         return queryset
+
+    def get_context_data(self, *, object_list=None, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['obj_id'] = self.kwargs.get("obj_id")
+        return context
