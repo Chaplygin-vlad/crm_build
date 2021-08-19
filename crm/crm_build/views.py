@@ -228,7 +228,7 @@ class DuplicatesView(ListView):
     lookup_field = "row_id"
 
     def get_queryset(self):
-
+        q_addr = None
         item = RlClient.objects.filter(
             row_id=self.kwargs.get('obj_id')
         ).first()
@@ -314,21 +314,22 @@ class DuplicatesView(ListView):
         rooms = Q(
             rooms=item.rooms
         )
-        queryset_addr = RlClient.objects.filter(
-            ~Q(row_id=item.row_id),
-            addr & floor & rooms
-        ).values(
-            "name", "sys_date_create", "row_id"
-        ).annotate(
-            agent=Subquery(
-                SysUser.objects.filter(
-                    row_id=OuterRef("user_id")).values("name")
+        if item.addr and item.floor and item.rooms:
+            q_addr = RlClient.objects.filter(
+                ~Q(row_id=item.row_id),
+                addr & floor & rooms
+            ).values(
+                "name", "sys_date_create", "row_id"
+            ).annotate(
+                agent=Subquery(
+                    SysUser.objects.filter(
+                        row_id=OuterRef("user_id")).values("name")
+                )
             )
-        )
-        for record in queryset_addr:
-            record['duplicate'] = "по адресу"
-
-        return list(chain(queryset, queryset_addr))
+            for record in q_addr:
+                record['duplicate'] = "по адресу"
+        result = list(chain(queryset, q_addr)) if q_addr else queryset
+        return result
 
     def get_context_data(self, *, object_list=None, **kwargs):
         context = super().get_context_data(**kwargs)

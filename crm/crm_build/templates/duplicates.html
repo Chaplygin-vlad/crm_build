@@ -29,6 +29,7 @@
     <div class="container border-right border-left">
         <div class="row">
             <div class="col-10">
+            {% if objects %}
                 <table class="table">
                     <thead>
                     <tr>
@@ -47,9 +48,12 @@
                             <td class="w-75">{{ object.name }}</td>
                             <td class="w-20">{{ object.agent }}</td>
                         </tr>
+
                     {% endfor %}
+
                     </tbody>
                 </table>
+             {% endif %}
             </div>
             <div class="col-2">
                 <table class="table table-striped">
