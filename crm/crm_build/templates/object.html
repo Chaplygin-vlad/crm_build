@@ -1,8 +1,10 @@
 {% extends 'base.html' %}
 {% block content %}
     <div class="text-center mb-2"><b>{{ object.name }}</b>
-    </div>
-    <ul class="nav nav-tabs nav-fill mt-2">
+    <div class="container">
+    <div class="row">
+        <div class="col-12">
+            <ul class="nav nav-tabs nav-fill mt-2">
         <li class="nav-item">
             <a class="nav-link active" href="#">Информация</a>
         </li>
@@ -10,15 +12,21 @@
             <a class="nav-link" href="{% url 'photos' object.row_id %}">Фото</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="#">Дубликаты</a>
+            <a class="nav-link" href="{% url 'duplicates' object.row_id %}">Дубликаты</a>
         </li>
         <li class="nav-item">
             <a class="nav-link" href="{% url 'actions' object.row_id %}">Действия</a>
         </li>
         <li class="mr-2"><p>История работы</p></li>
     </ul>
+        </div>
+    </div>
+    </div>
 
-    <div class="container-fluid">
+    </div>
+
+
+    <div class="container">
         <div class="row">
             <div class="col-10">
 
@@ -1878,7 +1886,7 @@
                                     <div><b>Описание</b></div>
                                     <div class="input-group input-group-sm">
 
-                                <textarea class="form-control"
+                                <textarea class="form-control mb-3"
                                           aria-label="With textarea"
                                           placeholder="{{ object.description|default_if_none:"" }}"></textarea>
                                     </div>

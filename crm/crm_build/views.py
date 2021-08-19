@@ -1,11 +1,11 @@
+from itertools import chain
+
 from django.db.models import (
     Subquery,
     OuterRef,
-    F,
-    ExpressionWrapper,
-    IntegerField
+    F, ExpressionWrapper,
+    IntegerField, Q
 )
-from django.shortcuts import render
 from django.views.generic import ListView
 
 from crm_build.models import RlClient, SysUser, MainImage, SysStat, RlShow
@@ -103,7 +103,8 @@ class BuyerDetail(ListView):
     template_name = 'object.html'
 
     def get_queryset(self):
-        queryset = RlClient.objects.filter(row_id=self.kwargs.get('row_id')).annotate(
+        queryset = RlClient.objects.filter(
+            row_id=self.kwargs.get('row_id')).annotate(
             square_price=ExpressionWrapper(
                 F('cost') / F('area1'),
                 output_field=IntegerField()
@@ -147,7 +148,8 @@ class BuyerDetail(ListView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['comments'] = RlShow.objects.filter(realty_id=context['object'].row_id).annotate(
+        context['comments'] = RlShow.objects.filter(
+            realty_id=context['object'].row_id).annotate(
             create_agent=Subquery(
                 SysUser.objects.filter(
                     row_id=OuterRef("user_id")).values("name")
@@ -178,6 +180,10 @@ class PhotosView(ListView):
 
     def get_context_data(self, *, object_list=None, **kwargs):
         context = super().get_context_data(**kwargs)
+        item = RlClient.objects.filter(
+            row_id=self.kwargs.get('obj_id')
+        ).values("name").first()
+        context["name"] = item["name"]
         context['obj_id'] = self.kwargs.get("obj_id")
         return context
 
@@ -206,5 +212,127 @@ class ActionsView(ListView):
 
     def get_context_data(self, *, object_list=None, **kwargs):
         context = super().get_context_data(**kwargs)
+        item = RlClient.objects.filter(
+            row_id=self.kwargs.get('obj_id')
+        ).values("name").first()
+        context["name"] = item["name"]
+        context["obj_id"] = self.kwargs.get("obj_id")
+        return context
+
+
+class DuplicatesView(ListView):
+    """Выводит все фотографии объекта"""
+    model = RlClient
+    context_object_name = 'objects'
+    template_name = "duplicates.html"
+    lookup_field = "row_id"
+
+    def get_queryset(self):
+        q_addr = None
+        item = RlClient.objects.filter(
+            row_id=self.kwargs.get('obj_id')
+        ).first()
+        self.name = item.name
+
+        queryset1 = RlClient.objects.filter(
+            ~Q(row_id=item.row_id),
+            tel1=item.tel1,
+        ).values(
+            "name", "sys_date_create", "row_id"
+        ).annotate(
+            agent=Subquery(
+                SysUser.objects.filter(
+                    row_id=OuterRef("user_id")).values("name")
+            )
+        )
+        queryset2 = RlClient.objects.filter(
+            ~Q(row_id=item.row_id),
+            tel2=item.tel1,
+        ).values(
+            "name", "sys_date_create", "row_id"
+        ).annotate(
+            agent=Subquery(
+                SysUser.objects.filter(
+                    row_id=OuterRef("user_id")).values("name")
+            )
+        )
+        queryset3 = RlClient.objects.filter(
+            ~Q(row_id=item.row_id),
+            tel3=item.tel1,
+        ).values(
+            "name", "sys_date_create", "row_id"
+        ).annotate(
+            agent=Subquery(
+                SysUser.objects.filter(
+                    row_id=OuterRef("user_id")).values("name")
+            )
+        )
+        queryset4 = RlClient.objects.filter(
+            ~Q(row_id=item.row_id),
+            tel4=item.tel1,
+        ).values(
+            "name", "sys_date_create", "row_id"
+        ).annotate(
+            agent=Subquery(
+                SysUser.objects.filter(
+                    row_id=OuterRef("user_id")).values("name")
+            )
+        )
+        queryset5 = RlClient.objects.filter(
+            ~Q(row_id=item.row_id),
+            tel5=item.tel1,
+        ).values(
+            "name", "sys_date_create", "row_id"
+        ).annotate(
+            agent=Subquery(
+                SysUser.objects.filter(
+                    row_id=OuterRef("user_id")).values("name")
+            )
+        )
+        queryset6 = RlClient.objects.filter(
+            ~Q(row_id=item.row_id),
+            tel6=item.tel1,
+        ).values(
+            "name", "sys_date_create", "row_id"
+        ).annotate(
+            agent=Subquery(
+                SysUser.objects.filter(
+                    row_id=OuterRef("user_id")).values("name")
+            ),
+        )
+        queryset = (queryset1 | queryset2 | queryset3 |
+                    queryset4 | queryset5 | queryset6)
+        for record in queryset:
+            record['duplicate'] = "по телефону"
+
+        addr = Q(
+            addr=item.addr
+        )
+        floor = Q(
+            floor=item.floor
+        )
+        rooms = Q(
+            rooms=item.rooms
+        )
+        if item.addr and item.floor and item.rooms:
+            q_addr = RlClient.objects.filter(
+                ~Q(row_id=item.row_id),
+                addr & floor & rooms
+            ).values(
+                "name", "sys_date_create", "row_id"
+            ).annotate(
+                agent=Subquery(
+                    SysUser.objects.filter(
+                        row_id=OuterRef("user_id")).values("name")
+                )
+            )
+            for record in q_addr:
+                record['duplicate'] = "по адресу"
+        result = list(chain(queryset, q_addr)) if q_addr else queryset
+        return result
+
+    def get_context_data(self, *, object_list=None, **kwargs):
+        context = super().get_context_data(**kwargs)
         context['obj_id'] = self.kwargs.get("obj_id")
+        context["name"] = self.name
         return context
