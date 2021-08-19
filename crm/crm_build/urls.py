@@ -5,7 +5,9 @@ from crm_build.views import (
     AllSaleObjectListView,
     AllBuyersListView,
     PhotosView,
-    DuplicatesView
+    DuplicatesView,
+    ActionsView,
+    BuyerDetail
 )
 
 urlpatterns = [
@@ -13,6 +15,8 @@ urlpatterns = [
     path('all_sale/', AllSaleObjectListView.as_view(), name='all_sale'),
     path('all_buyers/', AllBuyersListView.as_view(), name='all_buyers'),
     path('<int:obj_id>/photos/', PhotosView.as_view(), name='photos'),
+    path('<int:obj_id>/actions/', ActionsView.as_view(), name='actions'),
+    path('<int:row_id>/object/', BuyerDetail.as_view(), name='object'),
     path(
         '<int:row_id>/duplicates/',
         DuplicatesView.as_view(),

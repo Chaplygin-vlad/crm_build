@@ -6,7 +6,6 @@ from django.db.models import (
     F, ExpressionWrapper,
     IntegerField, Q
 )
-from django.shortcuts import render
 from django.views.generic import ListView
 
 from crm_build.models import RlClient, SysUser, MainImage, SysStat, RlShow
@@ -104,7 +103,8 @@ class BuyerDetail(ListView):
     template_name = 'object.html'
 
     def get_queryset(self):
-        queryset = RlClient.objects.filter(row_id=self.kwargs.get('row_id')).annotate(
+        queryset = RlClient.objects.filter(
+            row_id=self.kwargs.get('row_id')).annotate(
             square_price=ExpressionWrapper(
                 F('cost') / F('area1'),
                 output_field=IntegerField()
@@ -148,7 +148,8 @@ class BuyerDetail(ListView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['comments'] = RlShow.objects.filter(realty_id=context['object'].row_id).annotate(
+        context['comments'] = RlShow.objects.filter(
+            realty_id=context['object'].row_id).annotate(
             create_agent=Subquery(
                 SysUser.objects.filter(
                     row_id=OuterRef("user_id")).values("name")
