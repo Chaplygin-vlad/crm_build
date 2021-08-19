@@ -17,7 +17,7 @@ class MainPageListView(ListView):
     model = RlClient
     context_object_name = 'objects'
     template_name = 'index.html'
-    paginate_by = 10
+    paginate_by = 50
 
     def get_queryset(self):
         queryset = RlClient.objects.exclude(
@@ -41,7 +41,7 @@ class AllSaleObjectListView(ListView):
     model = RlClient
     context_object_name = 'objects'
     template_name = 'all_sell_objects.html'
-    paginate_by = 10
+    paginate_by = 50
     expression = F('cost') / F('area1')
     wrapped_expression = ExpressionWrapper(expression, IntegerField())
     queryset = RlClient.objects.all().annotate(square_price=wrapped_expression)
@@ -77,7 +77,7 @@ class AllBuyersListView(ListView):
     model = RlClient
     context_object_name = 'objects'
     template_name = 'all_buyers.html'
-    paginate_by = 10
+    paginate_by = 50
 
     def get_queryset(self):
         queryset = RlClient.objects.exclude(
@@ -97,7 +97,7 @@ class AllBuyersListView(ListView):
 
 
 class BuyerDetail(ListView):
-    """Карточка покупателя (покупка)"""
+    """Карточка объекта"""
     model = RlClient
     context_object_name = 'object'
     template_name = 'object.html'
@@ -154,9 +154,13 @@ class BuyerDetail(ListView):
                 SysUser.objects.filter(
                     row_id=OuterRef("user_id")).values("name")
             ),
-            comment_object=Subquery(
+            comment_client=Subquery(
                 RlClient.objects.filter(
                     row_id=OuterRef("client_id")).values("name")
+            ),
+            comment_object=Subquery(
+                RlClient.objects.filter(
+                    row_id=OuterRef("realty_id")).values("name")
             )
 
         )

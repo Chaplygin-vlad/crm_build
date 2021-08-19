@@ -1,39 +1,39 @@
 {% extends 'base.html' %}
 {% block content %}
     <div class="text-center mb-2"><b>{{ object.name }}</b>
-    <div class="container">
-    <div class="row">
-        <div class="col-12">
-            <ul class="nav nav-tabs nav-fill mt-2">
-        <li class="nav-item">
-            <a class="nav-link active" href="#">Информация</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="{% url 'photos' object.row_id %}">Фото</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="{% url 'duplicates' object.row_id %}">Дубликаты</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="{% url 'actions' object.row_id %}">Действия</a>
-        </li>
-        <li class="mr-2"><p>История работы</p></li>
-    </ul>
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <ul class="nav nav-tabs nav-fill mt-2">
+                        <li class="nav-item">
+                            <a class="nav-link active" href="#">Информация</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'photos' object.row_id %}">Фото</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'duplicates' object.row_id %}">Дубликаты</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'actions' object.row_id %}">Действия</a>
+                        </li>
+                        <li class="mr-2"><p>История работы</p></li>
+                    </ul>
+                </div>
+            </div>
         </div>
-    </div>
-    </div>
 
     </div>
 
 
     <div class="container">
-        <div class="row">
-            <div class="col-10">
+        <div class="row no-gutters border">
+            <div class="col-10 border-right">
 
                 <div class="container-fluid">
-                <div class="text mb-2">
-                    <b>Контактная информация</b>
-                </div>
+                    <div class="text mb-2">
+                        <b>Контактная информация</b>
+                    </div>
                     <div class="row">
                         <div class="col-6">
                             <div class="custom-control custom-radio custom-control-inline">
@@ -57,7 +57,7 @@
                                 </div>
                                 <input type="text" class="form-control"
                                        aria-describedby="last_name"
-                                       placeholder="{{ object.fff|default_if_none:"" }}"
+                                       value="{{ object.fff|default_if_none:"" }}"
                                 >
                             </div>
                             <div class="input-group input-group-sm">
@@ -67,7 +67,7 @@
                                 </div>
                                 <input type="text" class="form-control"
                                        aria-describedby="first_name"
-                                       placeholder="{{ object.iii|default_if_none:"" }}">
+                                       value="{{ object.iii|default_if_none:"" }}">
                             </div>
                             <div class="input-group input-group-sm">
                                 <div class="input-group-prepend">
@@ -76,7 +76,7 @@
                                 </div>
                                 <input type="text" class="form-control"
                                        aria-describedby="middle_name"
-                                       placeholder="{{ object.ooo|default_if_none:"" }}">
+                                       value="{{ object.ooo|default_if_none:"" }}">
                             </div>
                             <div class="input-group input-group-sm">
                                 <div class="input-group-prepend">
@@ -99,10 +99,10 @@
                                 </div>
                                 <input type="text" class="form-control"
                                        aria-describedby="phone_1"
-                                       placeholder="{{ object.tel1|default_if_none:"" }}">
+                                       value="{{ object.tel1|default_if_none:"" }}">
                                 <input type="text" class="form-control"
                                        aria-describedby="sex"
-                                       placeholder="{{ object.tel1_comment|default_if_none:"" }}">
+                                       value="{{ object.tel1_comment|default_if_none:"" }}">
                             </div>
                             <div class="input-group input-group-sm">
                                 <div class="input-group-prepend">
@@ -111,10 +111,10 @@
                                 </div>
                                 <input type="text" class="form-control"
                                        aria-describedby="phone_2"
-                                       placeholder="{{ object.tel2|default_if_none:"" }}">
+                                       value="{{ object.tel2|default_if_none:"" }}">
                                 <input type="text" class="form-control"
                                        aria-describedby="sex"
-                                       placeholder="{{ object.tel2_comment|default_if_none:"" }}">
+                                       value="{{ object.tel2_comment|default_if_none:"" }}">
                             </div>
                             <div class="input-group input-group-sm">
                                 <div class="input-group-prepend">
@@ -123,7 +123,7 @@
                                 </div>
                                 <input type="text" class="form-control"
                                        aria-describedby="email"
-                                       placeholder="{{ object.email|default_if_none:"" }}">
+                                       value="{{ object.email|default_if_none:"" }}">
                             </div>
                             <div class="input-group input-group-sm">
                                 <div class="input-group-prepend">
@@ -132,7 +132,7 @@
                                 </div>
                                 <textarea class="form-control"
                                           aria-label="With textarea"
-                                          placeholder="{{ object.comment|default_if_none:"" }}"></textarea>
+                                          value="">{{ object.comment|default_if_none:"" }}</textarea>
                             </div>
                             <div class="input-group input-group-sm">
                                 <div class="input-group-prepend">
@@ -141,7 +141,7 @@
                                 </div>
                                 <input type="text" class="form-control"
                                        aria-describedby="contract_type"
-                                       placeholder="{{ object.doc_enum|default_if_none:"" }}">
+                                       value="{{ object.doc_enum|default_if_none:"" }}">
                             </div>
                             <div class="form-check">
                                 <input class="form-check-input" type="checkbox"
@@ -193,7 +193,7 @@
                                 </div>
                                 <input type="text" class="form-control"
                                        aria-describedby="req_date"
-                                       placeholder="{{ object.sys_date_create|date:"d.m.Y H:i" }}">
+                                       value="{{ object.sys_date_create|date:"d.m.Y H:i" }}">
 
 
                             </div>
@@ -204,7 +204,7 @@
                                 </div>
                                 <input type="text" class="form-control"
                                        aria-describedby="created"
-                                       placeholder="{{ object.sys_date_create|date:"d.m.Y H:i" }} {{ object.create_agent }}">
+                                       value="{{ object.sys_date_create|date:"d.m.Y H:i" }} {{ object.create_agent }}">
                             </div>
                             <div class="input-group input-group-sm">
                                 <div class="input-group-prepend">
@@ -213,7 +213,7 @@
                                 </div>
                                 <input type="text" class="form-control"
                                        aria-describedby="usage_type"
-                                       placeholder="{{ object.sys_date_update|date:"d.m.Y H:i" }} {{ object.create_agent }}"
+                                       value="{{ object.sys_date_update|date:"d.m.Y H:i" }} {{ object.create_agent }}"
                                 >
                             </div>
                             <div class="input-group input-group-sm">
@@ -231,7 +231,7 @@
                                 </div>
                                 <input type="text" class="form-control"
                                        aria-describedby="responsible"
-                                       placeholder="{{ object.agent|default_if_none:"" }}"
+                                       value="{{ object.agent|default_if_none:"" }}"
                                 >
                             </div>
                             <div class="input-group input-group-sm">
@@ -241,7 +241,7 @@
                                 </div>
                                 <input type="text" class="form-control"
                                        aria-describedby="category2"
-                                       placeholder="{{ object.cat_enum|default_if_none:"" }}"
+                                       value="{{ object.cat_enum|default_if_none:"" }}"
                                 >
                             </div>
                             <div class="input-group input-group-sm">
@@ -251,7 +251,8 @@
                                 </div>
                                 <textarea class="form-control"
                                           aria-label="With textarea"
-                                          placeholder="{{ object.comment|default_if_none:"" }}"></textarea>
+                                >
+                                    {{ object.comment|default_if_none:"" }}</textarea>
                             </div>
 
 
@@ -277,7 +278,7 @@
                                     </div>
                                     <input type="text" class="form-control"
                                            aria-describedby="req_type"
-                                           placeholder="{{ object.client_enum|default_if_none:"" }}">
+                                           value="{{ object.client_enum|default_if_none:"" }}">
                                 </div>
                                 <div class="input-group input-group-sm">
                                     <div class="input-group-prepend">
@@ -286,7 +287,7 @@
                                     </div>
                                     <input type="text" class="form-control"
                                            aria-describedby="real_estate_type"
-                                           placeholder="{{ object.realty_enum|default_if_none:"" }}">
+                                           value="{{ object.realty_enum|default_if_none:"" }}">
                                 </div>
                                 <div class="input-group input-group-sm">
                                     <div class="input-group-prepend">
@@ -295,7 +296,7 @@
                                     </div>
                                     <input type="text" class="form-control"
                                            aria-describedby="status"
-                                           placeholder="{{ object.status_enum|default_if_none:"" }}">
+                                           value="{{ object.status_enum|default_if_none:"" }}">
                                 </div>
                                 <div class="form-check form-check-inline">
                                     <input class="form-check-input" type="checkbox"
@@ -365,7 +366,7 @@
                                             </div>
                                             <input type="text" class="form-control"
                                                    aria-describedby="currency"
-                                                   placeholder="{{ object.name_realty_object|default_if_none:"" }}">
+                                                   value="{{ object.name_realty_object|default_if_none:"" }}">
                                         </div>
                                     </a>
                                 {% endif %}
@@ -377,14 +378,14 @@
                                     </div>
                                     <input type="text" class="form-control"
                                            aria-describedby="from"
-                                           placeholder="{{ object.cost_from|default_if_none:"0" }}">
+                                           value="{{ object.cost_from|default_if_none:"0" }}">
                                     <div class="input-group-prepend">
                                     <span class="input-group-text"
                                           id="to">до</span>
                                     </div>
                                     <input type="text" class="form-control"
                                            aria-describedby="to"
-                                           placeholder="{{ object.cost|default_if_none:"" }}">
+                                           value="{{ object.cost|default_if_none:"" }}">
                                 </div>
                                 <div class="input-group input-group-sm">
                                     <div class="input-group-prepend">
@@ -393,14 +394,14 @@
                                     </div>
                                     <input type="text" class="form-control"
                                            aria-describedby="sqr"
-                                           placeholder="{{ object.area1_from|default_if_none:"" }}">
+                                           value="{{ object.area1_from|default_if_none:"" }}">
                                     <div class="input-group-prepend">
                                     <span class="input-group-text"
                                           id="sqr_to">до</span>
                                     </div>
                                     <input type="text" class="form-control"
                                            aria-describedby="sqr_to"
-                                           placeholder="{{ object.area1|default_if_none:"" }}">
+                                           value="{{ object.area1|default_if_none:"" }}">
                                 </div>
 
                                 {% if object.realty_enum == 'Квартира' %}
@@ -413,7 +414,7 @@
                                         </div>
                                         <input type="text" class="form-control"
                                                aria-describedby="price"
-                                               placeholder="{{ object.rooms_from|default_if_none:"" }}">
+                                               value="{{ object.rooms_from|default_if_none:"" }}">
                                     </div>
                                     <div class="input-group input-group-sm">
                                         <div class="input-group-prepend">
@@ -422,14 +423,14 @@
                                         </div>
                                         <input type="text" class="form-control"
                                                aria-describedby="kitchen_from"
-                                               placeholder="{{ object.area2_from|default_if_none:"" }}">
+                                               value="{{ object.area2_from|default_if_none:"" }}">
                                         <div class="input-group-prepend">
                                     <span class="input-group-text"
                                           id="kitchen_to">до</span>
                                         </div>
                                         <input type="text" class="form-control"
                                                aria-describedby="kitchen_to"
-                                               placeholder="{{ object.area2|default_if_none:"" }}">
+                                               value="{{ object.area2|default_if_none:"" }}">
                                     </div>
                                     <div class="input-group input-group-sm">
                                         <div class="input-group-prepend">
@@ -438,7 +439,7 @@
                                         </div>
                                         <input type="text" class="form-control"
                                                aria-describedby="floor_from"
-                                               placeholder="{{ object.floor|default_if_none:"" }}">
+                                               value="{{ object.floor|default_if_none:"" }}">
                                         <div class="input-group-prepend">
                                     <span class="input-group-text"
                                           id="floor_to">до</span>
@@ -453,7 +454,7 @@
                                         </div>
                                         <input type="text" class="form-control"
                                                aria-describedby="keys"
-                                               placeholder="{{ object.param21|default_if_none:"" }}">
+                                               value="{{ object.param21|default_if_none:"" }}">
                                     </div>
                                     <div class="form-check form-check-inline">
                                         <input class="form-check-input" type="checkbox"
@@ -509,7 +510,7 @@
                                         </div>
                                         <input type="text" class="form-control"
                                                aria-describedby="time_to_show"
-                                               placeholder="{{ object.param3|slice:"1:-1" }}"
+                                               value="{{ object.param3|slice:"1:-1" }}"
                                         >
                                     </div>
                                 {% endif %}
@@ -524,7 +525,7 @@
                                     </div>
                                     <input type="text" class="form-control"
                                            aria-describedby="req_type"
-                                           placeholder="{{ object.client_enum|default_if_none:"" }}">
+                                           value="{{ object.client_enum|default_if_none:"" }}">
                                 </div>
                                 <div class="input-group input-group-sm">
                                     <div class="input-group-prepend">
@@ -533,7 +534,7 @@
                                     </div>
                                     <input type="text" class="form-control"
                                            aria-describedby="real_estate_type"
-                                           placeholder="{{ object.realty_enum|default_if_none:"" }}">
+                                           value="{{ object.realty_enum|default_if_none:"" }}">
                                 </div>
                                 <div class="input-group input-group-sm">
                                     <div class="input-group-prepend">
@@ -542,7 +543,7 @@
                                     </div>
                                     <input type="text" class="form-control"
                                            aria-describedby="status"
-                                           placeholder="{{ object.status_enum|default_if_none:"" }}">
+                                           value="{{ object.status_enum|default_if_none:"" }}">
                                 </div>
                                 <div class="input-group input-group-sm">
                                     <div class="input-group-prepend">
@@ -551,7 +552,7 @@
                                     </div>
                                     <input type="text" class="form-control"
                                            aria-describedby="status"
-                                           placeholder="{{ object.commission|default_if_none:"" }} руб">
+                                           value="{{ object.commission|default_if_none:"" }} руб">
                                 </div>
 
 
@@ -613,7 +614,7 @@
                                         </div>
                                         <input type="text" class="form-control"
                                                aria-describedby="status"
-                                               placeholder="{{ object.rooms|default_if_none:"" }} ">
+                                               value="{{ object.rooms|default_if_none:"" }} ">
                                     </div>
                                     <div class="input-group input-group-sm">
                                         <div class="input-group-prepend">
@@ -622,7 +623,7 @@
                                         </div>
                                         <input type="text" class="form-control"
                                                aria-describedby="status"
-                                               placeholder="{{ object.cost|default_if_none:"" }} руб.    за кв.м {{ object.square_price }} руб.">
+                                               value="{{ object.cost|default_if_none:"" }} руб.    за кв.м {{ object.square_price }} руб.">
                                     </div>
 
 
@@ -638,14 +639,14 @@
                                             </div>
                                             <input type="text" class="form-control"
                                                    aria-describedby="sqr"
-                                                   placeholder="{{ object.area1|default_if_none:"" }}">
+                                                   value="{{ object.area1|default_if_none:"" }}">
                                             <div class="input-group-prepend">
                                     <span class="input-group-text"
                                           id="sqr_to">Жилая</span>
                                             </div>
                                             <input type="text" class="form-control"
                                                    aria-describedby="sqr_to"
-                                                   placeholder="{{ object.area2|default_if_none:"" }}">
+                                                   value="{{ object.area2|default_if_none:"" }}">
                                         </div>
                                         <div class="input-group input-group-sm">
                                             <div class="input-group-prepend">
@@ -654,14 +655,14 @@
                                             </div>
                                             <input type="text" class="form-control"
                                                    aria-describedby="sqr"
-                                                   placeholder="{{ object.area3|default_if_none:"" }}">
+                                                   value="{{ object.area3|default_if_none:"" }}">
                                             <div class="input-group-prepend">
                                     <span class="input-group-text"
                                           id="sqr_to">По комнатам</span>
                                             </div>
                                             <input type="text" class="form-control"
                                                    aria-describedby="sqr_to"
-                                                   placeholder="{{ object.area4|default_if_none:"" }}">
+                                                   value="{{ object.area4|default_if_none:"" }}">
                                         </div>
 
                                     {% elif object.realty_enum == "Дом" %}
@@ -674,7 +675,7 @@
                                             </div>
                                             <input type="text" class="form-control"
                                                    aria-describedby="sqr"
-                                                   placeholder="{{ object.area1|default_if_none:"" }}">
+                                                   value="{{ object.area1|default_if_none:"" }}">
 
                                         </div>
                                         <div class="input-group input-group-sm">
@@ -684,7 +685,7 @@
                                             </div>
                                             <input type="text" class="form-control"
                                                    aria-describedby="sqr"
-                                                   placeholder="{{ object.area2|default_if_none:"" }} сот">
+                                                   value="{{ object.area2|default_if_none:"" }} сот">
 
                                         </div>
 
@@ -702,7 +703,7 @@
                                         </div>
                                         <input type="text" class="form-control"
                                                aria-describedby="status"
-                                               placeholder=
+                                               value=
                                                        "{{ object.cost|default_if_none:"" }} руб.    за сот. {{ object.hundred_square_price }} руб.">
                                     </div>
 
@@ -718,21 +719,21 @@
                                         </div>
                                         <input type="text" class="form-control"
                                                aria-describedby="sqr"
-                                               placeholder="{{ object.area1|default_if_none:"" }}">
+                                               value="{{ object.area1|default_if_none:"" }}">
                                         <div class="input-group-prepend">
                                     <span class="input-group-text"
                                           id="sqr_to">Сот</span>
                                         </div>
                                         <input type="text" class="form-control"
                                                aria-describedby="sqr_to"
-                                               placeholder="{{ object.area2|default_if_none:"" }}">
+                                               value="{{ object.area2|default_if_none:"" }}">
                                         <div class="input-group-prepend">
                                     <span class="input-group-text"
                                           id="sqr">Га</span>
                                         </div>
                                         <input type="text" class="form-control"
                                                aria-describedby="sqr"
-                                               placeholder="{{ object.area3|default_if_none:"" }}">
+                                               value="{{ object.area3|default_if_none:"" }}">
                                     </div>
 
 
@@ -752,7 +753,7 @@
                                     </div>
                                     <input type="text" class="form-control"
                                            aria-describedby="obl"
-                                           placeholder="{{ object.obl_auto|default_if_none:"" }}"
+                                           value="{{ object.obl_auto|default_if_none:"" }}"
                                     >
                                 </div>
                                 <div class="input-group input-group-sm">
@@ -770,7 +771,7 @@
                                     </div>
                                     <input type="text" class="form-control"
                                            aria-describedby="town"
-                                           placeholder="{{ object.np_auto|default_if_none:"" }}"
+                                           value="{{ object.np_auto|default_if_none:"" }}"
                                     >
                                 </div>
                                 <div class="input-group input-group-sm">
@@ -780,7 +781,7 @@
                                     </div>
                                     <input type="text" class="form-control"
                                            aria-describedby="town_reg"
-                                           placeholder="{{ object.np_rayon_auto|default_if_none:"" }}"
+                                           value="{{ object.np_rayon_auto|default_if_none:"" }}"
                                     >
                                 </div>
                                 <div class="input-group input-group-sm">
@@ -798,7 +799,7 @@
                                     </div>
                                     <input type="text" class="form-control"
                                            aria-describedby="street"
-                                           placeholder="{{ object.street|default_if_none:"" }}"
+                                           value="{{ object.street|default_if_none:"" }}"
                                     >
                                 </div>
                                 <div class="input-group input-group-sm">
@@ -819,7 +820,7 @@
                                     </div>
                                     <input type="text" class="form-control"
                                            aria-describedby="obl"
-                                           placeholder="{{ object.jk_id|default_if_none:"" }}"
+                                           value="{{ object.jk_id|default_if_none:"" }}"
                                     >
                                 </div>
                                 <div class="input-group input-group-sm">
@@ -829,7 +830,7 @@
                                     </div>
                                     <input type="text" class="form-control"
                                            aria-describedby="obl"
-                                           placeholder="{{ object.jk_name|default_if_none:"" }}"
+                                           value="{{ object.jk_name|default_if_none:"" }}"
                                     >
                                 </div>
                                 <div class="input-group input-group-sm">
@@ -839,7 +840,7 @@
                                     </div>
                                     <input type="text" class="form-control"
                                            aria-describedby="obl"
-                                           placeholder="{{ object.geocode|default_if_none:"" }}"
+                                           value="{{ object.geocode|default_if_none:"" }}"
                                     >
                                 </div>
                                 <div class="input-group input-group-sm">
@@ -849,7 +850,7 @@
                                     </div>
                                     <input type="text" class="form-control"
                                            aria-describedby="obl"
-                                           placeholder="{{ object.pos_enum|default_if_none:"" }}"
+                                           value="{{ object.pos_enum|default_if_none:"" }}"
                                     >
                                 </div>
                                 <div class="input-group input-group-sm">
@@ -859,7 +860,7 @@
                                     </div>
                                     <input type="text" class="form-control"
                                            aria-describedby="obl"
-                                           placeholder="{{ object.obl_auto|default_if_none:"" }}"
+                                           value="{{ object.obl_auto|default_if_none:"" }}"
                                     >
                                 </div>
                                 <div class="input-group input-group-sm">
@@ -869,7 +870,7 @@
                                     </div>
                                     <input type="text" class="form-control"
                                            aria-describedby="obl"
-                                           placeholder="{{ object.obl_rayon_auto|default_if_none:"" }}"
+                                           value="{{ object.obl_rayon_auto|default_if_none:"" }}"
                                     >
                                 </div>
                                 <div class="input-group input-group-sm">
@@ -879,7 +880,7 @@
                                     </div>
                                     <input type="text" class="form-control"
                                            aria-describedby="obl"
-                                           placeholder="{{ object.np_auto|default_if_none:"" }}"
+                                           value="{{ object.np_auto|default_if_none:"" }}"
                                     >
                                 </div>
                                 <div class="input-group input-group-sm">
@@ -889,7 +890,7 @@
                                     </div>
                                     <input type="text" class="form-control"
                                            aria-describedby="obl"
-                                           placeholder="{{ object.np_rayon_auto|default_if_none:"" }}"
+                                           value="{{ object.np_rayon_auto|default_if_none:"" }}"
                                     >
                                 </div>
                                 <div class="input-group input-group-sm">
@@ -899,7 +900,7 @@
                                     </div>
                                     <input type="text" class="form-control"
                                            aria-describedby="obl"
-                                           placeholder="{{ object.from_mkad|default_if_none:"" }}"
+                                           value="{{ object.from_mkad|default_if_none:"" }}"
                                     >
                                 </div>
 
@@ -910,7 +911,7 @@
                                     </div>
                                     <input type="text" class="form-control"
                                            aria-describedby="obl"
-                                           placeholder="{{ object.street|default_if_none:"" }}"
+                                           value="{{ object.street|default_if_none:"" }}"
                                     >
                                 </div>
                                 <div class="input-group input-group-sm">
@@ -920,7 +921,7 @@
                                     </div>
                                     <input type="text" class="form-control"
                                            aria-describedby="obl"
-                                           placeholder="{{ object.dom|default_if_none:"" }}"
+                                           value="{{ object.dom|default_if_none:"" }}"
                                     >
                                 </div>
                                 <div class="input-group input-group-sm">
@@ -930,7 +931,7 @@
                                     </div>
                                     <input type="text" class="form-control"
                                            aria-describedby="obl"
-                                           placeholder="{{ object.korp|default_if_none:"" }}"
+                                           value="{{ object.korp|default_if_none:"" }}"
                                     >
                                 </div>
                                 <div class="input-group input-group-sm">
@@ -940,7 +941,7 @@
                                     </div>
                                     <input type="text" class="form-control"
                                            aria-describedby="obl"
-                                           placeholder="{{ object.kv|default_if_none:"" }}"
+                                           value="{{ object.kv|default_if_none:"" }}"
                                     >
                                 </div>
                                 <div class="input-group input-group-sm">
@@ -950,7 +951,7 @@
                                     </div>
                                     <input type="text" class="form-control"
                                            aria-describedby="obl"
-                                           placeholder="{{ object.floor|default_if_none:"" }}"
+                                           value="{{ object.floor|default_if_none:"" }}"
                                     >
                                 </div>
                                 <div class="input-group input-group-sm">
@@ -960,7 +961,7 @@
                                     </div>
                                     <input type="text" class="form-control"
                                            aria-describedby="obl"
-                                           placeholder="{{ object.floors|default_if_none:"" }}"
+                                           value="{{ object.floors|default_if_none:"" }}"
                                     >
                                 </div>
 
@@ -985,7 +986,7 @@
                                         </div>
                                         <input type="text" class="form-control"
                                                aria-describedby="sqr"
-                                               placeholder="{{ object.floor|default_if_none:"" }} сот">
+                                               value="{{ object.floor|default_if_none:"" }} сот">
 
                                     </div>
                                     <div class="input-group input-group-sm">
@@ -995,7 +996,7 @@
                                         </div>
                                         <input type="text" class="form-control"
                                                aria-describedby="sqr"
-                                               placeholder="{{ object.param3|default_if_none:"" }} ">
+                                               value="{{ object.param3|default_if_none:"" }} ">
 
                                     </div>
                                     <div class="input-group input-group-sm">
@@ -1005,7 +1006,7 @@
                                         </div>
                                         <input type="text" class="form-control"
                                                aria-describedby="sqr"
-                                               placeholder="{{ object.param7|default_if_none:"" }} ">
+                                               value="{{ object.param7|default_if_none:"" }} ">
 
                                     </div>
                                     <div class="input-group input-group-sm">
@@ -1015,7 +1016,7 @@
                                         </div>
                                         <input type="text" class="form-control"
                                                aria-describedby="sqr"
-                                               placeholder="">
+                                               value="">
 
                                     </div>
                                     <div class="input-group input-group-sm">
@@ -1025,7 +1026,7 @@
                                         </div>
                                         <input type="text" class="form-control"
                                                aria-describedby="sqr"
-                                               placeholder="{{ object.param13|default_if_none:"" }} ">
+                                               value="{{ object.param13|default_if_none:"" }} ">
 
                                     </div>
                                     <div class="input-group input-group-sm">
@@ -1035,7 +1036,7 @@
                                         </div>
                                         <input type="text" class="form-control"
                                                aria-describedby="sqr"
-                                               placeholder="{{ object.param9|default_if_none:"" }} ">
+                                               value="{{ object.param9|default_if_none:"" }} ">
 
                                     </div>
                                     <div class="input-group input-group-sm">
@@ -1045,7 +1046,7 @@
                                         </div>
                                         <input type="text" class="form-control"
                                                aria-describedby="sqr"
-                                               placeholder="{{ object.kadastr|default_if_none:"" }} ">
+                                               value="{{ object.kadastr|default_if_none:"" }} ">
 
                                     </div>
 
@@ -1058,7 +1059,7 @@
                                         </div>
                                         <input type="text" class="form-control"
                                                aria-describedby="sqr"
-                                               placeholder="{{ object.param11|default_if_none:"" }} ">
+                                               value="{{ object.param11|default_if_none:"" }} ">
 
                                     </div>
                                     <div class="input-group input-group-sm">
@@ -1068,7 +1069,7 @@
                                         </div>
                                         <input type="text" class="form-control"
                                                aria-describedby="sqr"
-                                               placeholder="{{ object.param3|default_if_none:"" }} ">
+                                               value="{{ object.param3|default_if_none:"" }} ">
 
                                     </div>
                                     <div class="input-group input-group-sm">
@@ -1078,7 +1079,7 @@
                                         </div>
                                         <input type="text" class="form-control"
                                                aria-describedby="sqr"
-                                               placeholder="">
+                                               value="">
 
                                     </div>
                                     <div class="input-group input-group-sm">
@@ -1088,7 +1089,7 @@
                                         </div>
                                         <input type="text" class="form-control"
                                                aria-describedby="sqr"
-                                               placeholder="{{ object.param12|default_if_none:"" }} ">
+                                               value="{{ object.param12|default_if_none:"" }} ">
 
                                     </div>
                                     <div class="input-group input-group-sm">
@@ -1098,7 +1099,7 @@
                                         </div>
                                         <input type="text" class="form-control"
                                                aria-describedby="sqr"
-                                               placeholder="{{ object.param15|default_if_none:"" }} ">
+                                               value="{{ object.param15|default_if_none:"" }} ">
 
                                     </div>
                                     <div class="input-group input-group-sm">
@@ -1108,7 +1109,7 @@
                                         </div>
                                         <input type="text" class="form-control"
                                                aria-describedby="sqr"
-                                               placeholder="{{ object.param30|default_if_none:"" }} ">
+                                               value="{{ object.param30|default_if_none:"" }} ">
 
                                     </div>
 
@@ -1119,7 +1120,7 @@
                                         </div>
                                         <input type="text" class="form-control"
                                                aria-describedby="sqr"
-                                               placeholder="{{ object.param6|default_if_none:"" }} ">
+                                               value="{{ object.param6|default_if_none:"" }} ">
 
                                     </div>
                                     <div class="input-group input-group-sm">
@@ -1129,7 +1130,7 @@
                                         </div>
                                         <input type="text" class="form-control"
                                                aria-describedby="sqr"
-                                               placeholder="{{ object.param9|default_if_none:"" }} ">
+                                               value="{{ object.param9|default_if_none:"" }} ">
 
                                     </div>
                                     <div class="input-group input-group-sm">
@@ -1139,7 +1140,7 @@
                                         </div>
                                         <input type="text" class="form-control"
                                                aria-describedby="sqr"
-                                               placeholder="{{ object.param5|default_if_none:"" }}">
+                                               value="{{ object.param5|default_if_none:"" }}">
 
                                     </div>
                                     <div class="input-group input-group-sm">
@@ -1149,7 +1150,7 @@
                                         </div>
                                         <input type="text" class="form-control"
                                                aria-describedby="sqr"
-                                               placeholder="{{ object.param8|default_if_none:"" }} ">
+                                               value="{{ object.param8|default_if_none:"" }} ">
 
                                     </div>
                                     <div class="input-group input-group-sm">
@@ -1159,7 +1160,7 @@
                                         </div>
                                         <input type="text" class="form-control"
                                                aria-describedby="sqr"
-                                               placeholder="{{ object.param9|default_if_none:"" }} ">
+                                               value="{{ object.param9|default_if_none:"" }} ">
 
                                     </div>
                                     <div class="input-group input-group-sm">
@@ -1169,7 +1170,7 @@
                                         </div>
                                         <input type="text" class="form-control"
                                                aria-describedby="sqr"
-                                               placeholder="{{ object.param13|default_if_none:"" }} ">
+                                               value="{{ object.param13|default_if_none:"" }} ">
 
                                     </div>
 
@@ -1180,7 +1181,7 @@
                                         </div>
                                         <input type="text" class="form-control"
                                                aria-describedby="sqr"
-                                               placeholder="{{ object.param17|default_if_none:"" }} ">
+                                               value="{{ object.param17|default_if_none:"" }} ">
 
                                     </div>
                                     <div class="input-group input-group-sm">
@@ -1190,7 +1191,7 @@
                                         </div>
                                         <input type="text" class="form-control"
                                                aria-describedby="sqr"
-                                               placeholder="{{ object.param18|default_if_none:"" }} ">
+                                               value="{{ object.param18|default_if_none:"" }} ">
 
                                     </div>
                                     <div class="input-group input-group-sm">
@@ -1200,7 +1201,7 @@
                                         </div>
                                         <input type="text" class="form-control"
                                                aria-describedby="sqr"
-                                               placeholder="{{ object.param21|default_if_none:"" }}">
+                                               value="{{ object.param21|default_if_none:"" }}">
 
                                     </div>
                                     <div class="input-group input-group-sm">
@@ -1210,7 +1211,7 @@
                                         </div>
                                         <input type="text" class="form-control"
                                                aria-describedby="sqr"
-                                               placeholder="{{ object.param20|default_if_none:"" }} ">
+                                               value="{{ object.param20|default_if_none:"" }} ">
 
                                     </div>
                                     <div class="input-group input-group-sm">
@@ -1220,7 +1221,7 @@
                                         </div>
                                         <input type="text" class="form-control"
                                                aria-describedby="sqr"
-                                               placeholder="{{ object.param19|default_if_none:"" }} ">
+                                               value="{{ object.param19|default_if_none:"" }} ">
 
                                     </div>
                                     <div class="input-group input-group-sm">
@@ -1230,7 +1231,7 @@
                                         </div>
                                         <input type="text" class="form-control"
                                                aria-describedby="sqr"
-                                               placeholder="{{ object.kadastr|default_if_none:"" }} ">
+                                               value="{{ object.kadastr|default_if_none:"" }} ">
 
                                     </div>
 
@@ -1243,7 +1244,7 @@
                                         </div>
                                         <input type="text" class="form-control"
                                                aria-describedby="sqr"
-                                               placeholder="{{ object.param13|default_if_none:"" }} ">
+                                               value="{{ object.param13|default_if_none:"" }} ">
 
                                     </div>
 
@@ -1254,7 +1255,7 @@
                                         </div>
                                         <input type="text" class="form-control"
                                                aria-describedby="sqr"
-                                               placeholder="{{ object.param17|default_if_none:"" }} ">
+                                               value="{{ object.param17|default_if_none:"" }} ">
 
                                     </div>
                                     <div class="input-group input-group-sm">
@@ -1264,7 +1265,7 @@
                                         </div>
                                         <input type="text" class="form-control"
                                                aria-describedby="sqr"
-                                               placeholder="{{ object.param18|default_if_none:"" }} ">
+                                               value="{{ object.param18|default_if_none:"" }} ">
 
                                     </div>
                                     <div class="input-group input-group-sm">
@@ -1274,7 +1275,7 @@
                                         </div>
                                         <input type="text" class="form-control"
                                                aria-describedby="sqr"
-                                               placeholder="{{ object.param21|default_if_none:"" }}">
+                                               value="{{ object.param21|default_if_none:"" }}">
 
                                     </div>
                                     <div class="input-group input-group-sm">
@@ -1284,7 +1285,7 @@
                                         </div>
                                         <input type="text" class="form-control"
                                                aria-describedby="sqr"
-                                               placeholder="{{ object.param20|default_if_none:"" }} ">
+                                               value="{{ object.param20|default_if_none:"" }} ">
 
                                     </div>
                                     <div class="input-group input-group-sm">
@@ -1294,7 +1295,7 @@
                                         </div>
                                         <input type="text" class="form-control"
                                                aria-describedby="sqr"
-                                               placeholder="{{ object.param19|default_if_none:"" }} ">
+                                               value="{{ object.param19|default_if_none:"" }} ">
 
                                     </div>
                                     <div class="input-group input-group-sm">
@@ -1304,7 +1305,7 @@
                                         </div>
                                         <input type="text" class="form-control"
                                                aria-describedby="sqr"
-                                               placeholder="{{ object.kadastr|default_if_none:"" }} ">
+                                               value="{{ object.kadastr|default_if_none:"" }} ">
 
                                     </div>
 
@@ -1794,7 +1795,7 @@
                                                 </div>
                                                 <input type="text" class="form-control"
                                                        aria-describedby="last_name"
-                                                       placeholder="{{ object.param22|default_if_none:"" }}"
+                                                       value="{{ object.param22|default_if_none:"" }}"
                                                 >
                                             </div>
                                             <div class="input-group input-group-sm">
@@ -1804,7 +1805,7 @@
                                                 </div>
                                                 <input type="text" class="form-control"
                                                        aria-describedby="last_name"
-                                                       placeholder="{{ object.param23|default_if_none:"" }}"
+                                                       value="{{ object.param23|default_if_none:"" }}"
                                                 >
                                             </div>
                                             <div class="input-group input-group-sm">
@@ -1814,7 +1815,7 @@
                                                 </div>
                                                 <input type="text" class="form-control"
                                                        aria-describedby="last_name"
-                                                       placeholder="{{ object.param24|default_if_none:"" }}"
+                                                       value="{{ object.param24|default_if_none:"" }}"
                                                 >
                                             </div>
                                             <div class="input-group input-group-sm">
@@ -1824,7 +1825,7 @@
                                                 </div>
                                                 <input type="text" class="form-control"
                                                        aria-describedby="last_name"
-                                                       placeholder="{{ object.param29|default_if_none:"" }}"
+                                                       value="{{ object.param29|default_if_none:"" }}"
                                                 >
                                             </div>
                                         </div>
@@ -1836,7 +1837,7 @@
                                                 </div>
                                                 <input type="text" class="form-control"
                                                        aria-describedby="last_name"
-                                                       placeholder="{{ object.param25|default_if_none:"" }}"
+                                                       value="{{ object.param25|default_if_none:"" }}"
                                                 >
                                             </div>
                                             <div class="input-group input-group-sm">
@@ -1846,7 +1847,7 @@
                                                 </div>
                                                 <input type="text" class="form-control"
                                                        aria-describedby="last_name"
-                                                       placeholder="{{ object.param26|default_if_none:"" }}"
+                                                       value="{{ object.param26|default_if_none:"" }}"
                                                 >
                                             </div>
                                             <div class="input-group input-group-sm">
@@ -1856,7 +1857,7 @@
                                                 </div>
                                                 <input type="text" class="form-control"
                                                        aria-describedby="last_name"
-                                                       placeholder="{{ object.param27|default_if_none:"" }}"
+                                                       value="{{ object.param27|default_if_none:"" }}"
                                                 >
                                             </div>
                                             <div class="input-group input-group-sm">
@@ -1866,7 +1867,7 @@
                                                 </div>
                                                 <input type="text" class="form-control"
                                                        aria-describedby="last_name"
-                                                       placeholder="{{ object.param28|default_if_none:"" }}"
+                                                       value="{{ object.param28|default_if_none:"" }}"
                                                 >
                                             </div>
                                         </div>
@@ -1887,8 +1888,8 @@
                                     <div class="input-group input-group-sm">
 
                                 <textarea class="form-control mb-3"
-                                          aria-label="With textarea"
-                                          placeholder="{{ object.description|default_if_none:"" }}"></textarea>
+                                          aria-label="With textarea">
+                                    {{ object.description|default_if_none:"" }}</textarea>
                                     </div>
 
                                 </div>
@@ -1904,19 +1905,138 @@
                 <table class="table table-striped">
                     <tbody class="text-left">
                     {% for comment in comments %}
-                        <tr>
+                        <tr data-toggle="modal" data-target="#exampleModalCenter{{ comment.row_id }}">
                             <td>
                                 <b>{{ comment.date|date:"d.m.Y H:i" }}</b>
                                 <div><b>{{ comment.create_agent|default_if_none:"" }}</b></div>
                                 <div>{{ comment.name }}</div>
                                 {% if comment.show_enum == "Показ" %}
-                                    <div>Заявка: {{ comment.comment_object }}</div>
+                                    <div>Заявка: {{ comment.comment_client }}</div>
                                 {% endif %}
                                 {% if comment.result is not none %}
                                     <div>Результат: {{ comment.result }}</div>
                                 {% endif %}
                             </td>
                         </tr>
+
+                        <div class="container">
+                            <div class="modal fade" id="exampleModalCenter{{ comment.row_id }}" tabindex="-1"
+                                 role="dialog"
+                                 aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                                <div class="modal-dialog modal-dialog-centered" role="document"
+                                     style="width: 30vw; max-width: 30vw;">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLongTitle">{{ comment.name }}</h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <div class="container">
+                                                <div class="row">
+                                                    <div class="col-12">
+                                                        <div>Карточка
+                                                            создана: {{ comment.sys_date_create|date:"d.m.Y H:i" }} {{ comment.create_agent|default_if_none:"" }} </div>
+                                                        <div>Вид: {{ comment.show_enum }}</div>
+
+                                                        <div class="input-group input-group-sm">
+                                                            <div class="input-group-prepend">
+                                    <span class="input-group-text"
+                                          id="date_of_birth">Дата</span>
+                                                                <input type="text" class="form-control"
+                                                                       aria-describedby="date_of_birth"
+                                                                       value="{{ comment.date|date:"d.m.Y H:i" }}">
+
+                                                            </div>
+                                                        </div>
+
+
+                                                        {% if comment.client_id is not none %}
+                                                            <div class="input-group input-group-sm">
+                                                                <div class="input-group-prepend">
+                                    <span class="input-group-text"
+                                          id="application">Заявка</span>
+                                                                </div>
+                                                                <span class="form-control text-truncate"
+                                                                      aria-describedby="application">
+                                                                    <a href="{% url 'object' comment.client_id %}">{{ comment.comment_client }}</a>
+                                                                </span>
+                                                            </div>
+
+
+
+
+                                                            <div class="input-group input-group-sm">
+                                                                <div class="input-group-prepend">
+                                    <span class="input-group-text"
+                                          id="obj">Объект</span>
+                                                                </div>
+
+                                                                <span class="form-control text-truncate"
+                                                                      aria-describedby="obj">
+                                                        <a href="{% url 'object' comment.realty_id %}">{{ comment.comment_object }}"></a>
+                                                            </span>
+                                                            </div>
+
+
+
+                                                            <div class="input-group input-group-sm">
+                                                                <div class="input-group-prepend">
+                                                                    <span class="input-group-text">Описание</span>
+                                                                </div>
+                                                                <textarea class="form-control"
+                                                                          aria-label="With textarea"
+                                                                >{{ comment.comment }}</textarea>
+                                                            </div>
+                                                            <div class="input-group input-group-sm">
+                                                                <div class="input-group-prepend">
+                                                                    <span class="input-group-text">Результат</span>
+                                                                </div>
+                                                                <textarea class="form-control"
+                                                                          aria-label="With textarea"
+                                                                >{{ comment.result }}</textarea>
+                                                            </div>
+                                                            <div class="input-group input-group-sm">
+                                                                <div class="input-group-prepend">
+                                    <span class="input-group-text"
+                                          id="demonstration">Показ состоялся?</span>
+                                                                </div>
+                                                                <input type="text" class="form-control"
+                                                                       aria-describedby="demonstration"
+                                                                       value="{{ comment.result_enum }}">
+                                                            </div>
+
+
+                                                            </div>
+                                                        {% endif %}
+
+                                                    {% if comment.show_enum != "Показ" %}
+                                                        <div class="input-group input-group-sm">
+                                                            <div class="input-group-prepend">
+                                                                <span class="input-group-text">Описание</span>
+                                                            </div>
+                                                            <textarea class="form-control"
+                                                                      aria-label="With textarea"
+                                                            > {{ comment.comment }}</textarea>
+                                                        </div>
+
+
+                                                    {% endif %}
+
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-secondary"
+                                                            data-dismiss="modal">Close
+                                                    </button>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     {% empty %}
                         <br>
                         <br>
