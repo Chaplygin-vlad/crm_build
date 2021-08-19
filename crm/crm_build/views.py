@@ -180,6 +180,10 @@ class PhotosView(ListView):
 
     def get_context_data(self, *, object_list=None, **kwargs):
         context = super().get_context_data(**kwargs)
+        item = RlClient.objects.filter(
+            row_id=self.kwargs.get('obj_id')
+        ).values("name").first()
+        context["name"] = item["name"]
         context['obj_id'] = self.kwargs.get("obj_id")
         return context
 
@@ -208,7 +212,11 @@ class ActionsView(ListView):
 
     def get_context_data(self, *, object_list=None, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['obj_id'] = self.kwargs.get("obj_id")
+        item = RlClient.objects.filter(
+            row_id=self.kwargs.get('obj_id')
+        ).values("name").first()
+        context["name"] = item["name"]
+        context["obj_id"] = self.kwargs.get("obj_id")
         return context
 
 
@@ -222,8 +230,9 @@ class DuplicatesView(ListView):
     def get_queryset(self):
 
         item = RlClient.objects.filter(
-            row_id=self.kwargs.get('row_id')
+            row_id=self.kwargs.get('obj_id')
         ).first()
+        self.name = item.name
 
         queryset1 = RlClient.objects.filter(
             ~Q(row_id=item.row_id),
@@ -320,3 +329,9 @@ class DuplicatesView(ListView):
             record['duplicate'] = "по адресу"
 
         return list(chain(queryset, queryset_addr))
+
+    def get_context_data(self, *, object_list=None, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['obj_id'] = self.kwargs.get("obj_id")
+        context["name"] = self.name
+        return context

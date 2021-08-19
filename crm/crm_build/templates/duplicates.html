@@ -1,44 +1,55 @@
 {% extends 'base.html' %}
 {% block content %}
-    <ul class="nav nav-tabs nav-fill mt-2">
-        <li class="nav-item">
-            <a class="nav-link disabled" href="#">Информация</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link disabled" href="#">Фото</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link active" href="#">Дубликаты</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link disabled" href="#">Действия</a>
-        </li>
-        <li class="mr-2"><p>История работы</p></li>
-    </ul>
-    <div class="container-fluid">
+    <div class="text-center mb-2"><b>{{ name }}</b>
+    </div>
+    <div class="container border-right border-left">
+        <div class="row">
+            <div class="col-12">
+                <ul class="nav nav-tabs nav-fill mt-2">
+                    <li class="nav-item">
+                        <a class="nav-link"
+                           href="{% url 'object' obj_id %}">Информация</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link"
+                           href="{% url 'photos' obj_id %}">Фото</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#">Дубликаты</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link"
+                           href="{% url 'actions' obj_id %}">Действия</a>
+                    </li>
+                    <li class="mr-2"><p>История работы</p></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="container border-right border-left">
         <div class="row">
             <div class="col-10">
                 <table class="table">
-        <thead>
-        <tr>
-            <th scope="col">Дата</th>
-            <th scope="col">Дубликат</th>
-            <th scope="col">Клиент</th>
-            <th scope="col">Агент</th>
+                    <thead>
+                    <tr>
+                        <th scope="col">Дата</th>
+                        <th scope="col">Дубликат</th>
+                        <th scope="col">Клиент</th>
+                        <th scope="col">Агент</th>
 
-        </tr>
-        </thead>
-        <tbody>
-        {% for object in objects %}
-        <tr>
-            <td>{{object.sys_date_create|date:"d.m.Y" }}</td>
-            <td class="w-5">{{ object.duplicate }}</td>
-            <td class="w-75">{{ object.name }}</td>
-            <td class="w-20">{{ object.agent }}</td>
-        </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for object in objects %}
+                        <tr class="link_row" onclick="document.location.href='{% url 'object' row_id=object.row_id %}'">
+                            <td>{{ object.sys_date_create|date:"d.m.Y" }}</td>
+                            <td class="w-5">{{ object.duplicate }}</td>
+                            <td class="w-75">{{ object.name }}</td>
+                            <td class="w-20">{{ object.agent }}</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
             </div>
             <div class="col-2">
                 <table class="table table-striped">

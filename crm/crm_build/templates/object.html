@@ -10,7 +10,7 @@
             <a class="nav-link" href="{% url 'photos' object.row_id %}">Фото</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="#">Дубликаты</a>
+            <a class="nav-link" href="{% url 'duplicates' object.row_id %}">Дубликаты</a>
         </li>
         <li class="nav-item">
             <a class="nav-link" href="{% url 'actions' object.row_id %}">Действия</a>

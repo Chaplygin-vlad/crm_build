@@ -18,7 +18,7 @@ urlpatterns = [
     path('<int:obj_id>/actions/', ActionsView.as_view(), name='actions'),
     path('<int:row_id>/object/', BuyerDetail.as_view(), name='object'),
     path(
-        '<int:row_id>/duplicates/',
+        '<int:obj_id>/duplicates/',
         DuplicatesView.as_view(),
         name='duplicates'
     )
