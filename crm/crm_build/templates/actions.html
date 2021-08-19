@@ -6,20 +6,18 @@
                 <div class="col-12">
                     <ul class="nav nav-tabs nav-fill mt-2">
                         <li class="nav-item">
-                            <a class="nav-link disabled"
-                               href="#">Информация</a>
+                            <a class="nav-link" href="{% url 'object' obj_id %}">Информация</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link disabled" href="#">Фото</a>
+                            <a class="nav-link " href="{% url 'photos' obj_id %}">Фото</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link disabled" href="#">Дубликаты</a>
+                            <a class="nav-link" href="#">Дубликаты</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link active" href="#">Действия</a>
                         </li>
-                        <li class="m-2 mr-2"><p>История работы</p></li>
-                    </ul>
+                        <li class="mr-2"><p>История работы</p></li>
                 </div>
             </div>
         </div>

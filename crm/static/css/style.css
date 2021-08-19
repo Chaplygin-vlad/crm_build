@@ -141,3 +141,10 @@ th {
     max-height: 70px;
 
 }
+
+.link_row:hover{
+    cursor: pointer;
+    background-color: #98b1bb;
+}
+
+
