@@ -39,7 +39,7 @@
                         {% for object in objects %}
                             <tr>
                                 <td>{{ forloop.counter }}</td>
-                                <td>{{ object.datetime1|date:"Y.m.d H:i" }}</td>
+                                <td>{{ object.datetime1|date:"d.m.Y H:i" }}</td>
                                 <td>{{ object.agent|default_if_none:"" }}</td>
                                 <td>{{ object.stat_enum }}</td>
 

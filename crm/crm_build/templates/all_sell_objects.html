@@ -30,7 +30,15 @@
                     </thead>
                     <tbody>
                     {% for object in objects %}
-                        <tr class="link_row" onclick="document.location.href='{% url 'object' row_id=object.row_id %}'">
+                        <tr class="link_row"
+                            {% if object.status_enum == 'Архив (без сделки)' %}
+                            style="background-color: rgba(255, 209, 165, 0.7)"
+                            {% elif object.status_enum == 'Сделка (завершена)'%}
+                            style="background-color: rgba(197, 247, 255, 0.7)"
+                            {% elif object.status_enum == 'Отложенные'%}
+                            style="background-color: rgba(237, 237, 237, 0.7)"
+                            {% endif %}
+                            onclick="document.location.href='{% url 'object' row_id=object.row_id %}'">
                             <td style="max-width: 10px">{{ forloop.counter0|add:page_obj.start_index }}</td>
                             {% load static %}
 

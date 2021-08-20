@@ -730,6 +730,7 @@ class SysStat(models.Model):
         managed = False
         db_table = 'sys_stat'
         app_label = 'crm_build'
+        ordering = ['-datetime1']
 
 
 class SysType(models.Model):
