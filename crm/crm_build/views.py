@@ -13,7 +13,7 @@ from crm_build.utils import (
     change_stat_enum,
     get_search,
     get_context_values,
-    get_filters,
+    get_filters, get_form_filters,
 )
 
 
@@ -25,14 +25,27 @@ class MainPageListView(ListView):
     paginate_by = 50
 
     def get_queryset(self):
-        queryset_filter, search = get_filters(self.request.GET)
-        if queryset_filter is None:
+        search = None
+        annotate_filters = None
+        form_filters = self.request.GET.get('tel1')
+        if form_filters is not None:
+            queryset_filter, annotate_filters = get_form_filters(
+                self.request.GET
+            )
+        else:
+            queryset_filter, search = get_filters(self.request.GET)
+        if queryset_filter is None and annotate_filters is None:
             queryset = super().get_queryset().all()
         else:
             queryset = super().get_queryset().filter(
                 queryset_filter
             )
+
         queryset = annotate_queryset(queryset)
+        if annotate_filters:
+            queryset = queryset.filter(
+                annotate_filters
+            )
         if search is not None:
             search_queue = get_search(search)
             queryset = queryset.filter(search_queue)
@@ -56,9 +69,17 @@ class AllSaleObjectListView(ListView):
     queryset = RlClient.objects.all().annotate(square_price=wrapped_expression)
 
     def get_queryset(self):
-        queryset_filter, search = get_filters(self.request.GET)
+        search = None
+        annotate_filters = None
+        form_filters = self.request.GET.get('tel1')
+        if form_filters is not None:
+            queryset_filter, annotate_filters = get_form_filters(
+                self.request.GET
+            )
+        else:
+            queryset_filter, search = get_filters(self.request.GET)
 
-        if queryset_filter is None:
+        if queryset_filter is None and annotate_filters is None:
             queryset = super().get_queryset().filter(
                 client_enum='Продажа'
             )
@@ -86,6 +107,10 @@ class AllSaleObjectListView(ListView):
                     row_id=OuterRef("last_work_user_id")).values("name")
             )
         )
+        if annotate_filters:
+            queryset = queryset.filter(
+                annotate_filters
+            )
         if search is not None:
             search_queue = get_search(search)
             queryset = queryset.filter(search_queue)
@@ -106,9 +131,17 @@ class AllBuyersListView(ListView):
     paginate_by = 50
 
     def get_queryset(self):
-        queryset_filter, search = get_filters(self.request.GET)
+        search = None
+        annotate_filters = None
+        form_filters = self.request.GET.get('tel1')
+        if form_filters is not None:
+            queryset_filter, annotate_filters = get_form_filters(
+                self.request.GET
+            )
+        else:
+            queryset_filter, search = get_filters(self.request.GET)
 
-        if queryset_filter is None:
+        if queryset_filter is None and annotate_filters is None:
             queryset = super().get_queryset().filter(
                 client_enum='Купить'
             )
@@ -119,6 +152,11 @@ class AllBuyersListView(ListView):
                 queryset_filter
             )
         queryset = annotate_queryset(queryset)
+
+        if annotate_filters:
+            queryset = queryset.filter(
+                annotate_filters
+            )
         if search is not None:
             search_queue = get_search(search)
             queryset = queryset.filter(search_queue)
