@@ -9,7 +9,12 @@ from django.db.models import (
 from django.views.generic import ListView
 
 from crm_build.models import RlClient, SysUser, MainImage, SysStat, RlShow
-from crm_build.utils import change_stat_enum
+from crm_build.utils import (
+    change_stat_enum,
+    get_search,
+    get_context_values,
+    get_filters,
+)
 
 
 class MainPageListView(ListView):
@@ -20,8 +25,10 @@ class MainPageListView(ListView):
     paginate_by = 50
 
     def get_queryset(self):
-        queryset = RlClient.objects.exclude(
-            status_enum='Архив (без сделки)'
+        queryset_filter, search = get_filters(self.request.GET)
+
+        queryset = RlClient.objects.filter(
+            queryset_filter
         ).annotate(
             agent=Subquery(
                 SysUser.objects.filter(
@@ -32,8 +39,16 @@ class MainPageListView(ListView):
                     row_id=OuterRef("last_work_user_id")).values("name")
             )
         )
+        if search is not None:
+            search_queue = get_search(search)
+            queryset = queryset.filter(search_queue)
 
         return queryset
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context = get_context_values(self.request.GET, context)
+        return context
 
 
 class AllSaleObjectListView(ListView):
@@ -47,9 +62,12 @@ class AllSaleObjectListView(ListView):
     queryset = RlClient.objects.all().annotate(square_price=wrapped_expression)
 
     def get_queryset(self):
+        queryset_filter, search = get_filters(self.request.GET)
+
         queryset = super().get_queryset().filter(
-            client_enum='Продажа').exclude(
-            status_enum='Архив (без сделки)'
+            client_enum='Продажа'
+        ).filter(
+            queryset_filter
         ).annotate(
             photo=Subquery(
                 MainImage.objects.filter(
@@ -68,8 +86,16 @@ class AllSaleObjectListView(ListView):
                     row_id=OuterRef("last_work_user_id")).values("name")
             )
         )
+        if search is not None:
+            search_queue = get_search(search)
+            queryset = queryset.filter(search_queue)
 
         return queryset
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context = get_context_values(self.request.GET, context)
+        return context
 
 
 class AllBuyersListView(ListView):
@@ -80,8 +106,12 @@ class AllBuyersListView(ListView):
     paginate_by = 50
 
     def get_queryset(self):
-        queryset = RlClient.objects.exclude(
-            status_enum='Архив (без сделки)'
+        queryset_filter, search = get_filters(self.request.GET)
+
+        queryset = RlClient.objects.filter(
+            client_enum='Купить'
+        ).filter(
+            queryset_filter
         ).annotate(
             agent=Subquery(
                 SysUser.objects.filter(
@@ -92,8 +122,16 @@ class AllBuyersListView(ListView):
                     row_id=OuterRef("last_work_user_id")).values("name")
             )
         )
+        if search is not None:
+            search_queue = get_search(search)
+            queryset = queryset.filter(search_queue)
 
         return queryset
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context = get_context_values(self.request.GET, context)
+        return context
 
 
 class ClientDetail(ListView):
