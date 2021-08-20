@@ -2,7 +2,7 @@
 {% block content %}
         <div class="text-center mb-2"><b>{{ name }}</b>
     </div>
-        <div class="container border-right border-left">
+        <div class="container ">
             <div class="row">
                 <div class="col-12">
                     <ul class="nav nav-tabs nav-fill mt-2">
@@ -23,9 +23,9 @@
                 </div>
             </div>
         </div>
-        <div class="container border-right border-left">
-            <div class="row">
-                <div class="col-10">
+        <div class="container ">
+            <div class="row no-gutters border">
+                <div class="col-10 border-right">
                     <table class="action-table table table-responsible table-striped">
                         <thead>
                         <tr>
@@ -51,31 +51,7 @@
                     </table>
                 </div>
                 <div class="col-2">
-                    <table class="table table-striped">
-                        <tbody class="text-center">
-                        <tr>
-                            <td>
-                                <b>05.05.1923 15:40</b>
-                                <div><b>Mark</b></div>
-                                <div><u>Комментарий</u> +++</div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <b>05.05.1923 15:40</b>
-                                <div><b>Thornton</b></div>
-                                <div><u>Комментарий</u> +++</div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <b>05.05.1923 15:40</b>
-                                <div><b>the Bird</b></div>
-                                <div><u>Комментарий</u> +++</div>
-                            </td>
-                        </tr>
-                        </tbody>
-                    </table>
+                    {% include 'comments.html' %}
                 </div>
             </div>
 
