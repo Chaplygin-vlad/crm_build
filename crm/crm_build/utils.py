@@ -103,3 +103,100 @@ def get_filters(request):
     queryset_filter = get_filter(status_filter, type_filter)
     search = request.get('q')
     return queryset_filter, search
+
+
+def get_form_filters(request):
+    """Получаем фильтры из формы"""
+    agent_filter_queue = request.get("responsible")
+    if agent_filter_queue:
+        agent_filter = Q(agent__contains=agent_filter_queue)
+    else:
+        agent_filter = None
+    q_objects = Q()
+    q_objects = add_filter_tel(q_objects, request.get("tel1"))
+    q_objects = add_filter_city(q_objects,request.get("np_auto"))
+    q_objects = add_filter_street(q_objects, request.get("street"))
+    q_objects = add_filter_rooms(q_objects, request.get("rooms"))
+    q_objects = add_range_floor_filter(
+        q_objects,
+        request.get("floors_from"),
+        request.get("floors_to")
+    )
+    q_objects = add_range_floors_filter(
+        q_objects,
+        request.get("tfloors_from"),
+        request.get("tfloors_to")
+    )
+    q_objects = add_filter_walls(q_objects, request.get("param3"))
+    if request.get('check24') is not None:
+        q_objects = add_filter_heat(q_objects, 1)
+
+    return q_objects, agent_filter
+
+
+def add_filter_tel(q_object, value):
+    """Добавляем телефонный номер к фильтру"""
+    result = q_object
+    if value:
+        result &= Q(tel1=value)
+    return result
+
+
+def add_filter_city(q_object, value):
+    """Добавляем нас. пункт к фильтру"""
+    result = q_object
+    if value:
+        result &= Q(np_auto=value)
+    return result
+
+
+def add_filter_street(q_object, value):
+    """Добавляем улицу к фильтру"""
+    result = q_object
+    if value:
+        result &= Q(street=value)
+    return result
+
+
+def add_filter_rooms(q_object, value):
+    """Добавляем количество комнат к фильтру"""
+    result = q_object
+    if value:
+        result &= Q(rooms__contains=value)
+    return result
+
+
+def add_filter_walls(q_object, value):
+    """Добавляем материал стен к фильтру"""
+    result = q_object
+    if value:
+        result &= Q(param3=value)
+    return result
+
+
+def add_filter_heat(q_object, value):
+    """Добавляем отопление к  фильтру"""
+    result = q_object
+    if value:
+        result &= Q(check24=value)
+    return result
+
+
+def add_range_floor_filter(q_object, start, end):
+    """Добавляет фильтр по диапазону этажей"""
+    start = start if start else 1
+    end = end if end else 20
+    if start == 1 and end == 20:
+        return q_object
+    q_object &= Q(floor__range=[start, end])
+    return q_object
+
+
+def add_range_floors_filter(q_object, start, end):
+    """Добавляет фильтр по диапазону этажности"""
+    start = start if start else 1
+    end = end if end else 20
+    if start == 1 and end == 20:
+        return q_object
+    q_object &= Q(floors__range=[start, end])
+    return q_object

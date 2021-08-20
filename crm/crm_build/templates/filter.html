@@ -1,45 +1,158 @@
-{% extends 'base.html' %}
-{% block content %}
-
-    <div class="container">
-        <div class="row">
-            <div class="col-12">
-                <div>Параметры фильтрации</div>
-                <div class="input-group input-group-sm">
-                    <div class="input-group-prepend">
-                        <span class="input-group-text"
-                              id="req_type">Вид запроса</span>
-                    </div>
-                    <input type="text" class="form-control"
-                           aria-describedby="req_type">
-                </div>
-                <div class="input-group input-group-sm">
-                    <div class="input-group-prepend">
-                        <span class="input-group-text"
-                              id="req_type">Вид запроса</span>
-                    </div>
-                    <input type="text" class="form-control"
-                           aria-describedby="req_type">
-                </div>
-                <div class="input-group input-group-sm">
-                    <div class="input-group-prepend">
-                        <span class="input-group-text"
-                              id="req_type">Вид запроса</span>
-                    </div>
-                    <input type="text" class="form-control"
-                           aria-describedby="req_type">
-                </div>
-                <div class="input-group input-group-sm">
-                    <div class="input-group-prepend">
-                        <span class="input-group-text"
-                              id="req_type">Вид запроса</span>
-                    </div>
-                    <input type="text" class="form-control"
-                           aria-describedby="req_type">
-                </div>
-
+<div class="modal fade" id="filterModal" tabindex="-1"
+     role="dialog"
+     aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document"
+         style="width: 30vw; max-width: 30vw;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">Параметры
+                    фильтрации</h5>
+                <button type="button" class="close" data-dismiss="modal"
+                        aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
             </div>
+            <div class="modal-body">
+                <div class="container">
+                    <div class="row">
+                        <form action="{{ request.path }}" method="get">
+                            <div class="col-12">
+                                <div class="input-group input-group-sm">
+                                    <div class="input-group-prepend">
+                                        <label for="tel1"
+                                               class="input-group-text"
+                                               id="req_type">Телефон</label>
+                                    </div>
+                                    <input id="tel1" type="text"
+                                           class="form-control"
+                                           name="tel1"
+                                           value="{{ tel1 }}">
+                                </div>
+                                <div class="input-group input-group-sm">
+                                    <div class="input-group-prepend">
+                                        <label for="np_auto"
+                                               class="input-group-text"
+                                               id="req_type">Населенный
+                                            пункт</label>
+                                    </div>
+                                    <input id="np_auto" type="text"
+                                           class="form-control"
+                                           name="np_auto"
+                                           value="{{ np_auto }}">
+                                </div>
+                                <div class="input-group input-group-sm">
+                                    <div class="input-group-prepend">
+                                        <label for="street"
+                                               class="input-group-text"
+                                               id="req_type">Улица</label>
+                                    </div>
+                                    <input id="street" type="text"
+                                           class="form-control" name="street"
+                                           value="{{ street }}">
+                                </div>
+                                <div class="input-group input-group-sm">
+                                    <div class="input-group-prepend">
+                                        <label for="responsible"
+                                               class="input-group-text"
+                                               id="req_type">Ответственный</label>
+                                    </div>
+                                    <input id="responsible" type="text"
+                                           class="form-control"
+                                           name="responsible"
+                                           value="{{ responsible }}">
+                                </div>
+                                <div class="input-group input-group-sm">
+                                    <div class="input-group-prepend">
+                                        <label for="rooms"
+                                               class="input-group-text"
+                                               id="req_type">Количество
+                                            комнат</label>
+                                    </div>
+                                    <input id="rooms" type="text"
+                                           class="form-control" name="rooms"
+                                           value="{{ rooms }}">
+                                </div>
+                                <div class="input-group input-group-sm">
+                                    <div class="input-group-prepend">
+                                    <span for="floors_from"
+                                          class="input-group-text"
+                                          id="date_of_birth">Этажей, от</span>
+                                    </div>
+                                    <input id="floors_from" type="text"
+                                           class="form-control"
+                                           name="floors_from"
+                                           value="{{ floors_from }}">
+                                    <div class="input-group-prepend">
+                                        <label for="floors_to"
+                                               class="input-group-text"
+                                               id="sex">до</label>
+                                    </div>
+                                    <input id="floors_to" type="text"
+                                           class="form-control"
+                                           name="floors_to"
+                                           value="{{ floors_to }}">
+                                </div>
+                                <div class="input-group input-group-sm">
+                                    <div class="input-group-prepend">
+                                        <label for="tfloors_from"
+                                               class="input-group-text"
+                                               id="date_of_birth">Этажность,
+                                            от</label>
+                                    </div>
+                                    <input id="tfloors_from" type="text"
+                                           class="form-control"
+                                           name="tfloors_from"
+                                           value="{{ tfloors_from }}">
+                                    <div class="input-group-prepend">
+                                        <label id="tfloors_to"
+                                               class="input-group-text"
+                                               id="sex">до</label>
+                                    </div>
+                                    <input id="floors_to" type="text"
+                                           class="form-control"
+                                           name="tfloors_from"
+                                           value="{{ tfloors_from }}">
+                                </div>
 
+                                <div class="input-group input-group-sm">
+                                    <div class="input-group-prepend">
+                                        <label for="param3"
+                                               class="input-group-text"
+                                               id="req_type">Материал
+                                            стен</label>
+                                    </div>
+                                    <input id="param3" type="text"
+                                           class="form-control"
+                                           name="param3"
+                                           value="{{ param3 }}">
+                                </div>
+
+                            </div>
+                            <div class="form-check ">
+                                <label class="form-check-label"
+                                       for="check24">
+                                    Автономное отопление
+                                </label>
+                                <input id="check24" class="ml-3 form-check-input"
+                                       name="check24" type="checkbox"
+                                       value="heat">
+
+
+                            </div>
+                            <div class="modal-footer">
+                                <button type="submit"
+                                        class="btn btn-secondary">Поиск
+                                </button>
+                                <button type="button" class="btn btn-secondary"
+                                        data-dismiss="modal">Close
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
-{% endblock %}
+</div>
+
+
