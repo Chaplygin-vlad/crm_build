@@ -24,6 +24,23 @@ table {
     background: #eee;
 }
 
+@media only screen and (max-width: 1600px) {
+    table {
+        font-size: 10px
+    }
+
+    .table td, .table th {
+        padding: .25rem;
+
+    }
+    .tableFixHead {
+
+    height: 75vh;
+}
+
+}
+
+
 th {
     background-image: -webkit-linear-gradient(top, rgb(244, 244, 244), rgb(239, 239, 239) 40%, rgb(220, 220, 220));
 }
@@ -143,7 +160,7 @@ th {
 
 }
 
-.link_row:hover{
+.link_row:hover {
     cursor: pointer;
     background-color: #98b1bb;
 }
