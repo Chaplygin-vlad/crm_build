@@ -28,7 +28,8 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item">
-                <button class="btn btn-outline-secondary my-2 my-sm-0  mr-2"
+                <button class="btn btn-outline-secondary my-2 my-sm-0  mr-2
+{% if request.path == '/' %} active {% endif %}"
                         type="submit">
                     <a class="nav-link" href={% url 'index' %}>Все клиенты</a>
 
@@ -37,7 +38,8 @@
             </li>
             <li class="nav-item">
 
-                <button class="btn btn-outline-secondary my-2 my-sm-0 mr-2"
+                <button class="btn btn-outline-secondary my-2 my-sm-0 mr-2
+{% if request.path == '/all_sale/' %} active {% endif %}"
                         type="submit">
                     <a class="nav-link" href={% url 'all_sale' %}>Все
                         объекты</a>
@@ -45,7 +47,7 @@
                 </button>
             </li>
             <li class="nav-item">
-                <button class="btn btn-outline-secondary my-2 my-sm-0  mr-2"
+                <button class="btn btn-outline-secondary my-2 my-sm-0  mr-2 {% if request.path == '/all_buyers/' %} active {% endif %}"
                         type="submit">
                     <a class="nav-link" href="{% url 'all_buyers' %}"> Хотят
                         купить</a>
@@ -153,14 +155,15 @@
         let a = document.getElementById('search_link');
         a.setAttribute('href', a.getAttribute('href') + "&q=" + input.value);
     }
-    const input_node = document.getElementById('search_input');
-    input_node.addEventListener("keyup", function(event) {
-    if (event.key === "Enter") {
-        let a = document.getElementById('search_link');
-        document.location.href = a.getAttribute('href');
 
-    }
-});
+    const input_node = document.getElementById('search_input');
+    input_node.addEventListener("keyup", function (event) {
+        if (event.key === "Enter") {
+            let a = document.getElementById('search_link');
+            document.location.href = a.getAttribute('href');
+
+        }
+    });
 </script>
 
 </body>
