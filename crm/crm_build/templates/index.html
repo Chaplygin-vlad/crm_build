@@ -1,22 +1,26 @@
 {% extends 'base.html' %}
 {% block content %}
-    <table class="tableFixHead table table-bordered table-sm"
+
+    <div class="table-footer container-fluid">
+        <div class="row">
+            <div class="col-12">
+                <table class="tableFixHead table table-bordered"
            cellspacing="0">
         <thead>
         <tr>
-            <th scope="col">№</th>
-            <th scope="col">Создан, Изменен</th>
-            <th scope="col">ID</th>
-            <th scope="col">Вид</th>
-            <th scope="col">Тип недвиж.</th>
-            <th scope="col">ФИО</th>
-            <th scope="col">Телефон</th>
-            <th scope="col">Адрес</th>
-            <th scope="col">Комнат</th>
-            <th scope="col">Ответственный</th>
-            <th scope="col">Договор/Встреча</th>
-            <th scope="col">Служеб. Комментарий</th>
-            <th scope="col">Послед. Задача</th>
+            <th  scope="col">№</th>
+            <th  class="col-1" scope="col">Создан, Изменен</th>
+            <th  scope="col">ID</th>
+            <th  scope="col">Вид</th>
+            <th  class="col-1" scope="col">Тип недвиж.</th>
+            <th  class="col-1" scope="col">ФИО</th>
+            <th  scope="col">Телефон</th>
+            <th  class="col-1" scope="col">Адрес</th>
+            <th  scope="col">Комнат</th>
+            <th  class="col-1" scope="col">Ответственный</th>
+            <th  class="col-1" scope="col">Договор/Встреча</th>
+            <th  class="col-2" scope="col">Служеб. Комментарий</th>
+            <th  class="col-2" scope="col">Послед. Задача</th>
             <th scope="col">Статус</th>
 
         </tr>
@@ -26,11 +30,13 @@
 
             <tr class="link_row" onclick="document.location.href='{% url 'object' row_id=object.row_id %}'">
                 <td>{{ forloop.counter0|add:page_obj.start_index }}</td>
-                <td>{{ object.sys_date_create|date:"Y.m.d H:i" }} {{ object.sys_date_update|date:"Y.m.d" }}</td>
-                <td>{{ object.lot }}
+                <td style="width: 10px">{{ object.sys_date_create|date:"Y.m.d H:i" }} {{ object.sys_date_update|date:"Y.m.d" }}</td>
+                <td style="width: 8px">{{ object.lot }}
                     <br>
                     <div class="text-center">
-                        {% if object.alt_check %}А{% endif %}{% if object.sobstv_check %}C{% endif %}{% if object.kontr_check %}Р{% endif %}{% if object.nal_check %}Н{% endif %}{% if object.ipoteka_check %}И{% endif %}
+                        {% if object.alt_check %}А{% endif %}{% if object.sobstv_check %}C{% endif %}
+                        {% if object.kontr_check %}Р{% endif %}{% if object.nal_check %}Н{% endif %}
+                        {% if object.ipoteka_check %}И{% endif %}
                     </div>
                 </td>
                 <td>{{ object.client_enum }}</td>
@@ -41,12 +47,12 @@
                 <td>{{ object.rooms|default_if_none:"" }} {{ object.rooms_from|default_if_none:"" }}</td>
                 <td>{{ object.agent }}</td>
                 <td>{{ object.doc_enum|default_if_none:"" }}</td>
-                <td>
+                <td style="max-width: 120px">
                     <div class="comment_text">
                         {{ object.comment|default_if_none:"" }}
                     </div>
                 </td>
-                <td>
+                <td style="width: 102px">
                     <div class="comment_text">
                         {{ object.last_agent|default_if_none:"" }}
                         {{ object.last_work_date|date:"d.m.Y H:i" }}
@@ -60,8 +66,13 @@
         {% endfor %}
         </tbody>
     </table>
-    <div class="text-center">Всего объектов {{ paginator.count }}</div>
-    <div class="mb-3">
-        {% include 'pagination.html' %}
+            </div>
+        </div>
+        <div class="">
+            <div class="text-center">Всего объектов {{ paginator.count }}</div>
+            <div class="mb-3">
+                {% include 'pagination.html' %}
+            </div>
+        </div>
     </div>
 {% endblock %}

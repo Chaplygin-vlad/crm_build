@@ -3,19 +3,19 @@ table {
     max-width: 100%;
     font-size: 12px;
     display: block;
-    height: 580px;
+
     overflow-y: auto;
     overflow-x: hidden !important;
 }
 
 .tableFixHead {
     overflow-y: auto;
-    height: 800px;
+    height: 82vh;
 }
 
 .tableFixHead table {
     border-collapse: collapse;
-    width: 100%;
+    min-width: 100%;
 }
 
 .tableFixHead th {
@@ -23,6 +23,23 @@ table {
     top: 0;
     background: #eee;
 }
+
+@media only screen and (max-width: 1600px) {
+    table {
+        font-size: 10px
+    }
+
+    .table td, .table th {
+        padding: .25rem;
+
+    }
+    .tableFixHead {
+
+    height: 75vh;
+}
+
+}
+
 
 th {
     background-image: -webkit-linear-gradient(top, rgb(244, 244, 244), rgb(239, 239, 239) 40%, rgb(220, 220, 220));
@@ -140,11 +157,25 @@ th {
     box-sizing: border-box;
     max-height: 70px;
 
+
 }
 
-.link_row:hover{
+.link_row:hover {
     cursor: pointer;
     background-color: #98b1bb;
 }
 
+.input-group-text {
+    min-width: 120px;
+    color: black;
+}
 
+.form-control {
+    color: black;
+}
+
+.table-footer {
+    position: fixed;
+
+    background-color: white;
+}

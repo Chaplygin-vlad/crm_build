@@ -22,7 +22,7 @@ class MainPageListView(ListView):
     model = RlClient
     context_object_name = 'objects'
     template_name = 'index.html'
-    paginate_by = 10
+    paginate_by = 50
 
     def get_queryset(self):
         queryset_filter, search = get_filters(self.request.GET)
@@ -56,7 +56,7 @@ class AllSaleObjectListView(ListView):
     model = RlClient
     context_object_name = 'objects'
     template_name = 'all_sell_objects.html'
-    paginate_by = 10
+    paginate_by = 50
     expression = F('cost') / F('area1')
     wrapped_expression = ExpressionWrapper(expression, IntegerField())
     queryset = RlClient.objects.all().annotate(square_price=wrapped_expression)
@@ -103,7 +103,7 @@ class AllBuyersListView(ListView):
     model = RlClient
     context_object_name = 'objects'
     template_name = 'all_buyers.html'
-    paginate_by = 10
+    paginate_by = 50
 
     def get_queryset(self):
         queryset_filter, search = get_filters(self.request.GET)
@@ -134,8 +134,8 @@ class AllBuyersListView(ListView):
         return context
 
 
-class BuyerDetail(ListView):
-    """Карточка покупателя (покупка)"""
+class ClientDetail(ListView):
+    """Карточка объекта"""
     model = RlClient
     context_object_name = 'object'
     template_name = 'object.html'
@@ -192,9 +192,13 @@ class BuyerDetail(ListView):
                 SysUser.objects.filter(
                     row_id=OuterRef("user_id")).values("name")
             ),
-            comment_object=Subquery(
+            comment_client=Subquery(
                 RlClient.objects.filter(
                     row_id=OuterRef("client_id")).values("name")
+            ),
+            comment_object=Subquery(
+                RlClient.objects.filter(
+                    row_id=OuterRef("realty_id")).values("name")
             )
 
         )
@@ -223,6 +227,22 @@ class PhotosView(ListView):
         ).values("name").first()
         context["name"] = item["name"]
         context['obj_id'] = self.kwargs.get("obj_id")
+        context['comments'] = RlShow.objects.filter(
+            realty_id=self.kwargs.get("obj_id")).annotate(
+            create_agent=Subquery(
+                SysUser.objects.filter(
+                    row_id=OuterRef("user_id")).values("name")
+            ),
+            comment_client=Subquery(
+                RlClient.objects.filter(
+                    row_id=OuterRef("client_id")).values("name")
+            ),
+            comment_object=Subquery(
+                RlClient.objects.filter(
+                    row_id=OuterRef("realty_id")).values("name")
+            )
+
+        )
         return context
 
 
@@ -255,6 +275,22 @@ class ActionsView(ListView):
         ).values("name").first()
         context["name"] = item["name"]
         context["obj_id"] = self.kwargs.get("obj_id")
+        context['comments'] = RlShow.objects.filter(
+            realty_id=self.kwargs.get("obj_id")).annotate(
+            create_agent=Subquery(
+                SysUser.objects.filter(
+                    row_id=OuterRef("user_id")).values("name")
+            ),
+            comment_client=Subquery(
+                RlClient.objects.filter(
+                    row_id=OuterRef("client_id")).values("name")
+            ),
+            comment_object=Subquery(
+                RlClient.objects.filter(
+                    row_id=OuterRef("realty_id")).values("name")
+            )
+
+        )
         return context
 
 
@@ -373,4 +409,20 @@ class DuplicatesView(ListView):
         context = super().get_context_data(**kwargs)
         context['obj_id'] = self.kwargs.get("obj_id")
         context["name"] = self.name
+        context['comments'] = RlShow.objects.filter(
+            realty_id=self.kwargs.get("obj_id")).annotate(
+            create_agent=Subquery(
+                SysUser.objects.filter(
+                    row_id=OuterRef("user_id")).values("name")
+            ),
+            comment_client=Subquery(
+                RlClient.objects.filter(
+                    row_id=OuterRef("client_id")).values("name")
+            ),
+            comment_object=Subquery(
+                RlClient.objects.filter(
+                    row_id=OuterRef("realty_id")).values("name")
+            )
+
+        )
         return context
