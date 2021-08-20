@@ -53,54 +53,81 @@
 
             </li>
             <li class="nav-item dropdown">
-                    <button class="btn btn-outline-success btn-lg mt-1 mr-2 dropdown-toggle"
-                            type="button" id="dropdownMenuButton"
-                            data-toggle="dropdown" aria-haspopup="true"
-                            aria-expanded="false">
-                        Статус сделки
-                    </button>
-                    <div class="dropdown-menu"
-                         aria-labelledby="dropdownMenuButton">
-                        <a class="nav-link dropdown-item" href="#">Новые, В работе, Аванс</a>
-                        <a class="nav-link dropdown-item" href="#">Все статусы...</a>
-                        <a class="nav-link dropdown-item" href="#">Новые</a>
-                        <a class="nav-link dropdown-item" href="#">В работе</a>
-                        <a class="nav-link dropdown-item" href="#">Аванс</a>
-                        <a class="nav-link dropdown-item" href="#">Отложенные</a>
-                        <a class="nav-link dropdown-item" href="#">Сделка (завершена)</a>
-                        <a class="nav-link dropdown-item" href="#">Архив (без сделки)</a>
-                        <a class="nav-link dropdown-item" href="#">Рекламные</a>
-                    </div>
+                <button class="btn btn-outline-success btn-lg mt-1 mr-2 dropdown-toggle"
+                        type="button" id="dropdownMenuButton"
+                        data-toggle="dropdown" aria-haspopup="true"
+                        aria-expanded="false">
+                    <lable text=" "></lable>
+                    {{ status_value }}
+                </button>
+                <div class="dropdown-menu"
+                     aria-labelledby="dropdownMenuButton">
+                    <a class="nav-link dropdown-item"
+                       href="{{ request.path }}?obj_type={{ obj_type_key }}">Новые,
+                        В работе, Аванс</a>
+                    <a class="nav-link dropdown-item"
+                       href="{{ request.path }}?status=all&obj_type={{ obj_type_key }}">Все
+                        статусы...</a>
+                    <a class="nav-link dropdown-item"
+                       href="{{ request.path }}?status=new&obj_type={{ obj_type_key }}">Новые</a>
+                    <a class="nav-link dropdown-item"
+                       href="{{ request.path }}?status=in_work&obj_type={{ obj_type_key }}">В
+                        работе</a>
+                    <a class="nav-link dropdown-item"
+                       href="{{ request.path }}?status=avans&obj_type={{ obj_type_key }}">Аванс</a>
+                    <a class="nav-link dropdown-item"
+                       href="{{ request.path }}?status=delayed&obj_type={{ obj_type_key }}">Отложенные</a>
+                    <a class="nav-link dropdown-item"
+                       href="{{ request.path }}?status=closed&obj_type={{ obj_type_key }}">Сделка
+                        (завершена)</a>
+                    <a class="nav-link dropdown-item"
+                       href="{{ request.path }}?status=archive&obj_type={{ obj_type_key }}">Архив
+                        (без сделки)</a>
+                    <a class="nav-link dropdown-item"
+                       href="{{ request.path }}?status=advert&obj_type={{ obj_type_key }}">Рекламные</a>
+                </div>
 
             </li>
             <li class="nav-item dropdown">
 
-                    <button class="btn btn-outline-success btn-lg mt-1 mr-2 dropdown-toggle"
-                            type="button" id="dropdownMenuButton"
-                            data-toggle="dropdown" aria-haspopup="true"
-                            aria-expanded="false">
-                        Вид недвижимости
-                    </button>
-                    <div class="dropdown-menu"
-                         aria-labelledby="dropdownMenuButton">
-                        <a class="nav-link dropdown-item" href="#">Все типы недвижимости</a>
-                        <a class="nav-link dropdown-item" href="#">Квартиры</a>
-                        <a class="nav-link dropdown-item" href="#">Дома</a>
-                        <a class="nav-link dropdown-item" href="#">Земельные участки</a>
-                    </div>
+                <button class="btn btn-outline-success btn-lg mt-1 mr-2 dropdown-toggle"
+                        type="button" id="dropdownMenuButton"
+                        data-toggle="dropdown" aria-haspopup="true"
+                        aria-expanded="false">
+                    {{ obj_type_value }}
+                </button>
+                <div class="dropdown-menu"
+                     aria-labelledby="dropdownMenuButton">
+                    <a class="nav-link dropdown-item"
+                       href="{{ request.path }}?status={{ status_key }}">Все
+                        типы недвижимости</a>
+                    <a class="nav-link dropdown-item"
+                       href="{{ request.path }}?obj_type=apart&status={{ status_key }}">Квартира</a>
+                    <a class="nav-link dropdown-item"
+                       href="{{ request.path }}?obj_type=house&status={{ status_key }}">Дом</a>
+                    <a class="nav-link dropdown-item"
+                       href="{{ request.path }}?obj_type=land&status={{ status_key }}">Земельный
+                        участок</a>
+                </div>
 
 
             </li>
         </ul>
 
-        <form class="form-inline my-2 my-lg-0">
-            <input class="form-control mr-sm-2" type="search"
-                   placeholder="Поиск" aria-label="Поиск">
-            <button class="btn btn-outline-secondary my-2 my-sm-0"
-                    type="submit">
-                Поиск
-            </button>
-        </form>
+        <span class="mr-1">
+          <input onchange="getSearchUrl()" id="search_input" name="q"
+                 class="form-control mr-sm-2"
+                 type="search"
+                 placeholder="Поиск" aria-label="Поиск">
+        </span>
+        <span>
+        <a id="search_link" class="btn btn-outline-secondary my-2 my-sm-0"
+           href="{{ request.path }}?obj_type={{ obj_type_key }}&status={{ status_key }}">
+            Поиск
+        </a>
+        </span>
+
+
         <a class="ml-2" href="#"><i class="fas fa-filter fa-lg"></i></a>
     </div>
 </nav>
@@ -120,6 +147,21 @@
         integrity="sha384-w1Q4orYjBQndcko6MimVbzY0tgp4pWB4lZ7lr30WKz0vr/aWKhXdBNmNb5D92v7s"
         crossorigin="anonymous"></script>
 
+<script>
+    function getSearchUrl() {
+        let input = document.getElementById('search_input');
+        let a = document.getElementById('search_link');
+        a.setAttribute('href', a.getAttribute('href') + "&q=" + input.value);
+    }
+    const input_node = document.getElementById('search_input');
+    input_node.addEventListener("keyup", function(event) {
+    if (event.key === "Enter") {
+        let a = document.getElementById('search_link');
+        document.location.href = a.getAttribute('href');
+
+    }
+});
+</script>
 
 </body>
 
