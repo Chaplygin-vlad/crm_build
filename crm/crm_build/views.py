@@ -26,19 +26,13 @@ class MainPageListView(ListView):
 
     def get_queryset(self):
         queryset_filter, search = get_filters(self.request.GET)
-
-        queryset = RlClient.objects.filter(
-            queryset_filter
-        ).annotate(
-            agent=Subquery(
-                SysUser.objects.filter(
-                    row_id=OuterRef("user_id")).values("name")
-            ),
-            last_agent=Subquery(
-                SysUser.objects.filter(
-                    row_id=OuterRef("last_work_user_id")).values("name")
+        if queryset_filter is None:
+            queryset = super().get_queryset().all()
+        else:
+            queryset = super().get_queryset().filter(
+                queryset_filter
             )
-        )
+        queryset = annotate_queryset(queryset)
         if search is not None:
             search_queue = get_search(search)
             queryset = queryset.filter(search_queue)
@@ -64,11 +58,17 @@ class AllSaleObjectListView(ListView):
     def get_queryset(self):
         queryset_filter, search = get_filters(self.request.GET)
 
-        queryset = super().get_queryset().filter(
-            client_enum='Продажа'
-        ).filter(
-            queryset_filter
-        ).annotate(
+        if queryset_filter is None:
+            queryset = super().get_queryset().filter(
+                client_enum='Продажа'
+            )
+        else:
+            queryset = super().get_queryset().filter(
+                client_enum='Продажа'
+            ).filter(
+                queryset_filter
+            )
+        queryset = queryset.annotate(
             photo=Subquery(
                 MainImage.objects.filter(
                     obj_id=OuterRef("row_id")).values("row_id")[:1]
@@ -108,20 +108,17 @@ class AllBuyersListView(ListView):
     def get_queryset(self):
         queryset_filter, search = get_filters(self.request.GET)
 
-        queryset = RlClient.objects.filter(
-            client_enum='Купить'
-        ).filter(
-            queryset_filter
-        ).annotate(
-            agent=Subquery(
-                SysUser.objects.filter(
-                    row_id=OuterRef("user_id")).values("name")
-            ),
-            last_agent=Subquery(
-                SysUser.objects.filter(
-                    row_id=OuterRef("last_work_user_id")).values("name")
+        if queryset_filter is None:
+            queryset = super().get_queryset().filter(
+                client_enum='Купить'
             )
-        )
+        else:
+            queryset = super().get_queryset().filter(
+                client_enum='Купить'
+            ).filter(
+                queryset_filter
+            )
+        queryset = annotate_queryset(queryset)
         if search is not None:
             search_queue = get_search(search)
             queryset = queryset.filter(search_queue)
@@ -186,22 +183,8 @@ class ClientDetail(ListView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['comments'] = RlShow.objects.filter(
-            realty_id=context['object'].row_id).annotate(
-            create_agent=Subquery(
-                SysUser.objects.filter(
-                    row_id=OuterRef("user_id")).values("name")
-            ),
-            comment_client=Subquery(
-                RlClient.objects.filter(
-                    row_id=OuterRef("client_id")).values("name")
-            ),
-            comment_object=Subquery(
-                RlClient.objects.filter(
-                    row_id=OuterRef("realty_id")).values("name")
-            )
-
-        )
+        context = get_context_values(self.request.GET, context)
+        context['comments'] = get_context_comment(context['object'].row_id)
 
         return context
 
@@ -222,27 +205,13 @@ class PhotosView(ListView):
 
     def get_context_data(self, *, object_list=None, **kwargs):
         context = super().get_context_data(**kwargs)
+        context = get_context_values(self.request.GET, context)
         item = RlClient.objects.filter(
             row_id=self.kwargs.get('obj_id')
         ).values("name").first()
         context["name"] = item["name"]
         context['obj_id'] = self.kwargs.get("obj_id")
-        context['comments'] = RlShow.objects.filter(
-            realty_id=self.kwargs.get("obj_id")).annotate(
-            create_agent=Subquery(
-                SysUser.objects.filter(
-                    row_id=OuterRef("user_id")).values("name")
-            ),
-            comment_client=Subquery(
-                RlClient.objects.filter(
-                    row_id=OuterRef("client_id")).values("name")
-            ),
-            comment_object=Subquery(
-                RlClient.objects.filter(
-                    row_id=OuterRef("realty_id")).values("name")
-            )
-
-        )
+        context['comments'] = get_context_comment(self.kwargs.get("obj_id"))
         return context
 
 
@@ -270,27 +239,13 @@ class ActionsView(ListView):
 
     def get_context_data(self, *, object_list=None, **kwargs):
         context = super().get_context_data(**kwargs)
+        context = get_context_values(self.request.GET, context)
         item = RlClient.objects.filter(
             row_id=self.kwargs.get('obj_id')
         ).values("name").first()
         context["name"] = item["name"]
         context["obj_id"] = self.kwargs.get("obj_id")
-        context['comments'] = RlShow.objects.filter(
-            realty_id=self.kwargs.get("obj_id")).annotate(
-            create_agent=Subquery(
-                SysUser.objects.filter(
-                    row_id=OuterRef("user_id")).values("name")
-            ),
-            comment_client=Subquery(
-                RlClient.objects.filter(
-                    row_id=OuterRef("client_id")).values("name")
-            ),
-            comment_object=Subquery(
-                RlClient.objects.filter(
-                    row_id=OuterRef("realty_id")).values("name")
-            )
-
-        )
+        context['comments'] = get_context_comment(self.kwargs.get("obj_id"))
         return context
 
 
@@ -407,10 +362,32 @@ class DuplicatesView(ListView):
 
     def get_context_data(self, *, object_list=None, **kwargs):
         context = super().get_context_data(**kwargs)
+        context = get_context_values(self.request.GET, context)
         context['obj_id'] = self.kwargs.get("obj_id")
         context["name"] = self.name
-        context['comments'] = RlShow.objects.filter(
-            realty_id=self.kwargs.get("obj_id")).annotate(
+        context['comments'] = get_context_comment(self.kwargs.get("obj_id"))
+        return context
+
+
+def annotate_queryset(queryset):
+    """Добавляет queryset с аннотациями"""
+    result = queryset.annotate(
+            agent=Subquery(
+                SysUser.objects.filter(
+                    row_id=OuterRef("user_id")).values("name")
+            ),
+            last_agent=Subquery(
+                SysUser.objects.filter(
+                    row_id=OuterRef("last_work_user_id")).values("name")
+            )
+        )
+    return result
+
+
+def get_context_comment(obj_id):
+    """Добавляем комментарии в контекст"""
+    result = RlShow.objects.filter(
+            realty_id=obj_id).annotate(
             create_agent=Subquery(
                 SysUser.objects.filter(
                     row_id=OuterRef("user_id")).values("name")
@@ -425,4 +402,5 @@ class DuplicatesView(ListView):
             )
 
         )
-        return context
+    return result
+
