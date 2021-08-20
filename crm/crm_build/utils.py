@@ -61,6 +61,8 @@ def get_filter(status, obj_type):
         result = type_filter
     elif type_filter is None:
         result = status_filter
+    elif type_filter is None and status_filter is None:
+        result = None
     else:
         result = Q(status_filter, type_filter)
     return result
