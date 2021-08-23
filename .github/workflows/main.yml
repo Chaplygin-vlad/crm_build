@@ -24,7 +24,7 @@ jobs:
       - name: push Docker img
         uses: mr-smithers-excellent/docker-build-push@v4
         with:
-          image: kairick/coll-store
+          image: kairick/nds
           registry: docker.io
           tag: latest
           username: ${{secrets.DOCKER_USERNAME}}
