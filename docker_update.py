@@ -9,5 +9,5 @@ with open('Dockerfile', 'a') as docker:
     docker.write(f'ENV DB_NAME={host} \n')
     docker.write(f'ENV DB_USER={user} \n')
     docker.write(f'ENV DB_PASSWORD={passwd} \n')
-    docker.write(f'RUN python crm/manage.py collectstatic --no-input \n')
+    docker.write(f'RUN python manage.py collectstatic --no-input \n')
     docker.write(f'RUN chmod -R 775 static')
