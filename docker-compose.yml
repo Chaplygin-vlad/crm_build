@@ -1,9 +1,11 @@
 version: "3.8"
 
+
 services:
+
   db:
     env_file:
-      - .env
+    - .env
     environment:
     - MYSQL_DATABASE
     - MYSQL_USER
@@ -13,7 +15,7 @@ services:
     ports:
     - 3306:3306
     volumes:
-    -  db_data:/var/lib/mysql
+    - db_data:/var/lib/mysql
   nginx:
     image: library/nginx:alpine
     ports:
@@ -30,7 +32,7 @@ services:
     - db
     image: kairick/nds
     volumes:
-      - static-volume:/usr/src/app/static
+      - static-volume:/usr/crm/app/static
 volumes:
   static-volume:
 

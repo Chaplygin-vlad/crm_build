@@ -8,11 +8,11 @@ ENV \
   POETRY_NO_INTERACTION=1 \
   POETRY_VIRTUALENVS_CREATE=false \
   POETRY_CACHE_DIR='/var/cache/pypoetry'
-WORKDIR /app/src
+WORKDIR /app/crm
 RUN apt-get update && \
     pip install --upgrade pip poetry
-COPY poetry.lock pyproject.toml /app/src/
+COPY poetry.lock pyproject.toml /app/crm/
 RUN poetry install --no-interaction --no-ansi && \
 	rm -rf "$POETRY_CACHE_DIR"
 
-COPY . app/src
+COPY . app/crm
