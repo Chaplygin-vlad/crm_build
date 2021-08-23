@@ -15,4 +15,4 @@ COPY poetry.lock pyproject.toml /app/crm/
 RUN poetry install --no-interaction --no-ansi && \
 	rm -rf "$POETRY_CACHE_DIR"
 
-COPY . app/crm
+COPY . .
