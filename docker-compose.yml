@@ -26,6 +26,7 @@ services:
     volumes:
       - static-volume:/usr/app/static
 volumes:
+  db_data: {}
   static-volume:
 
 networks:
