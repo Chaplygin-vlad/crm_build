@@ -25,7 +25,7 @@ services:
     - db
     image: kairick/nds
     volumes:
-      - static-volume:/usr/app/static
+      - static-volume:/usr/app/crm/static
 volumes:
   db_data: {}
   static-volume:
