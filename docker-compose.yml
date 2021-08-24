@@ -1,6 +1,5 @@
 version: "3.8"
 
-
 services:
 
   db:
@@ -32,10 +31,9 @@ services:
     - db
     image: kairick/nds
     volumes:
-      - static-volume:/usr/app/crm/static
+      - static-volume:/usr/app/static
 volumes:
   static-volume:
-
 
 networks:
   default:
