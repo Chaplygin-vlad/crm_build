@@ -30,7 +30,7 @@ services:
     - db
 
     volumes:
-      - static-volume:/usr/app/crm/static
+      - static-volume:/app/crm/static
 
 volumes:
   db_data: {}
