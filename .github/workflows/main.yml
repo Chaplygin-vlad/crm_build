@@ -60,6 +60,5 @@ jobs:
           key: ${{ secrets.SSH_KEY }}
           port: ${{ secrets.SSH_PORT }}
           script: |
-            docker-compose exec -T web mkdir /app/crm/static/images
             docker-compose exec -T web python manage.py collectstatic --no-input
             docker-compose exec -T web python manage.py migrate
