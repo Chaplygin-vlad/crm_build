@@ -3,7 +3,7 @@ version: "3.8"
 services:
 
   db:
-    image: mysql
+    image: cytopia/mysql-8.0
     container_name: nds_db
     command: --default-authentication-plugin=mysql_native_password
     environment:
