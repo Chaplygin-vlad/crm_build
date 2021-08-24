@@ -16,8 +16,6 @@ services:
     image: kairick/nds
     container_name: nds_web
     command: gunicorn --workers 3 --bind 0.0.0.0:8000 crm.wsgi:application
-    depends_on:
-      - db
     extra_hosts:
       - "host.docker.internal:host-gateway"
 
