@@ -83,16 +83,30 @@ def get_search(queue):
 
 def get_context_values(request, context):
     """Добавляет данные в контекст"""
-    context["status_value"] = DEAL_STATUS[request.get(
-        "status",
-        "default"
-    )]
-    context["status_key"] = request.get("status", "default")
-    context["obj_type_value"] = DEAL_TYPE[request.get(
-        "obj_type",
-        "default"
-    )]
-    context["obj_type_key"] = request.get("obj_type", "default")
+    if request.get('tel1') is not None:
+        context['main_filter_value'] = \
+            f'tel1={request.get("tel1")}' \
+            f'&np_auto={request.get("np_auto")}' \
+            f'&street={request.get("street")}' \
+            f'&responsible={request.get("responsible")}' \
+            f'&rooms={request.get("rooms")}' \
+            f'&floors_from={request.get("floors_from")}' \
+            f'&floors_to={request.get("floors_to")}' \
+            f'&tfloors_from={request.get("tfloors_from")}' \
+            f'&param3={request.get("param3")}'
+    else:
+        context["status_value"] = DEAL_STATUS[request.get(
+            "status",
+            "default"
+        )]
+        context["status_key"] = request.get("status", "default")
+        context["obj_type_value"] = DEAL_TYPE[request.get(
+            "obj_type",
+            "default"
+        )]
+        context["obj_type_key"] = request.get("obj_type", "default")
+        context["q"] = request.get('q', '')
+
     return context
 
 
