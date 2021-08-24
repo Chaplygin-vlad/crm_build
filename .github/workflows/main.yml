@@ -51,7 +51,7 @@ jobs:
           script: |
             docker login -u ${{secrets.DOCKER_USERNAME}} -p ${{secrets.DOCKER_PASSWORD}}
             docker-compose pull
-            docker-compose -f docker-compose.yml up -d -e MYSQL_ROOT_PASSWORD=${{secrets.DB_PASSWORD}}
+            docker-compose -f docker-compose.yml up -d
       - name: get migrations
         uses: appleboy/ssh-action@master
         with:
