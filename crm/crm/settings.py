@@ -130,7 +130,6 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 STATICFILES_DIRS = (
     os.path.join(STATIC_ROOT, 'images'),
     os.path.join(STATIC_ROOT, 'css'),
-    os.path.join(STATIC_ROOT, 'webfonts'),
     os.path.join(STATIC_ROOT, 'js')
 )
 # Default primary key field type
