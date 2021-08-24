@@ -11,8 +11,7 @@ services:
     volumes:
     - db_data:/var/lib/mysql
     extra_hosts:
-      - "host.docker.internal:host-gateway"
-      -
+    - "host.docker.internal:host-gateway"
   nginx:
     image: library/nginx:alpine
     container_name: nds_nginx
