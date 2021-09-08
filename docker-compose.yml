@@ -20,8 +20,7 @@ services:
       - "host.docker.internal:172.18.0.1"
 
     volumes:
-      - static-volume:/app/crm/static
-      - /var/www/html/crm_build/crm/static/images:/static
+      - /var/www/html/crm_build/crm/static:/static
 
 volumes:
   static-volume:
