@@ -20,12 +20,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.getenv('SECRET_KEY')
+SECRET_KEY = os.environ.get('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -78,11 +78,11 @@ WSGI_APPLICATION = 'crm.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': os.getenv('MYSQL_DATABASE'),
-        'USER': os.getenv('MYSQL_USER'),
-        'PASSWORD': os.getenv('MYSQL_ROOT_PASSWORD'),
-        'HOST': 'localhost',
-        'PORT': os.getenv('MYSQL_PORT'),
+        'NAME': os.environ.get('MYSQL_DATABASE'),
+        'USER': os.environ.get('MYSQL_USER'),
+        'PASSWORD': os.environ.get('MYSQL_ROOT_PASSWORD'),
+        'HOST': '172.18.0.1',
+        'PORT': 3306,
     }
 }
 
@@ -126,11 +126,12 @@ USE_TZ = True
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 #
 STATICFILES_DIRS = (
     os.path.join(STATIC_ROOT, 'images'),
     os.path.join(STATIC_ROOT, 'css'),
-    os.path.join(STATIC_ROOT, 'webfonts'),
     os.path.join(STATIC_ROOT, 'js')
 )
 # Default primary key field type
