@@ -8,7 +8,8 @@ services:
     ports:
       - 80:80
     volumes:
-      - /var/www/html/crm_build/crm/static:/static
+      - static-volume:/static
+      - /var/www/html/crm_build/crm/static:/media
       - ./nginx.conf:/etc/nginx/nginx.conf
     volumes_from:
       - web
@@ -20,7 +21,11 @@ services:
       - "host.docker.internal:172.18.0.1"
 
     volumes:
-      - /var/www/html/crm_build/crm/static:/static
+      - static-volume:/app/crm/static
+      - /var/www/html/crm_build/crm/static:/media
+      -
+volumes:
+  static-volume:
 
 networks:
   default:
