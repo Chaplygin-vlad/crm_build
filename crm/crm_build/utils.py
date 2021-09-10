@@ -71,12 +71,12 @@ def get_filter(status, obj_type):
 def get_search(queue):
     """Возвращаем параметры для поиска"""
     result = (
-            Q(tel1__contains=queue) |
-            Q(fff__contains=queue) |
-            Q(iii__contains=queue) |
-            Q(ooo__contains=queue) |
-            Q(lot__contains=queue) |
-            Q(addr__contains=queue)
+            Q(tel1__icontains=queue) |
+            Q(fff__icontains=queue) |
+            Q(iii__icontains=queue) |
+            Q(ooo__icontains=queue) |
+            Q(lot__icontains=queue) |
+            Q(addr__icontains=queue)
     )
     return result
 
