@@ -71,18 +71,28 @@ def get_filter(status, obj_type):
 def get_search(queue):
     """Возвращаем параметры для поиска"""
     result = (
-            Q(tel1__contains=queue) |
-            Q(fff__contains=queue) |
-            Q(iii__contains=queue) |
-            Q(ooo__contains=queue) |
-            Q(lot__contains=queue) |
-            Q(addr__contains=queue)
+            Q(tel1__icontains=queue) |
+            Q(fff__icontains=queue) |
+            Q(iii__icontains=queue) |
+            Q(ooo__icontains=queue) |
+            Q(lot__icontains=queue) |
+            Q(addr__icontains=queue)
     )
     return result
 
 
 def get_context_values(request, context):
     """Добавляет данные в контекст"""
+    context["status_value"] = DEAL_STATUS[request.get(
+        "status",
+        "default"
+    )]
+    context["status_key"] = request.get("status", "default")
+    context["obj_type_value"] = DEAL_TYPE[request.get(
+        "obj_type",
+        "default"
+    )]
+    context["obj_type_key"] = request.get("obj_type", "default")
     if request.get('tel1') is not None:
         context['main_filter_value'] = \
             f'tel1={request.get("tel1")}' \
@@ -95,16 +105,6 @@ def get_context_values(request, context):
             f'&tfloors_from={request.get("tfloors_from")}' \
             f'&param3={request.get("param3")}'
     else:
-        context["status_value"] = DEAL_STATUS[request.get(
-            "status",
-            "default"
-        )]
-        context["status_key"] = request.get("status", "default")
-        context["obj_type_value"] = DEAL_TYPE[request.get(
-            "obj_type",
-            "default"
-        )]
-        context["obj_type_key"] = request.get("obj_type", "default")
         context["q"] = request.get('q', '')
 
     return context
@@ -144,7 +144,9 @@ def get_form_filters(request):
     q_objects = add_filter_walls(q_objects, request.get("param3"))
     if request.get('check24') is not None:
         q_objects = add_filter_heat(q_objects, 1)
-
+    status, _ = get_filters(request)
+    if status is not None:
+        q_objects &= status
     return q_objects, agent_filter
 
 
