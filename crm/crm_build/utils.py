@@ -145,7 +145,8 @@ def get_form_filters(request):
     if request.get('check24') is not None:
         q_objects = add_filter_heat(q_objects, 1)
     status, _ = get_filters(request)
-    q_objects &= status
+    if status is not None:
+        q_objects &= status
     return q_objects, agent_filter
 
 
