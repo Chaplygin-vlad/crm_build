@@ -65,28 +65,28 @@
                 <div class="dropdown-menu"
                      aria-labelledby="dropdownMenuButton">
                     <a class="nav-link dropdown-item"
-                       href="{{ request.path }}?obj_type={{ obj_type_key }}">Новые,
+                       href="{{ request.path }}?obj_type={{ obj_type_key }}&q={{ q }}">Новые,
                         В работе, Аванс</a>
                     <a class="nav-link dropdown-item"
-                       href="{{ request.path }}?status=all&obj_type={{ obj_type_key }}">Все
+                       href="{{ request.path }}?status=all&obj_type={{ obj_type_key }}&q={{ q }}">Все
                         статусы...</a>
                     <a class="nav-link dropdown-item"
-                       href="{{ request.path }}?status=new&obj_type={{ obj_type_key }}">Новые</a>
+                       href="{{ request.path }}?status=new&obj_type={{ obj_type_key }}&q={{ q }}">Новые</a>
                     <a class="nav-link dropdown-item"
-                       href="{{ request.path }}?status=in_work&obj_type={{ obj_type_key }}">В
+                       href="{{ request.path }}?status=in_work&obj_type={{ obj_type_key }}&q={{ q }}">В
                         работе</a>
                     <a class="nav-link dropdown-item"
-                       href="{{ request.path }}?status=avans&obj_type={{ obj_type_key }}">Аванс</a>
+                       href="{{ request.path }}?status=avans&obj_type={{ obj_type_key }}&q={{ q }}">Аванс</a>
                     <a class="nav-link dropdown-item"
-                       href="{{ request.path }}?status=delayed&obj_type={{ obj_type_key }}">Отложенные</a>
+                       href="{{ request.path }}?status=delayed&obj_type={{ obj_type_key }}&q={{ q }}">Отложенные</a>
                     <a class="nav-link dropdown-item"
-                       href="{{ request.path }}?status=closed&obj_type={{ obj_type_key }}">Сделка
+                       href="{{ request.path }}?status=closed&obj_type={{ obj_type_key }}&q={{ q }}">Сделка
                         (завершена)</a>
                     <a class="nav-link dropdown-item"
-                       href="{{ request.path }}?status=archive&obj_type={{ obj_type_key }}">Архив
+                       href="{{ request.path }}?status=archive&obj_type={{ obj_type_key }}&q={{ q }}">Архив
                         (без сделки)</a>
                     <a class="nav-link dropdown-item"
-                       href="{{ request.path }}?status=advert&obj_type={{ obj_type_key }}">Рекламные</a>
+                       href="{{ request.path }}?status=advert&obj_type={{ obj_type_key }}&q={{ q }}">Рекламные</a>
                 </div>
 
             </li>
@@ -101,14 +101,14 @@
                 <div class="dropdown-menu"
                      aria-labelledby="dropdownMenuButton">
                     <a class="nav-link dropdown-item"
-                       href="{{ request.path }}?status={{ status_key }}">Все
+                       href="{{ request.path }}?status={{ status_key }}&q={{ q }}">Все
                         типы недвижимости</a>
                     <a class="nav-link dropdown-item"
-                       href="{{ request.path }}?obj_type=apart&status={{ status_key }}">Квартира</a>
+                       href="{{ request.path }}?obj_type=apart&status={{ status_key }}&q={{ q }}">Квартира</a>
                     <a class="nav-link dropdown-item"
-                       href="{{ request.path }}?obj_type=house&status={{ status_key }}">Дом</a>
+                       href="{{ request.path }}?obj_type=house&status={{ status_key }}&q={{ q }}">Дом</a>
                     <a class="nav-link dropdown-item"
-                       href="{{ request.path }}?obj_type=land&status={{ status_key }}">Земельный
+                       href="{{ request.path }}?obj_type=land&status={{ status_key }}&q={{ q }}">Земельный
                         участок</a>
                 </div>
 
