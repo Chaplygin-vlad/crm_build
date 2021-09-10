@@ -21,6 +21,8 @@ jobs:
 
       - name: dockerfile add env
         run: python docker_update.py '${{secrets.SECRET_KEY}}' ${{secrets.DB_NAME}} ${{secrets.DB_USER}} '${{secrets.DB_PASSWORD}}'
+      - name: docker build
+        run: docker build . -t kairick/nds
       - name: push Docker img
         uses: mr-smithers-excellent/docker-build-push@v4
         with:
