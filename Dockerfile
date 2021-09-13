@@ -16,3 +16,4 @@ RUN poetry install --no-interaction --no-ansi && \
 	rm -rf "$POETRY_CACHE_DIR"
 
 COPY crm .
+RUN mkdir staticdir
