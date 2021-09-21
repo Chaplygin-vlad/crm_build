@@ -5,6 +5,7 @@ services:
   nginx:
     image: library/nginx:alpine
     container_name: nds_nginx
+    restart: always
     ports:
       - 80:80
     volumes:
@@ -15,6 +16,7 @@ services:
   web:
     image: kairick/nds
     container_name: nds_web
+    restart: always
     command: gunicorn --workers 3 --bind 0.0.0.0:8000 crm.wsgi:application
     extra_hosts:
       - "host.docker.internal:172.18.0.1"
